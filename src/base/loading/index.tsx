@@ -4,47 +4,70 @@
  * @Author: huabingtao
  * @Date: 2021-05-11 22:07:51
  * @LastEditors: huabingtao
- * @LastEditTime: 2021-05-13 15:49:40
+ * @LastEditTime: 2021-05-14 13:57:42
  * @FilePath: /hero/src/base/loading/index.tsx
  */
 import React from 'react';
-import classnames from 'classnames'
-import Icon  from '../icon/index';
-import { library } from '@fortawesome/fontawesome-svg-core'
+import classnames from 'classnames';
+import Icon from '../icon/index';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'; // 全部图标
-import './index.less'
+import './index.less';
 
-library.add(fas)
+library.add(fas);
 
-export type SizeProp =
-  | "xs"
-  | "lg"
-  | "sm"
+export type SizeProp = 'xs' | 'lg' | 'sm';
+
+export type IconType = 'spinner' | 'circle';
 
 interface ILoadingProps {
-    color?: string;
-    type?: string;
-    size?: SizeProp;
-    textSize?: string;
-    textColor?: string;
-    /**
-     * @description    自定义样式类名
-    */
-    className?: string;
+  /**
+   * @description  icon 颜色
+   * @default 黑色
+   */
+  color?: string;
+  /**
+   * @description  图标类型 接受 'spinner' | 'circle' 两种类型的图标
+   * @default spinner
+   */
+  type?: IconType;
+  /**
+   * @description  图标大小 接受 'xs' | 'lg' | 'sm' 三种类型
+   * @default sm
+   */
+  size?: SizeProp;
+  /**
+   * @description  字体大小单位 px
+   * @default 12px
+   */
+  textSize?: string;
+  /**
+   * @description  字体颜色
+   * @default  黑色
+   */
+  textColor?: string;
+  /**
+   * @description  传入类名
+   */
+  className?: string;
 }
 
-const Loading:React.FC<ILoadingProps> = (props)=>{
-    const { children, textSize,className,textColor,color,size } = props
-    const classes = classnames('hero-loading',className)
-    return (
-        <div className={classes}>
-            <Icon icon='spinner' color={color} size={size} spin></Icon>
-            <span style={{ fontSize:textSize + 'px', color:textColor }}>{children}</span>
-        </div>
-    )
-}
+const Loading: React.FC<ILoadingProps> = (props) => {
+  const { children, type, textSize, className, textColor, color, size } = props;
+  const classes = classnames('hero-loading', className);
+  const icon = type === 'spinner' ? 'spinner' : 'circle-notch';
+  return (
+    <div className={classes}>
+      <Icon icon={icon} color={color} size={size} spin></Icon>
+      <span style={{ fontSize: textSize + 'px', color: textColor }}>
+        {children}
+      </span>
+    </div>
+  );
+};
 
 Loading.defaultProps = {
-    textSize: '12'
-}
-export default Loading
+  textSize: '12',
+  type: 'spinner',
+};
+export default Loading;

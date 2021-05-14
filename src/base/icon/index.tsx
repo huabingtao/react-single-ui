@@ -1,13 +1,22 @@
 import React from 'react';
 import classNames from 'classnames';
-import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconProps,
+} from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-const Icon: React.FC<FontAwesomeIconProps> = (props) => {
-    const { className, ...restProps } = props;
-
-    const classes = classNames('hero-icon', className)
-
-    return <FontAwesomeIcon className={classes} {...restProps}/>
+export interface IconProps extends FontAwesomeIconProps {
+  /**
+   * @description  icon名称
+   */
+  icon: IconProp;
 }
+
+const Icon: React.FC<IconProps> = (props) => {
+  const { className, icon, ...restProps } = props;
+  const classes = classNames('hero-icon', className);
+  return <FontAwesomeIcon icon={icon} className={classes} {...restProps} />;
+};
 
 export default Icon;

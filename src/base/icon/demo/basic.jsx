@@ -9,9 +9,12 @@ library.add(fas)
 export default () => {
     return (
         <>
-         <Icon icon='spinner' size='2x' theme='primary' spin />
-         <Icon icon='coffee' size='2x' theme='primary' swapOpacity  />
-         <Icon icon='circle-notch' size='2x' theme='primary' spin  />
+         <h1 className="hero-title">default</h1>
+         <Icon icon='coffee'/>         
+         <h1 className="hero-title">自定义大小,颜色</h1>
+         <Icon icon='circle-notch' color="#169be8" size='2x' theme='primary' />
+         <h1 className="hero-title">添加动画</h1>
+         <Icon icon='spinner' spin/>     <Icon icon='spinner' pulse/>         
         </>
     )
 };
