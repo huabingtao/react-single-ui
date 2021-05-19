@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 23:10:58
- * @LastEditTime: 2021-05-19 22:54:46
+ * @LastEditTime: 2021-05-19 23:02:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /single/.umirc.ts
@@ -16,5 +16,6 @@ export default defineConfig({
   outputPath: 'docs-dist',
   mode: 'site',
   base: 'single-ui',
+  publicPath: 'single-ui',
   // more config: https://d.umijs.org/config
 });
