@@ -1,7 +1,7 @@
 ---
 hero:
-  title: hero
-  desc: hero site example
+  title: single-ui
+  desc: single-ui site example
   actions:
     - text: 开始
       link: /components
@@ -18,4 +18,4 @@ features:
 footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
 ---
 
-## Hello hero!
+## Hello single-ui!
