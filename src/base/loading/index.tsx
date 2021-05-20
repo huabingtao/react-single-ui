@@ -1,12 +1,12 @@
 /*
- * @Description: Description
- * @Version: 1.0
- * @Author: huabingtao
- * @Date: 2021-05-11 22:07:51
- * @LastEditors: huabingtao
- * @LastEditTime: 2021-05-14 13:57:42
- * @FilePath: /hero/src/base/loading/index.tsx
+ * @Author: your name
+ * @Date: 2021-05-14 23:10:58
+ * @LastEditTime: 2021-05-19 22:35:07
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /single/src/base/loading/index.tsx
  */
+
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/index';
@@ -54,7 +54,7 @@ interface ILoadingProps {
 
 const Loading: React.FC<ILoadingProps> = (props) => {
   const { children, type, textSize, className, textColor, color, size } = props;
-  const classes = classnames('hero-loading', className);
+  const classes = classnames('single-loading', className);
   const icon = type === 'spinner' ? 'spinner' : 'circle-notch';
   return (
     <div className={classes}>

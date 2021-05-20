@@ -1,4 +1,4 @@
-# hero
+# single-ui
 
 ## Getting Started
 
