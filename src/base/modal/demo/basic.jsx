@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'hero'
+import { Modal } from 'single-ui'
 
 export default ()=>{
     return (
