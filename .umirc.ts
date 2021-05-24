@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 23:10:58
- * @LastEditTime: 2021-05-19 23:48:43
+ * @LastEditTime: 2021-05-23 16:18:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /single/.umirc.ts
@@ -17,5 +17,10 @@ export default defineConfig({
   mode: 'site',
   base: '/single-ui/',
   publicPath: '/single-ui/',
+  sass: {
+    // 默认值 Dart Sass，如果要改用 Node Sass，可安装 node-sass 依赖，然后使用该配置项
+    implementation: require('node-sass'),
+    // 传递给 Dart Sass 或 Node Sass 的配置项，可以是一个 Function
+  },
   // more config: https://d.umijs.org/config
 });
