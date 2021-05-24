@@ -15,6 +15,7 @@ export default () => {
       <Button btnType="link" href="www.baidu.com" target="_blank">
         link
       </Button>
+      <Button btnType="primary" block={true}>block</Button>
       <h1 className="single-title">自定义样式</h1>
     </>
   );
