@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Notification from 'rmc-notification';
 
 export interface BaseProps {
   type: ToastType;
@@ -16,7 +17,16 @@ document.body.appendChild(div);
 
 const notic = (props: BaseProps) => {
   const { content, mask, duration, onClose, type } = props;
-  return ReactDOM.render(<div>{content}</div>, div);
+  Notification.newInstance({}, (notification: any) => {
+    notification.notice({
+      content,
+      duration,
+      onClose: () => {
+        onClose && onClose();
+      },
+    });
+  });
+  // return ReactDOM.render(<div>{content}</div>, div);
 };
 const Toast = {
   show: (
