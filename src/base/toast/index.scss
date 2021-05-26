@@ -1,0 +1,32 @@
+.single-toast {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  transform: translateZ(1px);
+  > span {
+    max-width: 50%;
+  }
+  &-mask{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    transform: translateZ(1px);
+  }
+  &-notice-content {
+    .single-text {
+      // min-width: 60 * @hd;
+      border-radius: .1rem;
+      color: #fff;
+      background-color: $toast-fill;
+      // line-height: @line-height-paragraph;
+      line-height: 0.5rem;
+      padding: 0.1rem 0.2rem;
+    }
+  }
+}

@@ -6,7 +6,7 @@ export default () => {
     Toast.show('123');
   };
   const duration = () => {
-    Toast.show('延时3秒', 'default', false, 3);
+    Toast.show('延时3秒', 'default', false, 0);
   };
   return (
     <>
