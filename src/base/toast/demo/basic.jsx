@@ -1,6 +1,6 @@
 import React from 'react';
 import { Toast, Button } from 'single-ui';
-import { Toast as AToast } from 'antd-mobile';
+// import { Toast as AToast } from 'antd-mobile';
 
 export default () => {
   const show = () => {
