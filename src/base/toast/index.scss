@@ -1,5 +1,4 @@
 .single-toast {
-  height: calc(100vh);
   width: calc(100vw);
   position: fixed;
   display: flex;
@@ -8,8 +7,9 @@
   left: 0;
   top: 0;
   transform: translateZ(1px);
+
   > span {
-    max-width: 50%;
+    max-width: 50vw;
   }
   &-mask {
     height: 100%;
@@ -20,9 +20,18 @@
     top: 0;
     transform: translateZ(1px);
   }
+  &-nomask {
+    position: fixed;
+    max-width: 50%;
+    width: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
   &-notice-content {
-    .single-text {
-      // min-width: 60 * @hd;
+    .single-toast-text {
+      text-align: center;
+      min-width: 70px;
       border-radius: 0.1rem;
       color: #fff;
       background-color: $toast-fill;

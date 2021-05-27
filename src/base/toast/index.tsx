@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import classNames from 'classnames';
 import Notification from 'rmc-notification';
 // import 'index.scss';
 
@@ -18,12 +19,18 @@ document.body.appendChild(div);
 
 const notic = (props: BaseProps) => {
   const { content, mask, duration, onClose, type } = props;
+  const classes = classNames({
+    'single-toast-mask': mask,
+    'single-toast-nomask': !mask,
+  });
+  console.log('classes:', classes);
+
   Notification.newInstance(
-    { prefixCls: 'single-toast', style: {} },
+    { prefixCls: 'single-toast', style: {}, className: classes },
     (notification: any) => {
       notification.notice({
         content: (
-          <div className="single-text" role="alert" aria-live="assertive">
+          <div className="single-toast-text" role="alert" aria-live="assertive">
             <div>{content}</div>
           </div>
         ),
