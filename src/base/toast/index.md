@@ -6,10 +6,6 @@ nav:
 
 ## Toast
 
-antd-mobile：
-
-<code src="./demo/at.jsx" />
-
 代码演示:
 
 <code src="./demo/basic.jsx" />

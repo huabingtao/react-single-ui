@@ -1,5 +1,7 @@
 .single-toast {
-  height: 100%;
+  height: calc(100vh);
+  width: calc(100vw);
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +11,7 @@
   > span {
     max-width: 50%;
   }
-  &-mask{
+  &-mask {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -21,7 +23,7 @@
   &-notice-content {
     .single-text {
       // min-width: 60 * @hd;
-      border-radius: .1rem;
+      border-radius: 0.1rem;
       color: #fff;
       background-color: $toast-fill;
       // line-height: @line-height-paragraph;

@@ -28,8 +28,11 @@ const notic = (props: BaseProps) => {
           </div>
         ),
         duration,
-        onClose: () => {
+        onClose() {
           onClose && onClose();
+          notification.destroy();
+          notification = null;
+          // messageInstance = null;
         },
       });
     },
