@@ -3,7 +3,7 @@ name: docs
 on:
   # 每当 push 到 main 分支时触发部署
   push:
-    branches: [main]
+    branches: [test]
   # 手动触发部署
   workflow_dispatch:
 
@@ -25,14 +25,14 @@ jobs:
 
       # 缓存 node_modules
       - name: Cache dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+        # uses: actions/cache@v2
+        # id: yarn-cache
+        # with:
+        #   path: |
+        #     **/node_modules
+        #   key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        #   restore-keys: |
+        #     ${{ runner.os }}-yarn-
 
       # 如果缓存没有命中，安装依赖
       - name: Install dependencies
