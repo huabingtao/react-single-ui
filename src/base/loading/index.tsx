@@ -53,7 +53,15 @@ interface ILoadingProps {
 }
 
 const Loading: React.FC<ILoadingProps> = (props) => {
-  const { children, type, textSize, className, textColor, color, size } = props;
+  const {
+    children,
+    type,
+    textSize,
+    className,
+    textColor = '12px',
+    color = '#000',
+    size = 'lg',
+  } = props;
   const classes = classnames('single-loading', className);
   const icon = type === 'spinner' ? 'spinner' : 'circle-notch';
   return (

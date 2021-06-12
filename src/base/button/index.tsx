@@ -39,7 +39,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   const {
     btnType,
     block,
-    disabled,
+    disabled = false,
     size,
     children,
     className,
