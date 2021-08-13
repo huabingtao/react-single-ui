@@ -22,5 +22,6 @@ export default defineConfig({
     implementation: require('node-sass'),
     // 传递给 Dart Sass 或 Node Sass 的配置项，可以是一个 Function
   },
+  extraBabelPresets: ['@babel/preset-typescript'],
   // more config: https://d.umijs.org/config
 });

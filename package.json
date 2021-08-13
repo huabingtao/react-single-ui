@@ -10,7 +10,7 @@
     "deploy": "npm run docs:build && npm run docs:deploy",
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
-    "test": "umi-test",
+    "test": "jest --env=jsdom",
     "test:coverage": "umi-test --coverage"
   },
   "main": "dist/index.js",
@@ -28,26 +28,33 @@
     ]
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.15.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@testing-library/react": "^12.0.0",
+    "@types/jest": "^27.0.0",
     "antd-mobile": "^2.3.4",
     "classnames": "^2.3.1",
     "node-sass": "^4.2.1",
     "react": "^16.12.0",
     "rmc-notification": "^1.0.0",
-    "sass-loader": "^11.1.1"
+    "sass-loader": "^11.1.1",
+    "vikingship": "^1.0.2"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
     "@umijs/plugin-sass": "^1.1.1",
     "@umijs/test": "^3.0.5",
-    "dumi": "^1.0.14",
-    "dumi-theme-mobile": "^1.1.0",
+    "dumi": "^1.1.25",
+    "dumi-theme-mobile": "^1.1.8",
     "father-build": "^1.17.2",
     "gh-pages": "^3.0.0",
+    "jest": "^27.0.6",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
+    "ts-jest": "^27.0.4",
     "yorkie": "^2.0.0"
   }
 }
