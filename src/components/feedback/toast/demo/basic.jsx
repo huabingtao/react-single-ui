@@ -11,18 +11,18 @@ export default () => {
   };
   const antShow = () => {
     AToast.show('ant-toast', 0, false);
-  }
+  };
   const haveOnClose = () => {
-    Toast.show('延时3秒后关闭，执行回调函数', 'default', false, 3, ()=>{
-        alert('Toast Closed!')
+    Toast.show('延时3秒后关闭，执行回调函数', 'default', false, 3, () => {
+      alert('Toast Closed!');
     });
-  }
+  };
   const alowaysShow = () => {
     Toast.show('总是显示在页面上', 'default', false, 0);
-  }
-  const noMask = ()=> {
-      Toast.show('noMask','',false,3,false)
-  }
+  };
+  const noMask = () => {
+    Toast.show('noMask', '', false, 3, false);
+  };
   return (
     <>
       {/* <Button block btnType="primary" onClick={alowaysShow}>

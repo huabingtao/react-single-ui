@@ -2,6 +2,7 @@
 nav:
   title: 组件
   path: /components
+  order: 1
 ---
 
 ## Toast
