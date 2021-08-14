@@ -8,6 +8,8 @@
  */
 import React from 'react';
 import classNames from 'classnames';
+import TouchFeedback from 'rmc-feedback';
+import { prefixCls } from '../../../util';
 
 export enum ButtonSize {
   Large = 'lg',
@@ -29,6 +31,7 @@ interface BaseButtonProps {
   children: React.ReactNode;
   href?: string;
   block?: boolean;
+  activeClassName?: string;
 }
 type NativeButtonProps = BaseButtonProps &
   React.ButtonHTMLAttributes<HTMLElement>;
@@ -44,12 +47,14 @@ const Button: React.FC<ButtonProps> = (props) => {
     children,
     className,
     href,
+    activeClassName,
     ...restProps
   } = props;
-  const classes = classNames('btn', className, {
-    [`btn-${btnType}`]: btnType,
-    [`btn-${size}`]: size,
-    'btn-block': block,
+  const buttonPrefixCls = prefixCls + '-btn';
+  const classes = classNames(`${buttonPrefixCls}`, className, {
+    [`${buttonPrefixCls}-${btnType}`]: btnType,
+    [`${buttonPrefixCls}-${size}`]: size,
+    [`${buttonPrefixCls}-block`]: block,
     disabled: btnType === ButtonType.Link && disabled,
   });
 
@@ -62,9 +67,17 @@ const Button: React.FC<ButtonProps> = (props) => {
   }
 
   return (
-    <button className={classes} disabled={disabled} {...restProps}>
-      {children}
-    </button>
+    <TouchFeedback
+      activeClassName={`${buttonPrefixCls}-active`}
+      disabled={disabled}
+    >
+      <button className={classes} {...restProps}>
+        {children}
+      </button>
+    </TouchFeedback>
+    // <button className={classes} disabled={disabled} {...restProps}>
+    //   {children}
+    // </button>
   );
 };
 
