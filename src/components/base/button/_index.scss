@@ -1,13 +1,12 @@
 $buttonPrefixCls: 'sn-btn';
 .#{$buttonPrefixCls} {
   position: relative;
-  display: inline-block;
+  text-align: center;
   font-weight: $btn-font-weight;
   line-height: $btn-line-height;
   color: $body-color;
   white-space: nowrap;
   text-align: center;
-  display: block;
   background-image: none;
   outline: 0 none;
   border: $btn-border-width solid transparent;
@@ -26,7 +25,6 @@ $buttonPrefixCls: 'sn-btn';
     cursor: not-allowed;
     opacity: $btn-disabled-opacity;
     box-shadow: none;
-
     > * {
       pointer-events: none;
     }

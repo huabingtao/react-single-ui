@@ -67,11 +67,8 @@ const Button: React.FC<ButtonProps> = (props) => {
   }
 
   return (
-    <TouchFeedback
-      activeClassName={`${buttonPrefixCls}-active`}
-      disabled={disabled}
-    >
-      <button className={classes} {...restProps}>
+    <TouchFeedback activeClassName={`${buttonPrefixCls}-active`}>
+      <button className={classes} {...restProps} disabled={disabled}>
         {children}
       </button>
     </TouchFeedback>

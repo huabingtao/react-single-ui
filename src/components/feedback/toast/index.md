@@ -5,7 +5,7 @@ nav:
   order: 1
 ---
 
-## Toast
+## Toast 轻提示
 
 代码演示:
 

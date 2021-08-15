@@ -4,7 +4,7 @@ nav:
   path: /components
 ---
 
-## Icon
+## Icon 图标
 
 代码演示:
 

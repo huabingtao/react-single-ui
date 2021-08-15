@@ -5,7 +5,7 @@ nav:
   order: 1
 ---
 
-## Toast
+## Modal 模态框
 
 代码演示:
 

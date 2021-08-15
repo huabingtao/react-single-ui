@@ -4,7 +4,7 @@ nav:
   path: /components
 ---
 
-## Loading
+## Loading 加载
 
 代码演示:
 
