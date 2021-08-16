@@ -12,14 +12,11 @@ export default () => {
         text only
       </Button>
 
-      <Modal visible={visible1}>
-        <div>pppppp</div>
-        <div>pppppp</div>
-        <div>pppppp</div>
-        <div>pppppp</div>
-        <div>pppppp</div>
-        <div>pppppp</div>
-      </Modal>
+      <Modal
+        visible={visible1}
+        title="标题"
+        message="代码是写出来给人看的，附带能在机器上运行"
+      ></Modal>
     </>
   );
 };

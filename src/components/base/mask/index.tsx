@@ -19,13 +19,15 @@ const div: any = document.createElement('div');
 document.body.appendChild(div);
 
 class Mask extends React.Component<MaskProps, any> {
-  constructor(prop) {
-    super(prop);
+  constructor(props) {
+    super(props);
   }
   container: any;
   maskDom = () => {
     return (
-      <div className={`${prefixCls}-mask`} onClick={this.props.onClick}></div>
+      <div className={`${prefixCls}-mask`} onClick={this.props.onClick}>
+        {this.props.children}
+      </div>
     );
   };
 

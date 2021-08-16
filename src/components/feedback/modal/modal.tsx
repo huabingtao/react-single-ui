@@ -4,6 +4,10 @@ import classNames from 'classnames';
 import TouchFeedback from 'rmc-feedback';
 import { prefixCls } from '../../../util';
 import Mask from '../../base/mask/index';
+import Button from '../../base/button/index';
+import './index.scss';
+
+const modalPrefixCls = prefixCls + '-modal';
 
 export interface Action<T> {
   text: string;
@@ -26,11 +30,33 @@ export interface ppp {
 
 const Modal: React.FC<ModalProps<React.CSSProperties>> = (props) => {
   const { visible, ...restProps } = props;
+
+  const ModalNode = (props) => {
+    const { title, message, footer } = props;
+    console.log(props);
+
+    return (
+      <div className={`${modalPrefixCls}`}>
+        <div className={`${modalPrefixCls}-header`}>{title}</div>
+        <div className={`${modalPrefixCls}-body`}>{message}</div>
+        <div className={`${modalPrefixCls}-footer`}>
+          {footer?.map((button) => {
+            return <Button>{button.text}</Button>;
+          })}
+        </div>
+      </div>
+    );
+  };
+
   const Props = {
-    prefixCls: `${prefixCls}-modal`,
+    prefixCls: `${modalPrefixCls}-modal`,
     transitionName: 'slide-up',
   };
-  return <Mask visible={visible} {...restProps}></Mask>;
+  return (
+    <Mask visible={visible} {...restProps}>
+      <ModalNode {...restProps}></ModalNode>
+    </Mask>
+  );
 };
 
 export default Modal;

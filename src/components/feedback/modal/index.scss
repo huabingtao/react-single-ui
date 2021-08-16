@@ -1,43 +1,40 @@
-.single-toast {
-  width: calc(100vw);
+$modalPrefixCls: 'sn-modal';
+.#{$modalPrefixCls} {
   position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 0;
-  top: 0;
-  transform: translateZ(1px);
-
-  > span {
-    max-width: 50vw;
+  top: 45%;
+  left: 50%;
+  width: 80vw;
+  overflow: hidden;
+  font-size: 16px;
+  background-color: #fff;
+  border-radius: 16px;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  &-header{
+    padding-top: 26px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
   }
-  &-mask {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 0;
-    top: 0;
-    transform: translateZ(1px);
-  }
-  &-nomask {
-    position: fixed;
-    max-width: 50%;
-    width: auto;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  &-notice-content {
-    .single-toast-text {
-      text-align: center;
-      min-width: 70px;
-      border-radius: 0.1rem;
-      color: #fff;
-      background-color: $toast-fill;
-      // line-height: @line-height-paragraph;
-      line-height: 0.5rem;
-      padding: 0.1rem 0.2rem;
-    }
+  &-body{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    max-height: 60vh;
+    padding: 26px 24px;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: pre-wrap;
+    text-align: center;
+    word-wrap: break-word;
   }
 }
