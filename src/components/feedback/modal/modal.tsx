@@ -1,9 +1,9 @@
 import React from 'react';
-import Dialog from 'rmc-dialog';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import TouchFeedback from 'rmc-feedback';
 import { prefixCls } from '../../../util';
+import Mask from '../../base/mask/index';
 
 export interface Action<T> {
   text: string;
@@ -25,12 +25,12 @@ export interface ppp {
 }
 
 const Modal: React.FC<ModalProps<React.CSSProperties>> = (props) => {
-  const { ...restProps } = props;
+  const { visible, ...restProps } = props;
   const Props = {
     prefixCls: `${prefixCls}-modal`,
     transitionName: 'slide-up',
   };
-  return <Dialog {...Props} {...restProps}></Dialog>;
+  return <Mask visible={visible} {...restProps}></Mask>;
 };
 
 export default Modal;
