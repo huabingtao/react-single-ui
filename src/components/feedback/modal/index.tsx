@@ -5,5 +5,8 @@ import classNames from 'classnames';
 import TouchFeedback from 'rmc-feedback';
 import { prefixCls } from '../../../util';
 import Modal from './modal';
+import { Alert } from './alert';
+
+Modal.alert = Alert;
 
 export default Modal;

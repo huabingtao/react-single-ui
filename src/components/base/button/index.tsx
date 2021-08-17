@@ -32,6 +32,7 @@ interface BaseButtonProps {
   href?: string;
   block?: boolean;
   activeClassName?: string;
+  style?: object;
 }
 type NativeButtonProps = BaseButtonProps &
   React.ButtonHTMLAttributes<HTMLElement>;
@@ -58,7 +59,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     disabled: btnType === ButtonType.Link && disabled,
   });
 
-  if (btnType === ButtonType.Link && href) {
+  if (btnType === ButtonType.Link) {
     return (
       <a className={classes} href={href} {...restProps}>
         {children}
