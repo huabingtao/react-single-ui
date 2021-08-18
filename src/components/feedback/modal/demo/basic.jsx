@@ -14,7 +14,7 @@ export default () => {
     Modal.alert({ title: '标题', message: '函数调用', footer: footer3 });
   };
   const show4 = () => {
-    Modal.alert({ title: '标题', message: '异步关闭', footer: footer4 });
+    Modal.alert({ title: '标题', message: '延迟1s后关闭', footer: footer4 });
   };
 
   const footer1 = [
