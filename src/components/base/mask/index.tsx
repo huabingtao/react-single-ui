@@ -6,11 +6,11 @@ import './index.scss';
 const IS_REACT_16 = !!(ReactDOM as any).createPortal;
 export interface MaskProps {
   /**
-   * @description
+   * @description 是否显示遮罩层
    */
   visible: boolean;
   /**
-   * @description
+   * @description 点击遮罩
    */
   onClick?: () => void;
 }

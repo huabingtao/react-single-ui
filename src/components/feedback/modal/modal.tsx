@@ -15,12 +15,29 @@ export interface Action<T> {
   style?: T | string;
 }
 export interface ModalProps<T> {
+  /**
+   * @description  标题
+   */
   title?: React.ReactNode;
+  /**
+   * @description 是否显示
+   */
   visible: boolean;
+  /**
+   * @description 点击蒙层是否允许关闭
+   */
   maskClosable?: boolean;
-  closable?: boolean;
+  /**
+   * @description 底部内容
+   */
   footer?: Action<T>[];
+  /**
+   * @description 关闭回调函数
+   */
   onClose?: () => void;
+  /**
+   * @description 提示信息
+   */
   message?: React.ReactNode;
 }
 
