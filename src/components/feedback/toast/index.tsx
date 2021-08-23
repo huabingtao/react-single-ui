@@ -2,49 +2,117 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import Notification from 'rmc-notification';
-// import 'index.scss';
+import Icon from '../../base/icon';
+import { prefixCls } from '../../../util';
 
-export interface BaseProps {
-  type: ToastType;
+export interface BaseProps<T> {
+  type: T;
   content: React.ReactNode;
   mask: boolean;
   duration: number;
   onClose: Function;
 }
-
-export type ToastType = 'success' | 'fail' | 'info' | 'loading';
+let messageInstance = null;
+let messageNeedHide: boolean;
+export type ToastType = 'success' | 'fail' | 'info';
 
 const div = document.createElement('div');
 document.body.appendChild(div);
-
-const notic = (props: BaseProps) => {
-  const { content, mask, duration, onClose, type } = props;
+const ToastPrefixCls = prefixCls + '-toast';
+function getMessageInstance(
+  mask: boolean,
+  callback: (notification: any) => void,
+) {
   const classes = classNames({
-    'single-toast-mask': mask,
-    'single-toast-nomask': !mask,
+    [`${ToastPrefixCls}-mask`]: mask,
+    [`${ToastPrefixCls}-nomask`]: !mask,
   });
-  console.log('classes:', classes);
 
-  Notification.newInstance(
-    { prefixCls: 'single-toast', style: {}, className: classes },
-    (notification: any) => {
-      notification.notice({
-        content: (
-          <div className="single-toast-text" role="alert" aria-live="assertive">
-            <div>{content}</div>
-          </div>
-        ),
-        duration,
-        onClose() {
-          onClose && onClose();
-          notification.destroy();
-          notification = null;
-          // messageInstance = null;
-        },
-      });
+  (Notification as any).newInstance(
+    {
+      prefixCls: `${ToastPrefixCls}`,
+      style: {}, // clear rmc-notification default style
+      transitionName: `${ToastPrefixCls}-fade`,
+      className: classes,
     },
+    (notification: any) => callback && callback(notification),
   );
-  // return ReactDOM.render(<div>{content}</div>, div);
+}
+const notic = (props: BaseProps<ToastType>) => {
+  const { content, mask, duration, onClose, type } = props;
+
+  const iconTypes: { [key: string]: string } = {
+    info: '',
+    success: 'check-circle',
+    fail: 'times-circle',
+  };
+
+  const iconType = iconTypes[type];
+  messageNeedHide = false; // 这个属性暂时没搞清楚起了什么作用
+
+  getMessageInstance(mask, (notification) => {
+    if (!notification) {
+      return;
+    }
+
+    if (messageInstance) {
+      messageInstance.destroy(); // 如果之前有生成过实例就先关闭当前toast
+      messageInstance = null;
+    }
+
+    if (messageNeedHide) {
+      notification.destroy();
+      messageNeedHide = false;
+      return;
+    }
+
+    messageInstance = notification;
+    notification.notice({
+      content: (
+        <div
+          className={`${ToastPrefixCls}-content`}
+          role="alert"
+          aria-live="assertive"
+        >
+          {!!iconType && (
+            <div className={`${ToastPrefixCls}-icon-wrap`}>
+              <Icon icon={iconType as any} size="2x"></Icon>
+            </div>
+          )}
+          <div>{content}</div>
+        </div>
+      ),
+      duration,
+      onClose() {
+        onClose && onClose();
+        notification.destroy();
+        notification = null;
+        messageInstance = null;
+      },
+    });
+  });
+
+  // Notification.newInstance(
+  //   { prefixCls: `${ToastPrefixCls}`, style: {}, className: classes },
+  //   (notification: any) => {
+  //     messageInstance = notification;
+  //     notification.notice({
+  //       content: (
+  //         <div className={`${ToastPrefixCls}-content`} role="alert" aria-live="assertive">
+  //           {!!iconType && <div className={`${ToastPrefixCls}-icon-wrap`}><Icon icon="check-circle" size="lg"></Icon></div>}
+  //           <div>{content}</div>
+  //         </div>
+  //       ),
+  //       duration,
+  //       onClose() {
+  //         onClose && onClose();
+  //         notification.destroy();
+  //         notification = null;
+  //         messageInstance = null;
+  //       },
+  //     });
+  //   },
+  // );
 };
 const Toast = {
   show: (
@@ -62,6 +130,59 @@ const Toast = {
       onClose,
     };
     return notic(params);
+  },
+  info: (
+    content: React.ReactNode,
+    mask: boolean,
+    duration: number,
+    onClose: Function,
+  ) => {
+    const params = {
+      content,
+      type: 'info' as 'info',
+      mask,
+      duration,
+      onClose,
+    };
+    return notic(params);
+  },
+  success: (
+    content: React.ReactNode,
+    mask: boolean,
+    duration: number,
+    onClose: Function,
+  ) => {
+    const params = {
+      content,
+      type: 'success' as 'success',
+      mask,
+      duration,
+      onClose,
+    };
+    return notic(params);
+  },
+  fail: (
+    content: React.ReactNode,
+    mask: boolean,
+    duration: number,
+    onClose: Function,
+  ) => {
+    const params = {
+      content,
+      type: 'fail' as 'fail',
+      mask,
+      duration,
+      onClose,
+    };
+    return notic(params);
+  },
+  hidden: () => {
+    if (messageInstance) {
+      messageInstance.destroy();
+      messageInstance = null;
+    } else {
+      messageNeedHide = true;
+    }
   },
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Toast, Button } from 'single-ui';
-// import { Toast as AToast } from 'antd-mobile';
 
 export default () => {
   const show = () => {
@@ -9,8 +8,14 @@ export default () => {
   const duration = () => {
     Toast.show('延时3秒', 'default', false, 3);
   };
-  const antShow = () => {
-    AToast.show('ant-toast', 0, false);
+  const showInfo = () => {
+    Toast.info('信息 Toast', false, 3);
+  };
+  const showSuccess = () => {
+    Toast.success('成功 Toast', false, 3);
+  };
+  const showFail = () => {
+    Toast.fail('失败 Toast', false, 3);
   };
   const haveOnClose = () => {
     Toast.show('延时3秒后关闭，执行回调函数', 'default', false, 3, () => {
@@ -20,29 +25,50 @@ export default () => {
   const alowaysShow = () => {
     Toast.show('总是显示在页面上', 'default', false, 0);
   };
+  const hidden = () => {
+    Toast.hidden();
+  };
   const noMask = () => {
     Toast.show('noMask', '', false, 3, false);
   };
   return (
     <>
-      {/* <Button block btnType="primary" onClick={alowaysShow}>
-        always show toast
-      </Button> */}
+      <h1 className="sn-title">基础</h1>
       <Button block btnType="primary" onClick={show}>
-        text only
+        Basic toast
       </Button>
+      <h1 className="sn-title">总是显示</h1>
+      <Button block btnType="primary" onClick={alowaysShow}>
+        Always show toast
+      </Button>
+      <div style={{ height: '10px' }}></div>
+      <Button block btnType="primary" onClick={hidden}>
+        Handle hidden toast
+      </Button>
+      <div style={{ height: '10px' }}></div>
+      <Button block btnType="primary" onClick={showInfo}>
+        Info
+      </Button>
+      <div style={{ height: '10px' }}></div>
+      <Button block btnType="primary" onClick={showSuccess}>
+        Success
+      </Button>
+      <div style={{ height: '10px' }}></div>
+      <Button block btnType="danger" onClick={showFail}>
+        Fail
+      </Button>
+      <h1 className="sn-title">延迟关闭</h1>
       <Button block btnType="primary" onClick={duration}>
-        duration 3s
+        Duration 3s
       </Button>
+      <h1 className="sn-title">关闭回调</h1>
       <Button block btnType="primary" onClick={haveOnClose}>
-        3s onClose callBack
+        Close after 3 seconds
       </Button>
+      <h1 className="sn-title">no mask</h1>
       <Button block btnType="primary" onClick={noMask}>
-        no mask
+        No mask
       </Button>
-      {/* <Button onClick={antShow}>
-          Antd Toast
-      </Button> */}
     </>
   );
 };
