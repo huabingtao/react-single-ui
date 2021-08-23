@@ -7,3 +7,4 @@ export { default as Button } from './components/base/button';
 export { default as Mask } from './components/base/mask';
 export { default as Toast } from './components/feedback/toast';
 export { default as Modal } from './components/feedback/modal';
+export { default as Switch } from './components/form/switch';
