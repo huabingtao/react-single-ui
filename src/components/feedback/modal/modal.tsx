@@ -5,7 +5,6 @@ import TouchFeedback from 'rmc-feedback';
 import { prefixCls } from '../../../util';
 import Mask from '../../base/mask/index';
 import Button, { ButtonType } from '../../base/button/index';
-import './index.scss';
 
 const modalPrefixCls = prefixCls + '-modal';
 

@@ -12,7 +12,6 @@ import classnames from 'classnames';
 import Icon from '../icon/index';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'; // 全部图标
-import './index.less';
 
 library.add(fas);
 

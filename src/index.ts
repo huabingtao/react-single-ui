@@ -1,4 +1,3 @@
-import './style/index.less';
 import './style/index.scss';
 // import 'antd-mobile/dist/antd-mobile.css'; // or 'antd-mobile/dist/antd-mobile.less'
 export { default as Loading } from './components/base/loading';

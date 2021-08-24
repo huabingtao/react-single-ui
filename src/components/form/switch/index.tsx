@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
-import './index.scss';
+// import './index.scss';
 
 import { prefixCls } from '../../../util';
 

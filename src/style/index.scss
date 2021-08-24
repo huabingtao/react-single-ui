@@ -1,6 +1,14 @@
 @import "variables";
 @import "reboot";
-
+.sn-title {
+    margin: 0;
+    padding: 16px 0 16px;
+    color: rgba(69, 90, 100, 0.6);
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+}
+  
 
 // minxin
 @import 'mixin';
@@ -8,6 +16,18 @@
 // button
 @import "../components/base/button/index";
 
-// toast
+// loading
+@import "../components/base/loading/index";
 
-@import "../components/feedback/toast/index"
+// mask
+@import "../components/base/mask/index";
+
+// modal
+@import "../components/feedback/modal/index";
+
+// toast
+@import "../components/feedback/toast/index";
+
+// switch
+@import "../components/form/switch/index";
+

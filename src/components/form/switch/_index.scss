@@ -14,7 +14,7 @@ $switchPrefixCls: 'sn-switch';
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
   &-active{
-    background-color: #1989fa;    
+    background-color: $primary;    
     .#{$switchPrefixCls}-round{      
       transform: translateX(100%);
     }
