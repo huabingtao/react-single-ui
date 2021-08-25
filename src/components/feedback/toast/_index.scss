@@ -36,10 +36,9 @@ $toastPrefixCls: 'sn-toast';
   &-content{
     text-align: center;
     min-width: 70px;
-    border-radius: 0.1rem;
+    border-radius: 4px;
     color: #fff;
     background-color: $toast-fill;
-    line-height: 0.5rem;
-    padding: 0.1rem 0.2rem;
+    padding: 6px 10px;
   }
 }

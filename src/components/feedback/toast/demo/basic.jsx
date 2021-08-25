@@ -65,7 +65,7 @@ export default () => {
       <Button block btnType="primary" onClick={haveOnClose}>
         Close after 3 seconds
       </Button>
-      <h1 className="sn-title">no mask</h1>
+      <h1 className="sn-title">没有遮罩层</h1>
       <Button block btnType="primary" onClick={noMask}>
         No mask
       </Button>
