@@ -42,6 +42,10 @@ export default () => {
       <Badge content="hot" fixed={true} color="#0d6efd">
         <div style={style}></div>
       </Badge>
+      <span style={{ margin: '0 6px' }}></span>
+      <Badge dot fixed color="#0d6efd">
+        <div style={style}></div>
+      </Badge>
       <h1 className="sn-title">Custom content</h1>
       <Badge content={<Icon icon="coffee" color="#fff" />} fixed={true}>
         <div style={style}></div>
@@ -57,12 +61,20 @@ export default () => {
       <h1 className="sn-title">Single use</h1>
       <Badge content="减" />
       <Badge content="惠" style={{ marginLeft: 12 }} />
+      <Badge content="免" style={{ marginLeft: 12 }} />
       <Badge content="反" style={{ marginLeft: 12 }} />
-      <Badge content="减" style={{ marginLeft: 12 }} />
       <Badge
         content={<Icon icon="battery-three-quarters" color="#fff" />}
         style={{ marginLeft: 12 }}
       />
+      <h1 className="sn-title">Custom dot size</h1>
+      <Badge dot size="sm">
+        <div style={style}></div>
+      </Badge>
+      <span style={{ margin: '0 6px' }}></span>
+      <Badge dot size="lg">
+        <div style={style}></div>
+      </Badge>
     </>
   );
 };

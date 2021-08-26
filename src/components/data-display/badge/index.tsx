@@ -48,7 +48,7 @@ const Badge: React.FC<BadegProps> = (props) => {
   const dotWrapCls = classNames(`${BadgePrefixCls}-wrap`);
 
   const dotCls = classNames(BadgePrefixCls, {
-    [`${BadgePrefixCls}-dot-large`]: dot && size === 'sm',
+    [`${BadgePrefixCls}-dot-large`]: dot && size === 'lg',
     [`${BadgePrefixCls}-fixed`]: typeof content === 'number' || fixed || dot,
     [`${BadgePrefixCls}-dot`]: dot,
   });

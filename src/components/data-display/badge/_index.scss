@@ -27,8 +27,11 @@ $badgePrefixCls: "sn-badge";
     border: 1px solid $white;
     border-radius: 999px;
     &-dot {
-        max-width: 8px;
         min-width: 8px;
         height: 8px;
+        &-large {
+          min-width: 16px;
+          height: 16px;
+        }
     }
 }
