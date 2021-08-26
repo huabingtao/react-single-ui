@@ -8,10 +8,9 @@
     font-size: 14px;
     line-height: 16px;
 }
-  
 
 // minxin
-@import 'mixin';
+@import "mixin";
 
 // button
 @import "../components/base/button/index";
@@ -33,3 +32,6 @@
 
 // tab-bar
 @import "../components/navigation/tab-bar/index";
+
+// badge
+@import "../components/data-display/badge/index";
