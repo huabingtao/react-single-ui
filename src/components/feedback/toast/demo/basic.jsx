@@ -17,6 +17,9 @@ export default () => {
   const showFail = () => {
     Toast.fail('失败 Toast', false, 3);
   };
+  const showLoading = () => {
+    Toast.loading('loading...', false, 3);
+  };
   const haveOnClose = () => {
     Toast.show('延时3秒后关闭，执行回调函数', 'default', false, 3, () => {
       alert('Toast Closed!');
@@ -33,18 +36,11 @@ export default () => {
   };
   return (
     <>
-      <h1 className="sn-title">基础</h1>
+      <h1 className="sn-title">Basic</h1>
       <Button block btnType="primary" onClick={show}>
         Basic toast
       </Button>
-      <h1 className="sn-title">总是显示</h1>
-      <Button block btnType="primary" onClick={alowaysShow}>
-        Always show toast
-      </Button>
-      <div style={{ height: '10px' }}></div>
-      <Button block btnType="primary" onClick={hidden}>
-        Handle hidden toast
-      </Button>
+
       <div style={{ height: '10px' }}></div>
       <Button block btnType="primary" onClick={showInfo}>
         Info
@@ -57,15 +53,27 @@ export default () => {
       <Button block btnType="danger" onClick={showFail}>
         Fail
       </Button>
-      <h1 className="sn-title">延迟关闭</h1>
+      <div style={{ height: '10px' }}></div>
+      <Button block btnType="primary" onClick={showLoading}>
+        Loading
+      </Button>
+      <h1 className="sn-title">Always show</h1>
+      <Button block btnType="primary" onClick={alowaysShow}>
+        Always show toast
+      </Button>
+      <div style={{ height: '10px' }}></div>
+      <Button block btnType="primary" onClick={hidden}>
+        Handle hidden toast
+      </Button>
+      <h1 className="sn-title">Delay close</h1>
       <Button block btnType="primary" onClick={duration}>
         Duration 3s
       </Button>
-      <h1 className="sn-title">关闭回调</h1>
+      <h1 className="sn-title">CallBack close after</h1>
       <Button block btnType="primary" onClick={haveOnClose}>
         Close after 3 seconds
       </Button>
-      <h1 className="sn-title">没有遮罩层</h1>
+      <h1 className="sn-title">No mask</h1>
       <Button block btnType="primary" onClick={noMask}>
         No mask
       </Button>

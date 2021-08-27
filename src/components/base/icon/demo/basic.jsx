@@ -7,11 +7,11 @@ library.add(fas);
 export default () => {
   return (
     <>
-      <h1 className="sn-title">default</h1>
+      <h1 className="sn-title">Basic</h1>
       <Icon icon="coffee" />
-      <h1 className="sn-title">自定义大小,颜色</h1>
+      <h1 className="sn-title">Custom size</h1>
       <Icon icon="circle-notch" color="#169be8" size="2x" theme="primary" />
-      <h1 className="sn-title">添加动画</h1>
+      <h1 className="sn-title">Transform</h1>
       <Icon icon="spinner" color="#169be8" size="3x" spin />
       <div style={{ height: '10px' }}></div>
       <Icon size="3x" color="#169be8" icon="spinner" pulse />

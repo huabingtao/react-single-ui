@@ -10,4 +10,4 @@ nav:
 
 <code src="./demo/basic.jsx" />
 
-<!-- <API></API> -->
+<API></API>

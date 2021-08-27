@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { prefixCls } from '../../../util';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { nonsense } from 'antd-mobile/lib/picker';
 
 export interface ProgressProps {
   /**
@@ -97,7 +96,7 @@ const Progress: React.FC<ProgressProps> = (props) => {
 
   percentStyle = {
     width: `${percent}%`,
-    background: color,
+    background: inactive ? 'rgb(202, 202, 202)' : color,
     ...percentStyle,
   };
 
@@ -110,7 +109,7 @@ const Progress: React.FC<ProgressProps> = (props) => {
     if (!showPivot) return '';
     const style = {
       color: textColor,
-      background: pivotColor,
+      background: inactive ? 'rgb(202, 202, 202)' : pivotColor,
       left: `${pivotLeft}px`,
     };
     return (

@@ -8,8 +8,9 @@ export { default as Mask } from './components/base/mask';
 // feedback
 export { default as Toast } from './components/feedback/toast';
 export { default as Modal } from './components/feedback/modal';
-export { default as Progress } from './components/feedback/progress';
+// form
 export { default as Switch } from './components/form/switch';
 export { default as TabBar } from './components/navigation/tab-bar';
 export { default as TabBarItem } from './components/navigation/tab-bar/item';
 export { default as Badge } from './components/data-display/badge';
+export { default as Progress } from './components/data-display/progress';

@@ -11,9 +11,16 @@ export default () => {
       <h1 className="sn-title">Unfilled</h1>
       <Progress percent={60} unfilled></Progress>
       <h1 className="sn-title">Custom style</h1>
-      <Progress percent={20} showPivot color="#fd7e14"></Progress>
+      <Progress
+        percent={20}
+        showPivot
+        pivotColor="#fd7e14"
+        color="#fd7e14"
+      ></Progress>
       <div style={{ marginTop: '20px' }}></div>
       <Progress percent={40} showPivot wrapStyle={{ height: '8px' }}></Progress>
+      <h1 className="sn-title">Inactive</h1>
+      <Progress percent={80} showPivot inactive></Progress>
     </>
   );
 };

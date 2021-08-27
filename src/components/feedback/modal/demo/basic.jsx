@@ -84,7 +84,7 @@ export default () => {
 
   return (
     <>
-      <h1 className="sn-title">警告弹窗</h1>
+      <h1 className="sn-title">Basic</h1>
       <Button block btnType="primary" onClick={show1}>
         Alert Modal
       </Button>
@@ -92,11 +92,11 @@ export default () => {
       <Button block btnType="primary" onClick={show2}>
         Customed Button Color
       </Button>
-      <h1 className="sn-title">函数方式</h1>
+      <h1 className="sn-title">Api function</h1>
       <Button block btnType="primary" onClick={show3}>
-        使用函数调用
+        Api function
       </Button>
-      <h1 className="sn-title">异步关闭</h1>
+      <h1 className="sn-title">Promise</h1>
       <Button block btnType="primary" onClick={show4}>
         Promise Modal delay 1s
       </Button>

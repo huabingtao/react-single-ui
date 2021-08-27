@@ -14,7 +14,7 @@ export interface BaseProps<T> {
 }
 let messageInstance = null;
 let messageNeedHide: boolean;
-export type ToastType = 'success' | 'fail' | 'info';
+export type ToastType = 'success' | 'fail' | 'info' | 'loading';
 
 const div = document.createElement('div');
 document.body.appendChild(div);
@@ -45,6 +45,7 @@ const notic = (props: BaseProps<ToastType>) => {
     info: '',
     success: 'check-circle',
     fail: 'times-circle',
+    loading: 'spinner',
   };
 
   const iconType = iconTypes[type];
@@ -76,7 +77,11 @@ const notic = (props: BaseProps<ToastType>) => {
         >
           {!!iconType && (
             <div className={`${ToastPrefixCls}-icon-wrap`}>
-              <Icon icon={iconType as any} size="2x"></Icon>
+              <Icon
+                icon={iconType as any}
+                size="2x"
+                spin={type === 'loading'}
+              ></Icon>
             </div>
           )}
           <div>{content}</div>
@@ -170,6 +175,21 @@ const Toast = {
     const params = {
       content,
       type: 'fail' as 'fail',
+      mask,
+      duration,
+      onClose,
+    };
+    return notic(params);
+  },
+  loading: (
+    content: React.ReactNode,
+    mask: boolean,
+    duration: number,
+    onClose: Function,
+  ) => {
+    const params = {
+      content,
+      type: 'loading' as 'loading',
       mask,
       duration,
       onClose,

@@ -11,4 +11,9 @@ nav:
 
 <code src="./demo/basic.jsx" />
 
-<API></API>
+## API
+
+- `Toast.success(content, duration, onClose, mask)`
+- `Toast.fail(content, duration, onClose, mask)`
+- `Toast.info(content, duration, onClose, mask)`
+- `Toast.loading(content, duration, onClose, mask)`

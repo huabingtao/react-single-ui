@@ -5,7 +5,7 @@ export default () => {
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <h1 className="sn-title">基础使用</h1>
+      <h1 className="sn-title">Basic</h1>
       <Button btnType="primary" onClick={() => setVisible(true)}>
         open Mask
       </Button>
