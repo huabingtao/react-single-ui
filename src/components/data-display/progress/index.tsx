@@ -82,10 +82,10 @@ const Progress: React.FC<ProgressProps> = (props) => {
   let pivotRef: HTMLDivElement | null;
 
   const wrapCls = classNames(ProgressPrefixCls, `${ProgressPrefixCls}-wrap`, {
-    [`${ProgressPrefixCls}-fixed`]: fixed,
+    [`${ProgressPrefixCls}-wrap-fixed`]: fixed,
   });
   const background = unfilled
-    ? { background: 'none' }
+    ? { background: 'transparent' }
     : { background: trackColor };
   wrapStyle = {
     ...background,

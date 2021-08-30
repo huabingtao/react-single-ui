@@ -21,6 +21,7 @@ export default () => {
       <Progress percent={40} showPivot wrapStyle={{ height: '8px' }}></Progress>
       <h1 className="sn-title">Inactive</h1>
       <Progress percent={80} showPivot inactive></Progress>
+      <Progress percent={70} fixed={true}></Progress>
     </>
   );
 };

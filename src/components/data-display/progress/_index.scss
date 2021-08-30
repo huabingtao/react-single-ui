@@ -6,6 +6,13 @@ $progressPrefixCls: "sn-progress";
     height: 4px;
     background: #ebedf0;
     border-radius: 4px;
+    &-fixed {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: $progress-zindex;
+    }
   }
   &-bar {
     position: absolute;
