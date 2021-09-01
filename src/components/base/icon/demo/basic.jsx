@@ -8,13 +8,11 @@ export default () => {
   return (
     <>
       <h1 className="sn-title">Basic</h1>
-      <Icon icon="coffee" />
-      <h1 className="sn-title">Custom size</h1>
-      <Icon icon="circle-notch" color="#169be8" size="2x" theme="primary" />
+      <Icon icon="coffee" size="3x" />
+      <h1 className="sn-title">Custom style</h1>
+      <Icon icon="circle-notch" color="#169be8" size="3x" theme="primary" />
       <h1 className="sn-title">Transform</h1>
-      <Icon icon="spinner" color="#169be8" size="3x" spin />
-      <div style={{ height: '10px' }}></div>
-      <Icon size="3x" color="#169be8" icon="spinner" pulse />
+      <Icon icon="spinner" size="3x" spin />
     </>
   );
 };

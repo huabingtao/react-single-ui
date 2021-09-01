@@ -1,0 +1,29 @@
+$breadcrmbPrefixCls: "sn-breadcrmb";
+
+.#{$breadcrmbPrefixCls} {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  &-item {
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+    font-variant: tabular-nums;
+    font-feature-settings: "tnum";
+    color: rgba(0, 0, 0, 0.45);
+    &-separator {
+      margin: 0 8px;
+      color: rgba(0, 0, 0, 0.45);
+    }
+    &:last-child {
+      color: $blue;
+    }
+    &-disabled {
+      cursor: not-allowed;
+      opacity: $btn-disabled-opacity;
+    }
+  }
+}
