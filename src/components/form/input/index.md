@@ -5,7 +5,7 @@ nav:
   order: 1
 ---
 
-## InputItem 文本输入
+## Input 文本输入
 
 代码演示:
 

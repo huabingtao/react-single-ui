@@ -11,6 +11,7 @@ export { default as Toast } from './components/feedback/toast';
 export { default as Modal } from './components/feedback/modal';
 // form
 export { default as Switch } from './components/form/switch';
+export { default as Input } from './components/form/input';
 // navigation
 export { default as TabBar } from './components/navigation/tab-bar';
 export { default as TabBarItem } from './components/navigation/tab-bar/item';
