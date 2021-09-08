@@ -8,11 +8,32 @@ $inputPrefixCls: "sn-input";
     width: 100%;
     box-sizing: border-box;
     padding: 10px 16px;
-    &-required::before {
-      color: #ee0a24;
-      font-size: 14px;
-      content: "*";
-      display: inline-block;
+    &-required {
+      .#{$inputPrefixCls} {
+        &-label::before {
+          color: #ee0a24;
+          font-size: 14px;
+          content: "*";
+          display: inline-block;
+        }
+      }
+    }
+    &-disabled {
+      > div:first-child {
+        color: #c8c9cc;
+      }
+      input {
+        color: #c8c9cc;
+      }
+    }
+    &-readonly {
+      .#{$inputPrefixCls} {
+        &-self {
+          &::placeholder {
+            color: #323233;
+          }
+        }
+      }
     }
     &::after {
       position: absolute;

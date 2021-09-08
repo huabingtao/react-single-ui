@@ -1,7 +1,7 @@
 import React from 'react';
 export type InputEventHandler = (value?: string) => void;
 export interface BaseinputProps {
-  type?: 'text' | 'phone' | 'number' | 'password' | 'digit';
+  type?: 'text' | 'phone' | 'number' | 'password';
   value?: string;
   placeholder: string;
   label?: React.ReactNode;

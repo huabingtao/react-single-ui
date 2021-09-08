@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 import { prefixCls } from '../../../util';
 import { BaseinputProps } from './input.d';
 import Input from './input';
-import { Icon } from '../../..';
+import Icon from '../../../components/base/icon';
+import { useState } from 'react';
 
 const caculType = (type) => {
   let resType = '';
@@ -15,9 +16,6 @@ const caculType = (type) => {
       break;
     case 'password':
       resType = 'password';
-      break;
-    case 'digit':
-      resType = 'number';
       break;
     case 'number':
       resType = 'number';
@@ -56,7 +54,17 @@ const InputItem: React.FC<InputItemProps> = (props) => {
     [`${InputPrefixCls}-readonly`]: readonly,
   });
 
+  const [inValue, setValue] = useState(value || '');
+
+  useEffect(() => {
+    setValue(value || '');
+  }, [props.value]);
+
   const handleChange = (value: string) => {
+    if (type === 'phone') {
+      value = value.replace(/\D/g, '');
+    }
+    setValue(value || '');
     onChange && onChange(value);
   };
   const handleFocus = (value: string) => {
@@ -81,10 +89,10 @@ const InputItem: React.FC<InputItemProps> = (props) => {
         readOnly={readonly}
         disabled={disabled}
         type={inputType}
-        value={value}
+        value={inValue}
         {...restProps}
       ></Input>
-      {!disabled && !readonly && clearble && value && (
+      {!disabled && !readonly && clearble && inValue && (
         <div className={`${prefixCls}-input-clear`}>
           <Icon icon="times-circle" onClick={handleClear}></Icon>
         </div>
