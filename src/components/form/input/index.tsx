@@ -74,6 +74,7 @@ const InputItem: React.FC<InputItemProps> = (props) => {
     onBlur && onBlur(value);
   };
   const handleClear = () => {
+    setValue('');
     onClear && onClear();
   };
 
