@@ -4,51 +4,8 @@ import classNames from 'classnames';
 
 import { prefixCls } from '../../../util';
 import TreeSelectSidebar from './tree-select-sidebar';
-import {
-  TreeSelectProps,
-  TreeSelectItemProps,
-  TreeSidebarProps,
-} from './index.d';
+import { TreeSelectProps, TreeSidebarProps } from './index.d';
 import TreeSelectContent from './tree-select-content';
-
-interface IThreeSelectContext<T> {
-  /**
-   * @description 左侧选择的index
-   * @default 0
-   */
-  index?: number;
-  /**
-   * @description 高度，默认单位为px
-   * @default 300px
-   */
-  height?: React.CSSProperties;
-  /**
-   * @description 分类显示所需的数据
-   * @type TreeSelectProps[]
-   * @default []
-   */
-  data?: T[];
-  /**
-   * @description 置灰颜色
-   */
-  inactiveColor?: string;
-  /**
-   * @description 激活颜色
-   */
-  activeColor?: string;
-  /**
-   * @description 是否设置多选
-   */
-  multiple: boolean;
-  /**
-   * @description 左侧选项点击回调函数
-   */
-  onChangeTree?: (item: T, index: number) => void;
-  /**
-   * @description 右侧选项点击回调函数
-   */
-  onChangeTreeItem?: (item: T, index: number) => void;
-}
 
 export const TreeSelectContext = createContext<
   TreeSelectProps<TreeSidebarProps>
@@ -63,12 +20,16 @@ const TreeSelect: React.FC<TreeSelectProps<TreeSidebarProps>> = (props) => {
     inactiveColor,
     activeColor,
     index = 0,
+    activeId = [],
     multiple,
     height = '300px',
   } = props;
   const [treeIndex, setTreeIndex] = useState(index || 0);
-  const handleChangeTreeItem = (item: TreeSidebarProps) => {
-    onChangeTreeItem && onChangeTreeItem(item, index);
+  const handleChangeTreeItem = (
+    item: TreeSidebarProps,
+    activeId?: Array<number | string> | string | number,
+  ) => {
+    onChangeTreeItem && onChangeTreeItem(item, activeId);
   };
 
   const handleChangeTree = (item: TreeSidebarProps, index: number) => {
@@ -76,7 +37,7 @@ const TreeSelect: React.FC<TreeSelectProps<TreeSidebarProps>> = (props) => {
     onChangeTree && onChangeTree(item, index);
   };
 
-  const threeSelectContent: TreeSelectProps<TreeSidebarProps> = {
+  const treeSelectContent: TreeSelectProps<TreeSidebarProps> = {
     inactiveColor,
     activeColor,
     data,
@@ -84,11 +45,12 @@ const TreeSelect: React.FC<TreeSelectProps<TreeSidebarProps>> = (props) => {
     onChangeTreeItem: handleChangeTreeItem,
     onChangeTree: handleChangeTree,
     index: treeIndex,
+    activeId: Array.isArray(activeId) ? activeId : [activeId],
   };
 
   return (
     <div className={TreeSelectCls} style={{ height: height as string }}>
-      <TreeSelectContext.Provider value={threeSelectContent}>
+      <TreeSelectContext.Provider value={treeSelectContent}>
         <TreeSelectSidebar></TreeSelectSidebar>
         <TreeSelectContent></TreeSelectContent>
       </TreeSelectContext.Provider>

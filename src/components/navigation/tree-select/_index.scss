@@ -24,7 +24,7 @@ $treeSelectPrefixCls: "sn-tree-select";
       user-select: none;
       &-active {
         background-color: #fff;
-        &::after {
+        .#{$treeSelectPrefixCls}-sidebar-item-line {
           position: absolute;
           top: 50%;
           left: 0;

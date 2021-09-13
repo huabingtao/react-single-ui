@@ -10,21 +10,11 @@ import {
 } from './index.d';
 import { TreeSelectContext } from '.';
 
-interface ThreeSelectSidebarProps
-  extends Partial<TreeSelectProps<TreeSidebarProps>> {}
-
 const TreeSelectCls = prefixCls + '-tree-select';
 
-const ThreeSelectSidebar: React.FC<ThreeSelectSidebarProps> = () => {
+const TreeSelectSidebar: React.FC<Partial<TreeSidebarProps>> = () => {
   const context = useContext(TreeSelectContext);
-  const {
-    data,
-    index,
-    onChangeTree,
-    onChangeTreeItem,
-    inactiveColor,
-    activeColor,
-  } = context;
+  const { data, index, onChangeTree, activeColor } = context;
   const [treeIndex, setTreeIndex] = useState(index || 0);
 
   const handleChangeTree = (item: TreeSidebarProps, index) => {
@@ -40,19 +30,33 @@ const ThreeSelectSidebar: React.FC<ThreeSelectSidebarProps> = () => {
     });
   };
 
+  const itemStyle = (index) => {
+    return {
+      backgroundColor: activeColor
+        ? index === treeIndex
+          ? activeColor
+          : ''
+        : '',
+    };
+  };
+
   const renderChildren = () => {
     if (!data.length) {
-      console.warn('data is not a Array or data length is 0');
+      console.warn('The data is not a Array or the length of the data is 0');
       return '';
     }
-    return data.map((threeItem, index) => {
+    return data.map((treeItem, index) => {
       return (
         <li
           key={index}
-          onClick={handleChangeTree.bind(this, threeItem, index)}
-          className={calcCls(threeItem, index)}
+          onClick={handleChangeTree.bind(this, treeItem, index)}
+          className={calcCls(treeItem, index)}
         >
-          {threeItem.label}
+          <span
+            style={itemStyle(index)}
+            className={`${TreeSelectCls}-sidebar-item-line`}
+          ></span>
+          {treeItem.label}
         </li>
       );
     });
@@ -60,6 +64,6 @@ const ThreeSelectSidebar: React.FC<ThreeSelectSidebarProps> = () => {
   return <ul className={`${TreeSelectCls}-sidebar`}>{renderChildren()}</ul>;
 };
 
-ThreeSelectSidebar.defaultProps = {};
+TreeSelectSidebar.defaultProps = {};
 
-export default ThreeSelectSidebar;
+export default TreeSelectSidebar;

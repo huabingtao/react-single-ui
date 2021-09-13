@@ -5,7 +5,7 @@ nav:
   order: 1
 ---
 
-## ThreeSelect 分类选择
+## TreeSelect 分类选择
 
 代码演示:
 

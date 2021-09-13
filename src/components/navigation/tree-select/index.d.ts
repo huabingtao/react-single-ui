@@ -7,6 +7,11 @@ export interface TreeSelectProps<T> {
    */
   index?: number;
   /**
+   * @description 右侧选择的 id
+   * @default []
+   */
+  activeId?: number | string | Array<number | string>;
+  /**
    * @description 高度，默认单位为px
    * @default 300px
    */
@@ -36,7 +41,10 @@ export interface TreeSelectProps<T> {
   /**
    * @description 右侧选项点击回调函数
    */
-  onChangeTreeItem?: (item: T, index: number) => void;
+  onChangeTreeItem?: (
+    item: T,
+    activeId: Array<number | string> | string | number,
+  ) => void;
 }
 
 export interface TreeSelectItemProps {

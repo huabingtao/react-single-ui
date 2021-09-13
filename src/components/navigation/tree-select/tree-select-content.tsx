@@ -13,56 +13,57 @@ import { Icon } from '../../..';
 
 const TreeSelectContentCls = prefixCls + '-tree-select-content';
 
-interface ThreeSelectSidebarProps
-  extends Partial<TreeSelectProps<TreeSidebarProps>> {}
-
-const TreeSelectContent: React.FC<ThreeSelectSidebarProps> = (props) => {
+const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = (props) => {
   const context = useContext(TreeSelectContext);
   const {
     data,
     index: treeIndex,
+    activeId,
     multiple,
     onChangeTreeItem,
     activeColor,
     inactiveColor,
   } = context;
   const selfData = data[treeIndex].children || [];
-  const [activeIndex, setActiveIndex] = useState<Array<number> | null>([]);
-
+  const [childActiveId, setActiveId] = useState(
+    activeId as Array<number | string>,
+  );
   const handleChangeTreeItem = (item: TreeSidebarProps, index: number) => {
     if (item.disabled) return;
-    if (activeIndex?.includes(index)) {
-      const indexPos = activeIndex.indexOf(index);
-      const activeIndexClone = _.cloneDeep(activeIndex);
-      activeIndexClone.splice(indexPos, 1);
-      setActiveIndex(activeIndexClone);
-      props.onChangeTreeItem && props.onChangeTreeItem(item, activeIndexClone);
+    const v = item.value;
+    if (childActiveId?.includes(v)) {
+      const indexPos = childActiveId.indexOf(v);
+      const childActiveIdClone = _.cloneDeep(childActiveId);
+      childActiveIdClone.splice(indexPos, 1);
+      setActiveId(childActiveIdClone);
+      onChangeTreeItem && onChangeTreeItem(item, childActiveIdClone);
     } else {
       if (multiple) {
-        const activeIndexClone = _.cloneDeep(activeIndex);
-        activeIndexClone?.push(index);
-        setActiveIndex(activeIndexClone);
-        props.onChangeTreeItem &&
-          props.onChangeTreeItem(item, activeIndexClone);
+        const childActiveIdClone = _.cloneDeep(childActiveId);
+        childActiveIdClone?.push(v);
+        setActiveId(childActiveIdClone);
+        onChangeTreeItem && onChangeTreeItem(item, childActiveIdClone);
       } else {
-        setActiveIndex([index]);
-        props.onChangeTreeItem && props.onChangeTreeItem(item, index);
+        setActiveId([v]);
+        onChangeTreeItem && onChangeTreeItem(item, v);
       }
     }
   };
 
   const calcCls = (item: TreeSidebarProps, index: number) => {
     const classes = classNames(`${TreeSelectContentCls}-item`, {
-      [`${TreeSelectContentCls}-item-active`]: activeIndex.includes(index),
+      [`${TreeSelectContentCls}-item-active`]: childActiveId.includes(
+        item.value,
+      ),
       [`${TreeSelectContentCls}-item-disabled`]: item.disabled,
     });
     return classes;
   };
 
-  const itemStyle = (index) => {
+  const itemStyle = (value) => {
     if (activeColor || inactiveColor) {
       return {
-        color: activeIndex.includes(index)
+        color: childActiveId.includes(value)
           ? activeColor
           : inactiveColor
           ? inactiveColor
@@ -74,18 +75,22 @@ const TreeSelectContent: React.FC<ThreeSelectSidebarProps> = (props) => {
 
   const renderChildren = () => {
     return selfData.map((item, index) => {
-      const renderIcon = (index) => {
-        return activeIndex.includes(index) ? <Icon icon="check"></Icon> : '';
+      const renderIcon = (item) => {
+        return childActiveId.includes(item.value) ? (
+          <Icon icon="check"></Icon>
+        ) : (
+          ''
+        );
       };
       return (
         <li
           className={calcCls(item, index)}
-          style={itemStyle(index)}
+          style={itemStyle(item.value)}
           onClick={handleChangeTreeItem.bind(undefined, item, index)}
           key={index}
         >
           <span>{item.label}</span>
-          <span>{renderIcon(index)}</span>
+          <span>{renderIcon(item)}</span>
         </li>
       );
     });
@@ -93,6 +98,6 @@ const TreeSelectContent: React.FC<ThreeSelectSidebarProps> = (props) => {
 
   return <ul className={TreeSelectContentCls}>{renderChildren()}</ul>;
 };
-TreeSelectContent.displayName = 'ThreeSelectItem';
+TreeSelectContent.displayName = 'TreeSelectItem';
 
 export default TreeSelectContent;
