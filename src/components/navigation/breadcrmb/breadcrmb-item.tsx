@@ -24,7 +24,7 @@ const TabBarItem: React.FC<BreadcrmbItemProps> = (props) => {
   const context = useContext(BreadcrmbContext);
   const handleClick = () => {
     if (disabled) return;
-    context.onSelect && context.onSelect(index);
+    context.onSelect && context.onSelect(index as number);
   };
   const style = {
     color:

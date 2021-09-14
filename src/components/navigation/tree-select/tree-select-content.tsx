@@ -17,14 +17,18 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = (props) => {
   const context = useContext(TreeSelectContext);
   const {
     data,
-    index: treeIndex,
+    index = 0,
     activeId,
     multiple,
     onChangeTreeItem,
     activeColor,
     inactiveColor,
   } = context;
-  const selfData = data[treeIndex].children || [];
+  let selfData: any = [];
+  if (data && data[index] && data[index].children) {
+    selfData = data[index].children;
+  }
+
   const [childActiveId, setActiveId] = useState(
     activeId as Array<number | string>,
   );
@@ -60,7 +64,7 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = (props) => {
     return classes;
   };
 
-  const itemStyle = (value) => {
+  const itemStyle = (value: string | number) => {
     if (activeColor || inactiveColor) {
       return {
         color: childActiveId.includes(value)
@@ -74,8 +78,8 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = (props) => {
   };
 
   const renderChildren = () => {
-    return selfData.map((item, index) => {
-      const renderIcon = (item) => {
+    return selfData.map((item: TreeSelectItemProps, index: number) => {
+      const renderIcon = (item: TreeSelectItemProps) => {
         return childActiveId.includes(item.value) ? (
           <Icon icon="check"></Icon>
         ) : (

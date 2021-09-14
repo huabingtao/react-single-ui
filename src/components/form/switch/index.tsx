@@ -37,7 +37,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
     [`${SwitchPrefixCls}-active`]: checked,
     [`${SwitchPrefixCls}-${size}`]: size,
   });
-  let style = null;
+  let style = {};
   if (activeColor || inactiveColor) {
     style = { backgroundColor: checked ? activeColor : inactiveColor };
   }

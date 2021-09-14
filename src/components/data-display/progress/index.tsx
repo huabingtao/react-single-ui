@@ -123,13 +123,13 @@ const Progress: React.FC<ProgressProps> = (props) => {
     );
   };
 
-  const setWrapRef = (el) => {
+  const setWrapRef = (el: any) => {
     wrapRef = el;
   };
-  const setBarRef = (el) => {
+  const setBarRef = (el: any) => {
     barRef = el;
   };
-  const setPivotRef = (el) => {
+  const setPivotRef = (el: any) => {
     pivotRef = el;
   };
 

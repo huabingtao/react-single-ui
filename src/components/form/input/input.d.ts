@@ -1,5 +1,5 @@
 import React from 'react';
-export type InputEventHandler = (value?: string) => void;
+export type InputEventHandler = (value?: string | undefined) => void;
 export interface BaseinputProps {
   type?: 'text' | 'phone' | 'number' | 'password';
   value?: string;

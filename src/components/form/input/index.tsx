@@ -8,7 +8,7 @@ import Input from './input';
 import Icon from '../../../components/base/icon';
 import { useState } from 'react';
 
-const caculType = (type) => {
+const caculType = (type: string) => {
   let resType = '';
   switch (type) {
     case 'phone':
@@ -60,17 +60,17 @@ const InputItem: React.FC<InputItemProps> = (props) => {
     setValue(value || '');
   }, [props.value]);
 
-  const handleChange = (value: string) => {
+  const handleChange = (value: string | undefined) => {
     if (type === 'phone') {
-      value = value.replace(/\D/g, '');
+      value = value?.replace(/\D/g, '');
     }
     setValue(value || '');
     onChange && onChange(value);
   };
-  const handleFocus = (value: string) => {
+  const handleFocus = (value: string | undefined) => {
     onFocus && onFocus(value);
   };
-  const handleBlur = (value: string) => {
+  const handleBlur = (value: string | undefined) => {
     onBlur && onBlur(value);
   };
   const handleClear = () => {

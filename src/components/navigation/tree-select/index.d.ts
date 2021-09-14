@@ -43,7 +43,7 @@ export interface TreeSelectProps<T> {
    */
   onChangeTreeItem?: (
     item: T,
-    activeId: Array<number | string> | string | number,
+    activeId: Array<number | string> | string | number | undefined,
   ) => void;
 }
 

@@ -17,20 +17,20 @@ const TreeSelectSidebar: React.FC<Partial<TreeSidebarProps>> = () => {
   const { data, index, onChangeTree, activeColor } = context;
   const [treeIndex, setTreeIndex] = useState(index || 0);
 
-  const handleChangeTree = (item: TreeSidebarProps, index) => {
+  const handleChangeTree = (item: TreeSidebarProps, index: number) => {
     if (item.disabled) return;
     setTreeIndex(index);
     onChangeTree && onChangeTree(item, index);
   };
 
-  const calcCls = (item: TreeSidebarProps, index) => {
+  const calcCls = (item: TreeSidebarProps, index: number) => {
     return classNames(`${TreeSelectCls}-sidebar-item`, {
       [`${TreeSelectCls}-sidebar-item-active`]: treeIndex === index,
       [`${TreeSelectCls}-sidebar-item-disabled`]: item.disabled,
     });
   };
 
-  const itemStyle = (index) => {
+  const itemStyle = (index: number) => {
     return {
       backgroundColor: activeColor
         ? index === treeIndex
@@ -41,15 +41,15 @@ const TreeSelectSidebar: React.FC<Partial<TreeSidebarProps>> = () => {
   };
 
   const renderChildren = () => {
-    if (!data.length) {
+    if (!data || !data.length) {
       console.warn('The data is not a Array or the length of the data is 0');
       return '';
     }
-    return data.map((treeItem, index) => {
+    return data.map((treeItem, index: number) => {
       return (
         <li
           key={index}
-          onClick={handleChangeTree.bind(this, treeItem, index)}
+          onClick={handleChangeTree.bind(undefined, treeItem, index)}
           className={calcCls(treeItem, index)}
         >
           <span

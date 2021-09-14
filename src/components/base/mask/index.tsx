@@ -18,7 +18,7 @@ const div: any = document.createElement('div');
 document.body.appendChild(div);
 
 class Mask extends React.Component<MaskProps, any> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
   }
   container: any;

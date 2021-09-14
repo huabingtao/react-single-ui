@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
-import Notification from 'rmc-notification';
+// import Notification from 'rmc-notification';
+// import Notification from '../../../../node_modules/rmc-notification/lib/index.js';
+
+const Notification = require('rmc-notification').default;
+// console.log('Notification:', Notification);
+
 import Icon from '../../base/icon';
 import { prefixCls } from '../../../util';
 
@@ -12,7 +17,7 @@ export interface BaseProps<T> {
   duration: number;
   onClose: Function;
 }
-let messageInstance = null;
+let messageInstance: any = null;
 let messageNeedHide: boolean;
 export type ToastType = 'success' | 'fail' | 'info' | 'loading';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import TouchFeedback from 'rmc-feedback';
@@ -21,7 +21,7 @@ export interface ModalProps<T> {
   /**
    * @description 是否显示
    */
-  visible: boolean;
+  visible?: boolean;
   /**
    * @description 点击蒙层是否允许关闭
    */
@@ -55,9 +55,12 @@ export type Alert = (
 const Modal: React.FC<ModalProps<React.CSSProperties>> & { alert: Alert } = (
   props,
 ) => {
-  const { visible, ...restProps } = props;
+  const { visible = false, ...restProps } = props;
 
-  const renderFooterButton = (button: Action<React.CSSProperties>, i) => {
+  const renderFooterButton = (
+    button: Action<React.CSSProperties>,
+    i: React.Key,
+  ) => {
     let buttonStyle = {};
     if (button.style) {
       buttonStyle = button.style;
@@ -72,7 +75,7 @@ const Modal: React.FC<ModalProps<React.CSSProperties>> & { alert: Alert } = (
         buttonStyle = styleMap[buttonStyle] || {};
       }
     }
-    const onClickFn = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const onClickFn = (e: any) => {
       e.preventDefault();
       if (button.onPress) {
         button.onPress();
@@ -100,9 +103,8 @@ const Modal: React.FC<ModalProps<React.CSSProperties>> & { alert: Alert } = (
     );
   };
 
-  const ModalNode = (props) => {
+  const ModalNode = (props: ModalProps<React.CSSProperties>) => {
     const { title, message, footer } = props;
-    // console.log(props);
 
     return (
       <div className={`${modalPrefixCls}`}>
