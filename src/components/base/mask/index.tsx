@@ -41,14 +41,26 @@ class Mask extends React.Component<MaskProps, any> {
     return this.container;
   };
 
+  preventDefault = (e: Event) => {
+    e.preventDefault();
+  };
+
   render() {
     const { visible } = this.props;
     if (IS_REACT_16 && visible) {
+      document.body.addEventListener('touchmove', this.preventDefault, {
+        passive: false,
+      });
+      document.body.addEventListener('scroll', this.preventDefault, {
+        passive: false,
+      });
       return (ReactDOM as any).createPortal(
         this.maskDom(),
         this.getContainer(),
       );
     }
+    document.body.removeEventListener('touchmove', this.preventDefault, false);
+    document.body.removeEventListener('scroll', this.preventDefault, false);
     return null as any;
   }
 }

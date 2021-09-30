@@ -1,0 +1,32 @@
+$uploaderPrefixCls: "sn-uploader";
+.#{$uploaderPrefixCls} {
+  display: flex;
+  flex-wrap: wrap;
+  &-item {
+    position: relative;
+    margin: 0 8px 8px 0;
+    cursor: pointer;
+  }
+  &-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 90px;
+    height: 90px;
+    margin: 0 8px 8px 0;
+    background-color: #f7f8fa;
+  }
+  &-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; // to clip file-upload-button
+    cursor: pointer;
+    opacity: 0;
+  }
+}

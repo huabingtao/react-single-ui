@@ -12,6 +12,7 @@ export { default as Modal } from './components/feedback/modal';
 // form
 export { default as Switch } from './components/form/switch';
 export { default as Input } from './components/form/input';
+export { default as Uploader } from './components/form/uploader';
 // navigation
 // export { default as TabBar } from './components/navigation/tab-bar';
 // export { default as TabBarItem } from './components/navigation/tab-bar/item';
