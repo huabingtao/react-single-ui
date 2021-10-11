@@ -4,6 +4,7 @@ import { isImageFile, prefixCls } from '../../../util';
 import { ImageFit } from '../../base/image';
 import { Interceptor, UploaderFileListItem } from './type';
 import Image from '../../base/image';
+import { Icon } from '../../..';
 
 const ItemPrefixCls = `${prefixCls}-uploader-item`;
 
@@ -17,7 +18,7 @@ export interface UploaderPreviewItemProps {
 }
 
 const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
-  const { item, imageFit, previewSize } = props;
+  const { item, imageFit, previewSize, deletable } = props;
   const renderPreview = () => {
     if (isImageFile(item)) {
       return (
@@ -30,7 +31,24 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
       );
     }
   };
-  return <div className={ItemPrefixCls}>{renderPreview()}</div>;
+
+  const renderDeleteIcon = () => {
+    if (deletable) {
+      return (
+        <div className={`${ItemPrefixCls}-delete`}>
+          <div className={`${ItemPrefixCls}-delete-icon`}>
+            <Icon size="2x" icon="times"></Icon>
+          </div>
+        </div>
+      );
+    }
+  };
+  return (
+    <div className={ItemPrefixCls}>
+      {renderPreview()}
+      {renderDeleteIcon()}
+    </div>
+  );
 };
 
 export default UploaderPreviewItem;

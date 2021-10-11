@@ -6,7 +6,7 @@ export default () => {
   return (
     <>
       <h1 className="sn-title">Basic</h1>
-      <Uploader></Uploader>
+      <Uploader multiple={true} maxCount={4} deletable></Uploader>
     </>
   );
 };

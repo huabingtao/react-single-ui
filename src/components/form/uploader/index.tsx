@@ -17,22 +17,23 @@ export interface UploaderProps {
   onChange: lifeCycleCallBack;
   onError: lifeCycleCallBack;
   onRemove: lifeCycleCallBack;
-  mulitiple: boolean;
+  multiple: boolean;
   data: object;
   fileList: Array<any>;
   accept: string;
   maxSize: number;
   maxLength: number;
   customHeaer: object;
-  multiple: boolean;
   disabled: boolean;
   previewSize: string;
   imageFit: ImageFit;
+  maxCount: number;
+  deletable: boolean;
 }
 const Uploader: React.FC<UploaderProps> = (props) => {
   const inputRef = useRef(null);
-
-  const { multiple, disabled, previewSize, imageFit } = props;
+  const { multiple, disabled, previewSize, imageFit, maxCount, deletable } =
+    props;
   const [fileList, setFileList] = useState(props.fileList || []);
   useEffect(() => {
     axios
@@ -48,7 +49,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
         index={index}
         previewSize={previewSize}
         beforeDelete={item.beforeDelete}
-        deletable={item.deletable}
+        deletable={deletable}
       ></UploaderPreviewItem>
     );
   };
@@ -89,8 +90,37 @@ const Uploader: React.FC<UploaderProps> = (props) => {
 
   const readFile = (files: File | File[]) => {
     if (Array.isArray(files)) {
+      // console.log('fileList.length:', fileList.length);
+
+      if (maxCount) {
+        const remaincount = +maxCount - fileList.length;
+        if (files.length > remaincount) {
+          files = files.slice(0, remaincount);
+        }
+      }
+
+      Promise.all(files.map((file) => readFileContent(file))).then(
+        (contents) => {
+          const fileList = contents.map((content) => {
+            const result: UploaderFileListItem = {
+              file: files as File,
+              status: '',
+              message: '',
+            };
+            if (content) {
+              result.content = content;
+            }
+            return result;
+          });
+          onAfterRead(fileList);
+        },
+      );
     } else {
       readFileContent(files).then((content) => {
+        if (maxCount) {
+          const remaincount = +maxCount - fileList.length;
+          if (remaincount <= 0) return;
+        }
         const result: UploaderFileListItem = {
           file: files as File,
           status: '',
@@ -99,7 +129,6 @@ const Uploader: React.FC<UploaderProps> = (props) => {
         if (content) {
           result.content = content;
         }
-
         onAfterRead(result);
       });
     }
