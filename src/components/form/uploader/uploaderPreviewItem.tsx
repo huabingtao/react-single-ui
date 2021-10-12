@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import * as ReactDOM from 'react-dom';
-import { isImageFile, prefixCls } from '../../../util';
+import { isImageFile, isPromise, prefixCls } from '../../../util';
 import { ImageFit } from '../../base/image';
 import { Interceptor, UploaderFileListItem } from './type';
 import Image from '../../base/image';
@@ -15,10 +15,37 @@ export interface UploaderPreviewItemProps {
   previewSize: string;
   beforeDelete: Interceptor;
   item: UploaderFileListItem;
+  name: string;
+  onDelete: () => void;
 }
 
 const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
-  const { item, imageFit, previewSize, deletable } = props;
+  const {
+    item,
+    imageFit,
+    previewSize,
+    deletable,
+    index,
+    beforeDelete,
+    name,
+    onDelete,
+  } = props;
+
+  const handleDelete = () => {
+    console.log('index:', index);
+    if (beforeDelete) {
+      const returnVal = beforeDelete.apply(null, [item, { name, index }]);
+      if (isPromise(returnVal)) {
+        returnVal.then((res) => {
+          if (res) {
+            onDelete();
+          }
+        });
+      }
+    } else {
+      onDelete();
+    }
+  };
   const renderPreview = () => {
     if (isImageFile(item)) {
       return (
@@ -26,7 +53,7 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
           fit={imageFit}
           width={previewSize || '90px'}
           height={previewSize || '90px'}
-          src={item.content || item.url}
+          src={item.content || item.url || ''}
         ></Image>
       );
     }
@@ -35,7 +62,7 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
   const renderDeleteIcon = () => {
     if (deletable) {
       return (
-        <div className={`${ItemPrefixCls}-delete`}>
+        <div className={`${ItemPrefixCls}-delete`} onClick={handleDelete}>
           <div className={`${ItemPrefixCls}-delete-icon`}>
             <Icon size="2x" icon="times"></Icon>
           </div>

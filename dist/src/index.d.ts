@@ -8,6 +8,7 @@ export { default as Toast } from './components/feedback/toast';
 export { default as Modal } from './components/feedback/modal';
 export { default as Switch } from './components/form/switch';
 export { default as Input } from './components/form/input';
+export { default as Uploader } from './components/form/uploader';
 export { default as Breadcrmb } from './components/navigation/breadcrmb';
 export { default as BreadcrmbItem } from './components/navigation/breadcrmb/breadcrmb-item';
 export { default as TreeSelect } from './components/navigation/tree-select';

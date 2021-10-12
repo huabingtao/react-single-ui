@@ -14,6 +14,7 @@ declare class Mask extends React.Component<MaskProps, any> {
   container: any;
   maskDom: () => JSX.Element;
   getContainer: () => any;
+  preventDefault: (e: Event) => void;
   render(): any;
 }
 export default Mask;

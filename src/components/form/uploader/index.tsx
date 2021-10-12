@@ -4,7 +4,7 @@ import { prefixCls, toArray } from '../../../util';
 import axios from 'axios';
 import UploaderPreviewItem from './uploaderPreviewItem';
 import { Icon } from '../../..';
-import { UploaderFileListItem } from './type';
+import { Interceptor, UploaderFileListItem } from './type';
 import { ImageFit } from '../../base/image';
 
 const uploadPrefixCls = `${prefixCls}-uploader`;
@@ -17,6 +17,7 @@ export interface UploaderProps {
   onChange: lifeCycleCallBack;
   onError: lifeCycleCallBack;
   onRemove: lifeCycleCallBack;
+  beforeDelete: Interceptor;
   multiple: boolean;
   data: object;
   fileList: Array<any>;
@@ -29,11 +30,19 @@ export interface UploaderProps {
   imageFit: ImageFit;
   maxCount: number;
   deletable: boolean;
+  name: string;
 }
 const Uploader: React.FC<UploaderProps> = (props) => {
   const inputRef = useRef(null);
-  const { multiple, disabled, previewSize, imageFit, maxCount, deletable } =
-    props;
+  const {
+    multiple,
+    disabled,
+    previewSize,
+    imageFit,
+    maxCount,
+    deletable,
+    name,
+  } = props;
   const [fileList, setFileList] = useState(props.fileList || []);
   useEffect(() => {
     axios
@@ -41,7 +50,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       .then((response) => console.log(response.data));
   });
 
-  const renderPreviewItem = (item, index) => {
+  const renderPreviewItem = (item: any, index: number) => {
     return (
       <UploaderPreviewItem
         item={item}
@@ -50,20 +59,26 @@ const Uploader: React.FC<UploaderProps> = (props) => {
         previewSize={previewSize}
         beforeDelete={item.beforeDelete}
         deletable={deletable}
+        name={name}
+        onDelete={() => {
+          onDelete(item, index);
+        }}
       ></UploaderPreviewItem>
     );
   };
 
-  const renderRreviewItemList = () => {
-    console.log('fileList:', fileList);
+  const onDelete = (item: File, index: number) => {
+    const files = fileList.slice(0);
+    files.splice(index, 1);
+    setFileList(files);
+  };
 
+  const renderRreviewItemList = () => {
     return fileList.map(renderPreviewItem);
   };
 
   const readFileContent = (file: File) => {
     return new Promise<string | void>((resolve) => {
-      // resolve();
-      // return;
       const reader = new FileReader();
 
       reader.onload = (event) => {
@@ -72,7 +87,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       reader.readAsDataURL(file);
     });
   };
-
+  // After reading the picture, merge the picture into the array
   const onAfterRead = (
     items: UploaderFileListItem | UploaderFileListItem[],
   ) => {
@@ -82,33 +97,33 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     setFileList([...fileList, ...items]);
   };
 
+  // If the input data is not cleared, onchange will not be executed when uploading the same file
   const resetInput = () => {
-    if (inputRef.current) {
+    if (inputRef?.current as any) {
+      // @ts-ignore
       inputRef.current.value = '';
     }
   };
 
   const readFile = (files: File | File[]) => {
+    // If it's an Array
     if (Array.isArray(files)) {
-      // console.log('fileList.length:', fileList.length);
-
       if (maxCount) {
         const remaincount = +maxCount - fileList.length;
         if (files.length > remaincount) {
           files = files.slice(0, remaincount);
         }
       }
-
       Promise.all(files.map((file) => readFileContent(file))).then(
         (contents) => {
-          const fileList = contents.map((content) => {
+          const fileList = (files as File[]).map((file, index) => {
             const result: UploaderFileListItem = {
-              file: files as File,
+              file,
               status: '',
               message: '',
             };
-            if (content) {
-              result.content = content;
+            if (contents[index]) {
+              result.content = contents[index] as string;
             }
             return result;
           });
@@ -136,9 +151,11 @@ const Uploader: React.FC<UploaderProps> = (props) => {
 
   const onChange = (event: ChangeEvent) => {
     const { files } = event.target as HTMLInputElement;
+    if (disabled || !files || !files.length) {
+      return;
+    }
     const file =
       files.length === 1 ? files[0] : ([].slice.call(files) as File[]);
-    console.log('file:', file);
     readFile(file);
   };
 
