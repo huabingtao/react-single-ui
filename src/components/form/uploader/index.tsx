@@ -1,14 +1,15 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import * as ReactDOM from 'react-dom';
-import { prefixCls, toArray } from '../../../util';
+import { filterFiles, isOversize, prefixCls, toArray } from '../../../util';
 import axios from 'axios';
 import UploaderPreviewItem from './uploaderPreviewItem';
 import { Icon } from '../../..';
 import { Interceptor, UploaderFileListItem } from './type';
 import { ImageFit } from '../../base/image';
+import { isArray } from 'lodash';
 
 const uploadPrefixCls = `${prefixCls}-uploader`;
-
+export type UploaderMaxSize = number | string | ((file: File) => boolean);
 export type lifeCycleCallBack = () => void;
 export interface UploaderProps {
   action: string;
@@ -22,7 +23,7 @@ export interface UploaderProps {
   data: object;
   fileList: Array<any>;
   accept: string;
-  maxSize: number;
+  maxSize: number | string | UploaderMaxSize;
   maxLength: number;
   customHeaer: object;
   disabled: boolean;
@@ -42,6 +43,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     maxCount,
     deletable,
     name,
+    maxSize,
   } = props;
   const [fileList, setFileList] = useState(props.fileList || []);
   useEffect(() => {
@@ -53,6 +55,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
   const renderPreviewItem = (item: any, index: number) => {
     return (
       <UploaderPreviewItem
+        key={index}
         item={item}
         imageFit={imageFit}
         index={index}
@@ -92,8 +95,15 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     items: UploaderFileListItem | UploaderFileListItem[],
   ) => {
     resetInput();
+    if (isOversize(items, maxSize)) {
+      if (isArray(items)) {
+        const { valid, invalid } = filterFiles(items, maxSize);
+        items = valid;
+      } else {
+        return;
+      }
+    }
     items = toArray(items);
-
     setFileList([...fileList, ...items]);
   };
 
@@ -113,6 +123,8 @@ const Uploader: React.FC<UploaderProps> = (props) => {
         if (files.length > remaincount) {
           files = files.slice(0, remaincount);
         }
+      }
+      if (maxSize) {
       }
       Promise.all(files.map((file) => readFileContent(file))).then(
         (contents) => {

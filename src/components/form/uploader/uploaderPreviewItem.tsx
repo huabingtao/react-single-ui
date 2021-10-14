@@ -32,7 +32,6 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
   } = props;
 
   const handleDelete = () => {
-    console.log('index:', index);
     if (beforeDelete) {
       const returnVal = beforeDelete.apply(null, [item, { name, index }]);
       if (isPromise(returnVal)) {

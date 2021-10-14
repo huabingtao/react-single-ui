@@ -1,3 +1,4 @@
+import { UploaderMaxSize } from '../components/form/uploader';
 import { UploaderFileListItem } from '../components/form/uploader/type';
 
 export const prefixCls = 'sn';
@@ -47,4 +48,34 @@ export function isObject(val: unknown): val is Record<any, any> {
 
 export function isPromise<T = any>(val: unknown): val is Promise<T> {
   return isObject(val) && isFunction(val.then) && isFunction(val.catch);
+}
+
+export function isOversize(
+  items: UploaderFileListItem | UploaderFileListItem[],
+  maxSize: UploaderMaxSize,
+) {
+  return toArray(items).some((item) => {
+    if (item.file) {
+      if (isFunction(maxSize)) {
+        return maxSize(item.file);
+      }
+      return item.file.size > maxSize;
+    }
+    return false;
+  });
+}
+
+export function filterFiles(
+  items: UploaderFileListItem[],
+  maxSize: UploaderMaxSize,
+) {
+  const valid: UploaderFileListItem[] = [];
+  const invalid: UploaderFileListItem[] = [];
+  items.forEach((item) => {
+    if (isOversize(item, maxSize)) {
+      invalid.push(item);
+    }
+    valid.push(item);
+  });
+  return { valid, invalid };
 }
