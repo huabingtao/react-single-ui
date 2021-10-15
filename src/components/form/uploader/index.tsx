@@ -7,6 +7,7 @@ import { Icon } from '../../..';
 import { Interceptor, UploaderFileListItem } from './type';
 import { ImageFit } from '../../base/image';
 import { isArray } from 'lodash';
+import classNames from 'classnames';
 
 const uploadPrefixCls = `${prefixCls}-uploader`;
 export type UploaderMaxSize = number | string | ((file: File) => boolean);
@@ -18,6 +19,7 @@ export interface UploaderProps {
   onChange: lifeCycleCallBack;
   onError: lifeCycleCallBack;
   onRemove: lifeCycleCallBack;
+  onOversize: (itmes: UploaderFileListItem[]) => void;
   beforeDelete: Interceptor;
   multiple: boolean;
   data: object;
@@ -44,6 +46,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     deletable,
     name,
     maxSize,
+    onOversize,
   } = props;
   const [fileList, setFileList] = useState(props.fileList || []);
   useEffect(() => {
@@ -99,7 +102,9 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       if (isArray(items)) {
         const { valid, invalid } = filterFiles(items, maxSize);
         items = valid;
+        onOversize && onOversize(invalid);
       } else {
+        onOversize && onOversize(toArray(items));
         return;
       }
     }
@@ -186,8 +191,11 @@ const Uploader: React.FC<UploaderProps> = (props) => {
         />
       );
     };
+    const btnClasses = classNames(`${uploadPrefixCls}-button`, {
+      [`${uploadPrefixCls}-button-disabled`]: disabled,
+    });
     return (
-      <div className={`${uploadPrefixCls}-button`}>
+      <div className={btnClasses}>
         <Icon icon="camera"></Icon>
         {renderInput()}
       </div>

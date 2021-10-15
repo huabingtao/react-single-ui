@@ -3,6 +3,9 @@ import { Uploader } from 'single-ui';
 
 export default () => {
   const [visible, setVisible] = useState(false);
+  const onOversize = (items) => {
+    console.log('items:', items);
+  };
   return (
     <>
       <h1 className="sn-title">Basic</h1>
@@ -10,7 +13,9 @@ export default () => {
         multiple={true}
         maxCount={4}
         deletable
-        maxSize={600 * 1024}
+        maxSize={500 * 1024}
+        onOversize={onOversize}
+        disabled
       ></Uploader>
     </>
   );

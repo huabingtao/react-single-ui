@@ -35,6 +35,9 @@ $uploaderPrefixCls: "sn-uploader";
     height: 90px;
     margin: 0 8px 8px 0;
     background-color: #f7f8fa;
+    &-disabled {
+      opacity: 0.5;
+    }
   }
   &-input {
     position: absolute;
@@ -45,5 +48,8 @@ $uploaderPrefixCls: "sn-uploader";
     overflow: hidden; // to clip file-upload-button
     cursor: pointer;
     opacity: 0;
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 }
