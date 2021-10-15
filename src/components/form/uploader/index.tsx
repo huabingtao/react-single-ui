@@ -55,7 +55,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       .then((response) => console.log(response.data));
   });
 
-  const renderPreviewItem = (item: any, index: number) => {
+  const renderPreviewItem = (item: UploaderFileListItem, index: number) => {
     return (
       <UploaderPreviewItem
         key={index}
@@ -73,7 +73,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     );
   };
 
-  const onDelete = (item: File, index: number) => {
+  const onDelete = (item: UploaderFileListItem, index: number) => {
     const files = fileList.slice(0);
     files.splice(index, 1);
     setFileList(files);

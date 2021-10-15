@@ -4,7 +4,8 @@ import { isImageFile, isPromise, prefixCls } from '../../../util';
 import { ImageFit } from '../../base/image';
 import { Interceptor, UploaderFileListItem } from './type';
 import Image from '../../base/image';
-import { Icon } from '../../..';
+import Loading from '../../base/loading';
+import Icon from '../../base/icon';
 
 const ItemPrefixCls = `${prefixCls}-uploader-item`;
 
@@ -69,10 +70,27 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
       );
     }
   };
+
+  const renderStatusView = () => {
+    const { status, message } = item;
+    if (!status) {
+      return;
+    }
+    return (
+      <div className={`${ItemPrefixCls}-mask`}>
+        {status === 'uploading' && <Icon size="lg" icon="spinner" spin></Icon>}
+        {status === 'failed' && (
+          <Icon size="lg" icon="exclamation-circle"></Icon>
+        )}
+        <span>{message}</span>
+      </div>
+    );
+  };
   return (
     <div className={ItemPrefixCls}>
       {renderPreview()}
       {renderDeleteIcon()}
+      {renderStatusView()}
     </div>
   );
 };
