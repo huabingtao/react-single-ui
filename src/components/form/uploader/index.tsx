@@ -14,96 +14,98 @@ export type UploaderMaxSize = number | string | ((file: File) => boolean);
 export type lifeCycleCallBack = () => void;
 export interface UploaderProps {
   /**
-   * @description  上传地址
+   * @description  上传地址 如果不传则组件提供文件选择功能
    */
-  action: string;
+  action?: string;
   /**
    * @description  上传前执行回调函数
    */
-  beforeUpload: (file: File) => boolean;
+  beforeUpload?: (file: File) => boolean;
   /**
    * @description  文件改变回调函数
    */
-  onChange: (file: File, files: File[], response: any) => void;
+  onChange?: (file: File, files: File[], response: any) => void;
   /**
    * @description  上传失败回调函数
    */
-  onError: lifeCycleCallBack;
+  onError?: lifeCycleCallBack;
   /**
    * @description  删除文件回调函数
    */
-  onRemove: lifeCycleCallBack;
+  onRemove?: (file: UploaderFileListItem) => void;
   /**
    * @description  文件大小超过限制回调函数
    */
-  onOversize: (itmes: UploaderFileListItem[]) => void;
+  onOversize?: (itmes: UploaderFileListItem[]) => void;
   /**
-   * @description  删除文件操作前回调函数
+   * @description  删除文件操作前回调函数,可以返回一个 Boolean | Promise
    */
-  beforeDelete: Interceptor;
+  beforeDelete?: Interceptor;
   /**
    * @description  是否可多选
    */
-  multiple: boolean;
+  multiple?: boolean;
   /**
    * @description  已上传的文件列表
    */
-  fileList: Array<any>;
+  fileList?: Array<any>;
   /**
    * @description  允许上传的文件类型
    * @default image/*
    */
-  accept: string;
+  accept?: string;
   /**
    * @description  文件大小限制，单位为 byte
    * @default image/*
    */
-  maxSize: number | string | UploaderMaxSize;
+  maxSize?: number | string | UploaderMaxSize;
   /**
-   * @description  文件上传数量限制
+   * @description  自定义请求头
    */
-  customHeaer: object;
+  customHeaer?: object;
   /**
    * @description  是否禁用文件上传
    */
-  disabled: boolean;
+  disabled?: boolean;
   /**
    * @description  预览图和上传区域的尺寸，默认单位为 px
    */
-  previewSize: string;
+  previewSize?: string;
   /**
    * @description  预览图裁剪模式，可选值见 Image 组件
    */
-  imageFit: ImageFit;
+  imageFit?: ImageFit;
   /**
    * @description  文件上传数量限制
    */
-  maxCount: number;
+  maxCount?: number;
   /**
    * @description  是否展示删除按钮
    */
-  deletable: boolean;
+  deletable?: boolean;
   /**
    * @description  标识符，可以在回调函数的第二项参数中获取
    */
-  name: string;
+  name?: string;
 }
 const Uploader: React.FC<UploaderProps> = (props) => {
   const inputRef = useRef(null);
   const {
-    multiple,
-    disabled,
+    multiple = true,
+    disabled = false,
+    customHeaer,
     previewSize,
     imageFit,
     maxCount,
-    deletable,
+    deletable = true,
     name,
     maxSize,
-    accept,
+    accept = 'image/*',
     action,
     onOversize,
     onChange,
     beforeUpload,
+    onRemove,
   } = props;
   const [fileList, setFileList] = useState(props.fileList || []);
 
@@ -129,22 +131,23 @@ const Uploader: React.FC<UploaderProps> = (props) => {
 
   const uploadFiles = (files: UploaderFileListItem[]) => {
     files.forEach((item: UploaderFileListItem) => {
-      if (!beforeUpload) {
-        post(item, files);
-      } else {
-        const result: any = beforeUpload(item.file);
-        if (result && result instanceof Promise) {
-          result
-            .then((_) => {
-              post(item, files);
-            })
-            .catch((_) => {
-              return;
-            });
-        } else if (result) {
-          post(item, files);
-        }
-      }
+      post(item, files);
+      // if (!beforeUpload) {
+      //   post(item, files);
+      // } else {
+      //   const result: any = beforeUpload(item.file);
+      //   if (result && result instanceof Promise) {
+      //     result
+      //       .then((_) => {
+      //         post(item, files);
+      //       })
+      //       .catch((_) => {
+      //         return;
+      //       });
+      //   } else if (result) {
+      //     post(item, files);
+      //   }
+      // }
     });
   };
 
@@ -161,7 +164,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     formData.append(item.file.name, item.file);
     axios
       .post(action, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+        headers: { 'Content-Type': 'multipart/form-data', ...customHeaer },
         onUploadProgress: (e) => {
           let percentage = Math.round((e.loaded * 100) / e.total) || 0;
           console.log('上传进度：', percentage);
@@ -198,8 +201,9 @@ const Uploader: React.FC<UploaderProps> = (props) => {
 
   const onDelete = (item: UploaderFileListItem, index: number) => {
     const files = fileList.slice(0);
-    files.splice(index, 1);
+    const removeFile = files.splice(index, 1);
     setFileList(files);
+    onRemove && onRemove(removeFile[0] as UploaderFileListItem);
   };
 
   const renderRreviewItemList = () => {
@@ -232,8 +236,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       }
     }
     items = toArray(items);
-    console.log('items:', items);
-    if (uploadFiles) {
+    if (action) {
       uploadFiles(items);
     } else {
       setFileList([...fileList, ...items]);
@@ -301,7 +304,25 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     }
     const file =
       files.length === 1 ? [files[0]] : ([].slice.call(files) as File[]);
-    readFile(file);
+
+    file.forEach((item: File) => {
+      if (!beforeUpload) {
+        readFile(file);
+      } else {
+        const result: any = beforeUpload(item);
+        if (result && result instanceof Promise) {
+          result
+            .then((_) => {
+              readFile(file);
+            })
+            .catch((_) => {
+              return;
+            });
+        } else if (result) {
+          readFile(file);
+        }
+      }
+    });
   };
 
   const renderUpload = () => {
@@ -330,7 +351,6 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       </div>
     );
   };
-  console.log('fileList:', fileList);
   return (
     <div className={uploadPrefixCls}>
       {renderRreviewItemList()}

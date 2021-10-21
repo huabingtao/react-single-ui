@@ -42,6 +42,8 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
             onDelete();
           }
         });
+      } else if (returnVal) {
+        onDelete();
       }
     } else {
       onDelete();
@@ -74,7 +76,6 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
 
   const renderStatusView = () => {
     const { status, message } = item;
-    console.log('status:', status);
 
     if (!status || status === 'done') {
       return;
