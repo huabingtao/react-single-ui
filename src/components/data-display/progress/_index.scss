@@ -20,6 +20,7 @@ $progressPrefixCls: "sn-progress";
     height: 100%;
     background: $primary;
     border-radius: inherit;
+    transition: all 0.5s linear;
     &-pivot {
       position: absolute;
       top: 50%;
