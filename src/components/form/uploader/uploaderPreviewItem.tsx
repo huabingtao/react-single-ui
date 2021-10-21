@@ -6,6 +6,7 @@ import { Interceptor, UploaderFileListItem } from './type';
 import Image from '../../base/image';
 import Loading from '../../base/loading';
 import Icon from '../../base/icon';
+import Progress from '../../data-display/progress';
 
 const ItemPrefixCls = `${prefixCls}-uploader-item`;
 
@@ -73,12 +74,14 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
 
   const renderStatusView = () => {
     const { status, message } = item;
-    if (!status) {
+    console.log('status:', status);
+
+    if (!status || status === 'done') {
       return;
     }
     return (
       <div className={`${ItemPrefixCls}-mask`}>
-        {status === 'uploading' && <Icon size="lg" icon="spinner" spin></Icon>}
+        {status === 'loading' && <Icon size="lg" icon="spinner" spin></Icon>}
         {status === 'failed' && (
           <Icon size="lg" icon="exclamation-circle"></Icon>
         )}
@@ -86,11 +89,24 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
       </div>
     );
   };
+
+  const renderProgress = () => {
+    const { percent, status } = item;
+    if (status === 'uploading') {
+      return (
+        <div className={`${ItemPrefixCls}-progress-wrap`}>
+          <Progress percent={percent} wrapStyle={{ height: '8px' }}></Progress>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className={ItemPrefixCls}>
       {renderPreview()}
       {renderDeleteIcon()}
       {renderStatusView()}
+      {renderProgress()}
     </div>
   );
 };
