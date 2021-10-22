@@ -132,22 +132,6 @@ const Uploader: React.FC<UploaderProps> = (props) => {
   const uploadFiles = (files: UploaderFileListItem[]) => {
     files.forEach((item: UploaderFileListItem) => {
       post(item, files);
-      // if (!beforeUpload) {
-      //   post(item, files);
-      // } else {
-      //   const result: any = beforeUpload(item.file);
-      //   if (result && result instanceof Promise) {
-      //     result
-      //       .then((_) => {
-      //         post(item, files);
-      //       })
-      //       .catch((_) => {
-      //         return;
-      //       });
-      //   } else if (result) {
-      //     post(item, files);
-      //   }
-      // }
     });
   };
 
@@ -159,7 +143,9 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       message: '',
       content: item.content,
     };
-    setFileList([...fileList, result]);
+    setFileList((prevFileList) => {
+      return [...prevFileList, result];
+    });
     const formData = new FormData();
     formData.append(item.file.name, item.file);
     axios
@@ -167,7 +153,6 @@ const Uploader: React.FC<UploaderProps> = (props) => {
         headers: { 'Content-Type': 'multipart/form-data', ...customHeaer },
         onUploadProgress: (e) => {
           let percentage = Math.round((e.loaded * 100) / e.total) || 0;
-          console.log('上传进度：', percentage);
           updateFileList(result, { percent: percentage, status: 'uploading' });
         },
       })
@@ -177,6 +162,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       })
       .catch((error) => {
         onChange && onChange(item.file, files, error);
+        console.log('上传失败', error);
         updateFileList(result, { status: 'failed', message: '上传失败' });
       });
   };
@@ -213,7 +199,6 @@ const Uploader: React.FC<UploaderProps> = (props) => {
   const readFileContent = (file: File) => {
     return new Promise<string | void>((resolve) => {
       const reader = new FileReader();
-
       reader.onload = (event) => {
         resolve((event.target as FileReader).result as string);
       };
@@ -225,6 +210,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     items: UploaderFileListItem | UploaderFileListItem[],
   ) => {
     resetInput();
+    // If it exceeds a specific range
     if (isOversize(items, maxSize)) {
       if (isArray(items)) {
         const { valid, invalid } = filterFiles(items, maxSize);
@@ -260,6 +246,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
           files = files.slice(0, remaincount);
         }
       }
+
       Promise.all(files.map((file) => readFileContent(file))).then(
         (contents) => {
           const fileList = (files as File[]).map((file, index) => {
@@ -271,6 +258,20 @@ const Uploader: React.FC<UploaderProps> = (props) => {
             };
             if (contents[index]) {
               result.content = contents[index] as string;
+            }
+            if (beforeUpload) {
+              const beforeResult: any = beforeUpload(file);
+              if (beforeResult && beforeResult instanceof Promise) {
+                beforeResult
+                  .then((_) => {
+                    return result;
+                  })
+                  .catch((_) => {
+                    return;
+                  });
+              } else if (beforeResult) {
+                return result;
+              }
             }
             return result;
           });
@@ -305,24 +306,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     const file =
       files.length === 1 ? [files[0]] : ([].slice.call(files) as File[]);
 
-    file.forEach((item: File) => {
-      if (!beforeUpload) {
-        readFile(file);
-      } else {
-        const result: any = beforeUpload(item);
-        if (result && result instanceof Promise) {
-          result
-            .then((_) => {
-              readFile(file);
-            })
-            .catch((_) => {
-              return;
-            });
-        } else if (result) {
-          readFile(file);
-        }
-      }
-    });
+    readFile(file);
   };
 
   const renderUpload = () => {

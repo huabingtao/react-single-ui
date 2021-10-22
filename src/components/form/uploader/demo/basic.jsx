@@ -38,7 +38,7 @@ export default () => {
       url: 'https://img.yzcdn.cn/vant/tree.jpg',
       status: '',
       beforeDelete: () => {
-        console.log('except beforeDelete');
+        console.log('第二条返回false则没法删除');
         return false;
       },
     },
