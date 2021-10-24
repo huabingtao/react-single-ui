@@ -11,14 +11,14 @@ import Progress from '../../data-display/progress';
 const ItemPrefixCls = `${prefixCls}-uploader-item`;
 
 export interface UploaderPreviewItemProps {
-  index: Number;
-  imageFit: ImageFit;
-  deletable: Boolean;
-  previewSize: string;
-  beforeDelete: Interceptor;
+  index?: Number;
+  imageFit?: ImageFit;
+  deletable?: Boolean;
+  previewSize?: string;
+  beforeDelete?: Interceptor;
   item: UploaderFileListItem;
-  name: string;
-  onDelete: () => void;
+  name?: string;
+  onDelete?: () => void;
 }
 
 const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
@@ -39,14 +39,14 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
       if (isPromise(returnVal)) {
         returnVal.then((res) => {
           if (res) {
-            onDelete();
+            onDelete && onDelete();
           }
         });
       } else if (returnVal) {
-        onDelete();
+        onDelete && onDelete();
       }
     } else {
-      onDelete();
+      onDelete && onDelete();
     }
   };
   const renderPreview = () => {
@@ -96,7 +96,10 @@ const UploaderPreviewItem: React.FC<UploaderPreviewItemProps> = (props) => {
     if (status === 'uploading') {
       return (
         <div className={`${ItemPrefixCls}-progress-wrap`}>
-          <Progress percent={percent} wrapStyle={{ height: '8px' }}></Progress>
+          <Progress
+            percent={percent || 0}
+            wrapStyle={{ height: '8px' }}
+          ></Progress>
         </div>
       );
     }

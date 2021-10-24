@@ -24,7 +24,7 @@ export interface UploaderProps {
   /**
    * @description  文件改变回调函数
    */
-  onChange?: (file: File, files: File[], response: any) => void;
+  onChange?: (file: File, files: UploaderFileListItem[], response: any) => void;
   /**
    * @description  上传失败回调函数
    */
@@ -95,7 +95,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     disabled = false,
     customHeaer,
     previewSize,
-    imageFit,
+    imageFit = 'fill',
     maxCount,
     deletable = true,
     name,
@@ -135,7 +135,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     });
   };
 
-  const post = (item: UploaderFileListItem, files) => {
+  const post = (item: UploaderFileListItem, files: UploaderFileListItem[]) => {
     const result: UploaderFileListItem = {
       uid: Date.now() + 'upload-file',
       file: item.file,
@@ -146,10 +146,14 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     setFileList((prevFileList) => {
       return [...prevFileList, result];
     });
-    const formData = new FormData();
-    formData.append(item.file.name, item.file);
+    if (!item.file) {
+      return;
+    }
+    const formData: any = new FormData();
+    // @ts-ignore
+    formData.append(item.file?.name as string, item.file as any);
     axios
-      .post(action, formData, {
+      .post(action as string, formData, {
         headers: { 'Content-Type': 'multipart/form-data', ...customHeaer },
         onUploadProgress: (e) => {
           let percentage = Math.round((e.loaded * 100) / e.total) || 0;
@@ -157,11 +161,11 @@ const Uploader: React.FC<UploaderProps> = (props) => {
         },
       })
       .then((response) => {
-        onChange && onChange(item.file, files, response);
+        onChange && onChange(item.file as File, files, response);
         updateFileList(result, { status: 'done' });
       })
       .catch((error) => {
-        onChange && onChange(item.file, files, error);
+        onChange && onChange(item.file as File, files, error);
         console.log('上传失败', error);
         updateFileList(result, { status: 'failed', message: '上传失败' });
       });
@@ -211,18 +215,24 @@ const Uploader: React.FC<UploaderProps> = (props) => {
   ) => {
     resetInput();
     // If it exceeds a specific range
-    if (isOversize(items, maxSize)) {
-      if (isArray(items)) {
-        const { valid, invalid } = filterFiles(items, maxSize);
-        items = valid;
-        onOversize && onOversize(invalid);
-      } else {
-        onOversize && onOversize(toArray(items));
-        return;
+    if (maxSize) {
+      if (isOversize(items, maxSize)) {
+        if (isArray(items)) {
+          const { valid, invalid } = filterFiles(items, maxSize);
+          items = valid;
+          onOversize && onOversize(invalid);
+        } else {
+          onOversize && onOversize(toArray(items));
+          return;
+        }
       }
     }
+
     items = toArray(items);
     if (action) {
+      if (!items.length) {
+        return;
+      }
       uploadFiles(items);
     } else {
       setFileList([...fileList, ...items]);

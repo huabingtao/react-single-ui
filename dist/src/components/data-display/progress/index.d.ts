@@ -7,48 +7,48 @@ export interface ProgressProps {
   /**
    * @description 设置为 true 将吸附到顶部
    */
-  fixed: boolean;
+  fixed?: boolean;
   /**
    * @description 是否显示填充轨道默认填充
    */
-  unfilled: boolean;
+  unfilled?: boolean;
   /**
    * @description 进度条颜色
    */
-  color: string;
+  color?: string;
   /**
    * @description 轨道颜色
    */
-  trackColor: string;
+  trackColor?: string;
   /**
    * @description 是否展示进度文字
    * @default false
    */
-  showPivot: boolean;
+  showPivot?: boolean;
   /**
    * @description pivote 文字
    */
-  pivoteText: string;
+  pivoteText?: string;
   /**
    * @description 进度文字颜色
    */
-  textColor: string;
+  textColor?: string;
   /**
    * @description 进度文字背景颜色
    */
-  pivotColor: string;
+  pivotColor?: string;
   /**
    * @description 是否置灰
    */
-  inactive: boolean;
+  inactive?: boolean;
   /**
    * @description 进度条包裹层样式
    */
-  wrapStyle: React.CSSProperties;
+  wrapStyle?: React.CSSProperties;
   /**
    * @description 进度条样式
    */
-  percentStyle: React.CSSProperties;
+  percentStyle?: React.CSSProperties;
 }
 declare const Progress: React.FC<ProgressProps>;
 export default Progress;
