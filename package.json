@@ -1,6 +1,5 @@
 {
-  "private": true,
-  "name": "single-ui",
+  "name": "react-single-ui",
   "version": "0.0.1",
   "scripts": {
     "start": "dumi dev",
@@ -65,5 +64,12 @@
     "prettier": "^2.2.1",
     "ts-jest": "^27.0.4",
     "yorkie": "^2.0.0"
-  }
+  },
+  "author": "hbt",
+  "keywords": [
+    "React",
+    "Ui",
+    "TypeScript"
+  ],
+  "license": "ISC"
 }
