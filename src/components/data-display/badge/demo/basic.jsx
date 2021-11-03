@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Badge, Icon } from 'single-ui';
+import { Badge, Icon } from 'react-single-ui';
 
 export default () => {
   const style = {

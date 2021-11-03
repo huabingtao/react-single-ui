@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input } from 'single-ui';
+import { Input } from 'react-single-ui';
 
 export default () => {
   const [value1, setValue1] = useState('都是受控组件');

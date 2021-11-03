@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image } from 'single-ui';
+import { Image } from 'react-single-ui';
 const bigImg = require('../big.jpeg');
 
 export default () => {

@@ -247,6 +247,10 @@ function _assertThisInitialized(self) {
 function _possibleConstructorReturn(self, call) {
   if (call && (typeof call === 'object' || typeof call === 'function')) {
     return call;
+  } else if (call !== void 0) {
+    throw new TypeError(
+      'Derived constructors may only return object or undefined',
+    );
   }
 
   return _assertThisInitialized(self);
@@ -307,9 +311,10 @@ function _iterableToArray(iter) {
 
 function _iterableToArrayLimit(arr, i) {
   var _i =
-    arr &&
-    ((typeof Symbol !== 'undefined' && arr[Symbol.iterator]) ||
-      arr['@@iterator']);
+    arr == null
+      ? null
+      : (typeof Symbol !== 'undefined' && arr[Symbol.iterator]) ||
+        arr['@@iterator'];
 
   if (_i == null) return;
   var _arr = [];
@@ -368,15 +373,17 @@ function _nonIterableRest() {
   );
 }
 
+var _excluded = ['className', 'icon'];
+
 var Icon = function Icon(props) {
   var className = props.className,
     icon = props.icon,
-    restProps = _objectWithoutProperties(props, ['className', 'icon']);
+    restProps = _objectWithoutProperties(props, _excluded);
 
   var classes = classNames('single-icon', className);
   return /*#__PURE__*/ React.createElement(
     FontAwesomeIcon,
-    Object.assign(
+    _objectSpread2(
       {
         icon: icon,
         className: classes,
@@ -510,6 +517,16 @@ function filterFiles(items, maxSize) {
   };
 }
 
+var _excluded$1 = [
+  'btnType',
+  'block',
+  'disabled',
+  'size',
+  'children',
+  'className',
+  'href',
+  'activeClassName',
+];
 var ButtonSize;
 
 (function (ButtonSize) {
@@ -538,16 +555,7 @@ var Button = function Button(props) {
     className = props.className,
     href = props.href,
     activeClassName = props.activeClassName,
-    restProps = _objectWithoutProperties(props, [
-      'btnType',
-      'block',
-      'disabled',
-      'size',
-      'children',
-      'className',
-      'href',
-      'activeClassName',
-    ]);
+    restProps = _objectWithoutProperties(props, _excluded$1);
 
   var buttonPrefixCls = prefixCls + '-btn';
   var classes = classNames(
@@ -576,7 +584,7 @@ var Button = function Button(props) {
   if (btnType === ButtonType.Link) {
     return /*#__PURE__*/ React.createElement(
       'a',
-      Object.assign(
+      _objectSpread2(
         {
           className: classes,
           href: href,
@@ -594,11 +602,14 @@ var Button = function Button(props) {
     },
     /*#__PURE__*/ React.createElement(
       'button',
-      Object.assign(
-        {
-          className: classes,
-        },
-        restProps,
+      _objectSpread2(
+        _objectSpread2(
+          {
+            className: classes,
+          },
+          restProps,
+        ),
+        {},
         {
           disabled: disabled,
         },
@@ -631,6 +642,7 @@ var Mask = /*#__PURE__*/ (function (_React$Component) {
     _classCallCheck(this, Mask);
 
     _this = _super.call(this, props);
+    _this.container = void 0;
 
     _this.maskDom = function () {
       return /*#__PURE__*/ React.createElement(
@@ -795,7 +807,7 @@ var Image = function Image(props) {
         },
         /*#__PURE__*/ React.createElement(
           'img',
-          Object.assign(
+          _objectSpread2(
             {
               className: ''.concat(prefixCls, '-image-img'),
               onError: handleOnError,
@@ -809,7 +821,7 @@ var Image = function Image(props) {
 
     return /*#__PURE__*/ React.createElement(
       'img',
-      Object.assign(
+      _objectSpread2(
         {
           className: ''.concat(prefixCls, '-image-img'),
           onError: handleOnError,
@@ -1017,12 +1029,13 @@ var Toast = {
   },
 };
 
+var _excluded$2 = ['visible'];
 var modalPrefixCls = prefixCls + '-modal'; // @ts-ignore
 
 var Modal = function Modal(props) {
   var _props$visible = props.visible,
     visible = _props$visible === void 0 ? false : _props$visible,
-    restProps = _objectWithoutProperties(props, ['visible']);
+    restProps = _objectWithoutProperties(props, _excluded$2);
 
   var renderFooterButton = function renderFooterButton(button, i) {
     var buttonStyle = {};
@@ -1114,13 +1127,13 @@ var Modal = function Modal(props) {
 
   return /*#__PURE__*/ React.createElement(
     Mask,
-    Object.assign(
+    _objectSpread2(
       {
         visible: visible,
       },
       restProps,
     ),
-    /*#__PURE__*/ React.createElement(ModalNode, Object.assign({}, restProps)),
+    /*#__PURE__*/ React.createElement(ModalNode, _objectSpread2({}, restProps)),
   );
 };
 
@@ -1188,6 +1201,14 @@ function Alert(props) {
 
 Modal.alert = Alert;
 
+var _excluded$3 = [
+  'value',
+  'disabled',
+  'size',
+  'activeColor',
+  'inactiveColor',
+  'onClick',
+];
 var SwitchPrefixCls = prefixCls + '-switch';
 
 var Switch = function Switch(props) {
@@ -1201,14 +1222,7 @@ var Switch = function Switch(props) {
     activeColor = props.activeColor,
     inactiveColor = props.inactiveColor,
     onClick = props.onClick,
-    restRrops = _objectWithoutProperties(props, [
-      'value',
-      'disabled',
-      'size',
-      'activeColor',
-      'inactiveColor',
-      'onClick',
-    ]);
+    restRrops = _objectWithoutProperties(props, _excluded$3);
 
   var checked = value;
 
@@ -1248,7 +1262,7 @@ var Switch = function Switch(props) {
 
   return /*#__PURE__*/ React.createElement(
     'div',
-    Object.assign(
+    _objectSpread2(
       {
         className: classes,
         onClick: handleClick,
@@ -1262,15 +1276,13 @@ var Switch = function Switch(props) {
   );
 };
 
+var _excluded$4 = ['onBlur', 'onFocus', 'onChange'];
+
 var Input = function Input(props) {
   var onBlur = props.onBlur,
     onFocus = props.onFocus,
     onChange = props.onChange,
-    restProps = _objectWithoutProperties(props, [
-      'onBlur',
-      'onFocus',
-      'onChange',
-    ]); // console.log('restProps:', restProps);
+    restProps = _objectWithoutProperties(props, _excluded$4); // console.log('restProps:', restProps);
 
   var inputRefs = useRef(null);
 
@@ -1291,7 +1303,7 @@ var Input = function Input(props) {
 
   return /*#__PURE__*/ React.createElement(
     'input',
-    Object.assign(
+    _objectSpread2(
       {
         ref: inputRefs,
         onChange: handleChange,
@@ -1302,6 +1314,21 @@ var Input = function Input(props) {
     ),
   );
 };
+
+var _excluded$5 = [
+  'type',
+  'label',
+  'required',
+  'disabled',
+  'readonly',
+  'clearble',
+  'defaultValue',
+  'onChange',
+  'onFocus',
+  'onBlur',
+  'onClear',
+  'value',
+];
 
 var caculType = function caculType(type) {
   var resType = '';
@@ -1348,20 +1375,7 @@ var InputItem = function InputItem(props) {
     onBlur = props.onBlur,
     onClear = props.onClear,
     value = props.value,
-    restProps = _objectWithoutProperties(props, [
-      'type',
-      'label',
-      'required',
-      'disabled',
-      'readonly',
-      'clearble',
-      'defaultValue',
-      'onChange',
-      'onFocus',
-      'onBlur',
-      'onClear',
-      'value',
-    ]);
+    restProps = _objectWithoutProperties(props, _excluded$5);
 
   var classes = classNames(
     ''.concat(InputPrefixCls),
@@ -1438,7 +1452,7 @@ var InputItem = function InputItem(props) {
     ),
     /*#__PURE__*/ React.createElement(
       Input,
-      Object.assign(
+      _objectSpread2(
         {
           className: ''.concat(prefixCls, '-input-self'),
           onChange: handleChange,
@@ -2417,6 +2431,16 @@ var TreeSelect = function TreeSelect(props) {
 
 TreeSelect.defaultProps = {};
 
+var _excluded$6 = [
+  'children',
+  'color',
+  'dot',
+  'max',
+  'content',
+  'size',
+  'fixed',
+  'style',
+];
 var BadgePrefixCls = prefixCls + '-badge';
 
 var Badge = function Badge(props) {
@@ -2432,16 +2456,7 @@ var Badge = function Badge(props) {
     size = props.size,
     fixed = props.fixed,
     style = props.style,
-    restProps = _objectWithoutProperties(props, [
-      'children',
-      'color',
-      'dot',
-      'max',
-      'content',
-      'size',
-      'fixed',
-      'style',
-    ]);
+    restProps = _objectWithoutProperties(props, _excluded$6);
 
   var styleObj = _objectSpread2(
     {
@@ -2487,7 +2502,7 @@ var Badge = function Badge(props) {
     (content || dot) &&
       /*#__PURE__*/ React.createElement(
         'sup',
-        Object.assign(
+        _objectSpread2(
           {
             className: dotCls,
             style: _objectSpread2({}, styleObj),

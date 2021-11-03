@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Uploader } from 'single-ui';
+import { Uploader } from 'react-single-ui';
 
 export default () => {
   const [visible, setVisible] = useState(false);

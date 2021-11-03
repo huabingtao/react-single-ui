@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import React, { EventHandler } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as ReactDOM from 'react-dom';
 import { prefixCls } from '../../../util';
 import Icon from '../icon';
 import LazyLoad from 'react-lazyload';
-import { useEffect } from 'react';
 
 export type ImageFit = 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
 export interface ImageProps {

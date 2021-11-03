@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breadcrmb, BreadcrmbItem } from 'single-ui';
+import { Breadcrmb, BreadcrmbItem } from 'react-single-ui';
 import _ from 'lodash';
 
 export default () => {

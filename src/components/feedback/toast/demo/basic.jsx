@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toast, Button } from 'single-ui';
+import { Toast, Button } from 'react-single-ui';
 
 export default () => {
   const show = () => {

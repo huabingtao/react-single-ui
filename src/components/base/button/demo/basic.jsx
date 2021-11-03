@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'single-ui';
+import { Button } from 'react-single-ui';
 
 export default () => {
   return (

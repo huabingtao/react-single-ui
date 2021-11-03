@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TreeSelect } from 'single-ui';
+import { TreeSelect } from 'react-single-ui';
 import { data } from './data';
 export default () => {
   const onChangeTree = (item, index) => {

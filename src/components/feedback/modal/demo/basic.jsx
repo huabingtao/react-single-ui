@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'single-ui';
+import { Modal, Button } from 'react-single-ui';
 
 export default () => {
   const [visible1, setVisible1] = useState(false);

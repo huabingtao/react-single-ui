@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch } from 'single-ui';
+import { Switch } from 'react-single-ui';
 
 export default () => {
   const [value1, setValue1] = useState(false);

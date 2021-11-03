@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loading } from 'single-ui';
+import { Loading } from 'react-single-ui';
 
 export default () => {
   return (

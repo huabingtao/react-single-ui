@@ -1,4 +1,4 @@
-# single-ui
+# react-single-ui
 
 ## Getting Started
 

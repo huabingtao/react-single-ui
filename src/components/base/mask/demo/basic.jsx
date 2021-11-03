@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mask, Button } from 'single-ui';
+import { Mask, Button } from 'react-single-ui';
 
 export default () => {
   const [visible, setVisible] = useState(false);

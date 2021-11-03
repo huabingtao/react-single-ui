@@ -1,5 +1,5 @@
 import React from 'react';
-import { Progress } from 'single-ui';
+import { Progress } from 'react-single-ui';
 
 export default () => {
   return (
