@@ -123,11 +123,6 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       });
     });
   };
-  useEffect(() => {
-    // axios
-    //   .post('https://jsonplaceholder.typicode.com/posts')
-    //   .then((response) => console.log(response.data));
-  });
 
   const uploadFiles = (files: UploaderFileListItem[]) => {
     files.forEach((item: UploaderFileListItem) => {
@@ -166,7 +161,6 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       })
       .catch((error) => {
         onChange && onChange(item.file as File, files, error);
-        console.log('上传失败', error);
         updateFileList(result, { status: 'failed', message: '上传失败' });
       });
   };
@@ -273,14 +267,14 @@ const Uploader: React.FC<UploaderProps> = (props) => {
               const beforeResult: any = beforeUpload(file);
               if (beforeResult && beforeResult instanceof Promise) {
                 beforeResult
-                  .then((_) => {
-                    return result;
+                  .then((data) => {
+                    return data;
                   })
                   .catch((_) => {
                     return;
                   });
               } else if (beforeResult) {
-                return result;
+                return beforeResult;
               }
             }
             return result;
