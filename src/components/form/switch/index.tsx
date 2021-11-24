@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 // import './index.scss';
 
-import { prefixCls } from '../../../util';
+import { prefixCls } from '../../../utils';
 
 export interface SwitchProps {
   value: boolean;

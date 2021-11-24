@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import * as ReactDOM from 'react-dom';
-import { isImageFile, isPromise, prefixCls } from '../../../util';
+import { isImageFile, isPromise, prefixCls } from '../../../utils';
 import { ImageFit } from '../../base/image';
 import { Interceptor, UploaderFileListItem } from './type';
 import Image from '../../base/image';

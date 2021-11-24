@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
-import { prefixCls } from '../../../util';
+import { prefixCls } from '../../../utils';
 import { BreadcrmbContext } from '.';
 
 export interface BreadcrmbItemProps {

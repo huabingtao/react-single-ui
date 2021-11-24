@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import TouchFeedback from 'rmc-feedback';
-import { prefixCls } from '../../../util';
+import { prefixCls } from '../../../utils';
 import Mask from '../../base/mask/index';
 import Button, { ButtonType } from '../../base/button/index';
 

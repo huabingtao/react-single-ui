@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
-import { prefixCls } from '../../../util';
+import { prefixCls } from '../../../utils';
 import { BaseinputProps } from './input.d';
 import Input from './input';
 import Icon from '../../../components/base/icon';

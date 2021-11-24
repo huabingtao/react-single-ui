@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { EventHandler } from 'react';
 import { useState, useEffect } from 'react';
 import * as ReactDOM from 'react-dom';
-import { prefixCls } from '../../../util';
+import { prefixCls } from '../../../utils';
 import Icon from '../icon';
 import LazyLoad from 'react-lazyload';
 

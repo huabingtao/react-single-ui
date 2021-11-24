@@ -1,6 +1,6 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { prefixCls } from '../../../util';
+import { prefixCls } from '../../../utils';
 
 const IS_REACT_16 = !!(ReactDOM as any).createPortal;
 export interface MaskProps {

@@ -9,7 +9,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import TouchFeedback from 'rmc-feedback';
-import { prefixCls } from '../../../util';
+import { prefixCls } from '../../../utils';
 
 export enum ButtonSize {
   Large = 'lg',

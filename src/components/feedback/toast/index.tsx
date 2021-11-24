@@ -8,7 +8,7 @@ const Notification = require('rmc-notification').default;
 // console.log('Notification:', Notification);
 
 import Icon from '../../base/icon';
-import { prefixCls } from '../../../util';
+import { prefixCls } from '../../../utils';
 
 export interface BaseProps<T> {
   type: T;

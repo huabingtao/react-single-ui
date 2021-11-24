@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import * as ReactDOM from 'react-dom';
-import { filterFiles, isOversize, prefixCls, toArray } from '../../../util';
+import { filterFiles, isOversize, prefixCls, toArray } from '../../../utils';
 import axios from 'axios';
 import UploaderPreviewItem from './uploaderPreviewItem';
 import { Icon } from '../../..';
