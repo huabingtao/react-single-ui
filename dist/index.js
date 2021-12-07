@@ -1791,12 +1791,6 @@ var Uploader = function Uploader(props) {
     });
   };
 
-  React.useEffect(function () {
-    // axios
-    //   .post('https://jsonplaceholder.typicode.com/posts')
-    //   .then((response) => console.log(response.data));
-  });
-
   var uploadFiles = function uploadFiles(files) {
     files.forEach(function (item) {
       post(item, files);
@@ -1853,7 +1847,6 @@ var Uploader = function Uploader(props) {
       })
       .catch(function (error) {
         onChange && onChange(item.file, files, error);
-        console.log('上传失败', error);
         updateFileList(result, {
           status: 'failed',
           message: '上传失败',
@@ -1977,14 +1970,14 @@ var Uploader = function Uploader(props) {
 
             if (beforeResult && beforeResult instanceof Promise) {
               beforeResult
-                .then(function (_) {
-                  return result;
+                .then(function (data) {
+                  return data;
                 })
                 .catch(function (_) {
                   return;
                 });
             } else if (beforeResult) {
-              return result;
+              return beforeResult;
             }
           }
 
