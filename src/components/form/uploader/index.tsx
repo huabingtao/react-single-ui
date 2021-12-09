@@ -87,6 +87,10 @@ export interface UploaderProps {
    * @description  标识符，可以在回调函数的第二项参数中获取
    */
   name?: string;
+  /**
+   * @description  自定义 formData 参数名称
+   */
+  customFileName?: string;
 }
 const Uploader: React.FC<UploaderProps> = (props) => {
   const inputRef = useRef(null);
@@ -99,6 +103,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     maxCount,
     deletable = true,
     name,
+    customFileName,
     maxSize,
     accept = 'image/*',
     action,
@@ -146,7 +151,10 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     }
     const formData: any = new FormData();
     // @ts-ignore
-    formData.append(item.file?.name as string, item.file as any);
+    formData.append(
+      customFileName ? customFileName : (item.file?.name as string),
+      item.file as any,
+    );
     axios
       .post(action as string, formData, {
         headers: { 'Content-Type': 'multipart/form-data', ...customHeaer },
@@ -253,7 +261,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
 
       Promise.all(files.map((file) => readFileContent(file))).then(
         (contents) => {
-          const fileList = (files as File[]).map((file, index) => {
+          let fileList = (files as File[]).map((file, index) => {
             const result: UploaderFileListItem = {
               uid: Date.now() + 'upload-file',
               file,
@@ -265,6 +273,9 @@ const Uploader: React.FC<UploaderProps> = (props) => {
             }
             if (beforeUpload) {
               const beforeResult: any = beforeUpload(file);
+              if (!beforeResult) {
+                return false;
+              }
               if (beforeResult && beforeResult instanceof Promise) {
                 beforeResult
                   .then((data) => {
@@ -274,12 +285,16 @@ const Uploader: React.FC<UploaderProps> = (props) => {
                     return;
                   });
               } else if (beforeResult) {
-                return beforeResult;
+                return result;
               }
             }
             return result;
           });
-          onAfterRead(fileList);
+
+          fileList = fileList.filter((item) => item);
+          if (fileList.length) {
+            onAfterRead(fileList as UploaderFileListItem[]);
+          }
         },
       );
     } else {

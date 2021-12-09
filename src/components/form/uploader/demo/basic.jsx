@@ -53,7 +53,7 @@ export default () => {
 
   const beforeUpload = (file) => {
     console.log('beforeUpload:', file);
-    return true;
+    return false;
   };
 
   const onRemove = (item) => {
@@ -75,6 +75,7 @@ export default () => {
         onOversize={onOversize}
         deletable
         action="https://jsonplaceholder.typicode.com/posts"
+        customFileName="file"
         onChange={onChange}
       ></Uploader>
       <h1 className="sn-title">BeforeUpload</h1>
