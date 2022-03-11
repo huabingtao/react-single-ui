@@ -15,7 +15,8 @@ export interface IconProps extends FontAwesomeIconProps {
 
 const Icon: React.FC<IconProps> = (props) => {
   const { className, icon, ...restProps } = props;
-  const classes = classNames('single-icon', className);
+  const classes = classNames('sn-icon', className);
+
   return <FontAwesomeIcon icon={icon} className={classes} {...restProps} />;
 };
 

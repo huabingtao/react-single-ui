@@ -12,7 +12,9 @@ export default () => {
       <h1 className="sn-title">Custom style</h1>
       <Icon icon="circle-notch" color="#169be8" size="3x" theme="primary" />
       <h1 className="sn-title">Transform</h1>
-      <Icon icon="spinner" size="3x" spin />
+      <Icon icon="spinner" size="3x" spin>
+        Transform
+      </Icon>
     </>
   );
 };
