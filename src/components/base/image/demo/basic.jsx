@@ -6,7 +6,7 @@ export default () => {
   return (
     <>
       <h1 className="sn-title">Basic</h1>
-      <Image src="https://img01.yzcdn.cn/vant/cat.jpeg"></Image>
+      <Image radius="100%" src="https://img01.yzcdn.cn/vant/cat.jpeg"></Image>
       {/* <Image showLoading fit="cover" src={img3}></Image> */}
       <h1 className="sn-title">Fit</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', textAlign: 'center' }}>

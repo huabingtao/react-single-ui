@@ -13,5 +13,6 @@ describe('test Icon component', () => {
     const element = container.getElementsByClassName('sn-icon')[0];
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual('svg');
+    expect(element).toHaveClass('fa-coffee sn-icon');
   });
 });

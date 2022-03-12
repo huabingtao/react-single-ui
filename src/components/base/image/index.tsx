@@ -21,17 +21,17 @@ export interface ImageProps {
    */
   alt?: string;
   /**
-   * @description 宽度，默认单位为px
+   * @description 宽度 例如 10px 20%
    */
   width?: string;
   /**
-   * @description 高度，默认单位为px
+   * @description 高度 例如 10px 20%
    */
   height?: string;
   /**
-   * @description 圆角大小，默认单位为px
+   * @description 圆角大小 例如 10px 20%
    */
-  radius?: number;
+  radius?: string;
   /**
    * @description 是否显示为圆形
    * @default false
