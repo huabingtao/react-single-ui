@@ -1,0 +1,143 @@
+{
+  "menus": {
+    "en-US": {
+      "/components": [
+        {
+          "title": "Base",
+          "path": "/components/base",
+          "meta": {},
+          "children": [
+            {
+              "path": "/components/base/button",
+              "title": "Button 按钮",
+              "meta": {}
+            },
+            {
+              "path": "/components/base/icon",
+              "title": "Icon 图标",
+              "meta": {}
+            },
+            {
+              "path": "/components/base/image",
+              "title": "Image 图片",
+              "meta": {}
+            },
+            {
+              "path": "/components/base/loading",
+              "title": "Loading 加载",
+              "meta": {}
+            },
+            {
+              "path": "/components/base/mask",
+              "title": "Mask 遮罩层",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "Data-display",
+          "path": "/components/data-display",
+          "meta": {},
+          "children": [
+            {
+              "path": "/components/data-display/badge",
+              "title": "Bagde 徽标",
+              "meta": {}
+            },
+            {
+              "path": "/components/data-display/progress",
+              "title": "Progress 进度条",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "Feedback",
+          "path": "/components/feedback",
+          "meta": {},
+          "children": [
+            {
+              "path": "/components/feedback/modal",
+              "title": "Modal 模态框",
+              "meta": {}
+            },
+            {
+              "path": "/components/feedback/toast",
+              "title": "Toast 轻提示",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "Form",
+          "path": "/components/form",
+          "meta": {},
+          "children": [
+            {
+              "path": "/components/form/input",
+              "title": "Input 文本输入",
+              "meta": {}
+            },
+            {
+              "path": "/components/form/switch",
+              "title": "Switch 滑动开关",
+              "meta": {}
+            },
+            {
+              "path": "/components/form/uploader",
+              "title": "Uploader 文件上传",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "Navigation",
+          "path": "/components/navigation",
+          "meta": {},
+          "children": [
+            {
+              "path": "/components/navigation/breadcrmb",
+              "title": "Breadcrmb 面包屑",
+              "meta": {}
+            },
+            {
+              "path": "/components/navigation/tree-select",
+              "title": "TreeSelect 分类选择",
+              "meta": {}
+            }
+          ]
+        }
+      ],
+      "*": [
+        {
+          "path": "/",
+          "title": "Hello react-single-ui!",
+          "meta": {}
+        }
+      ]
+    }
+  },
+  "locales": [
+    {
+      "name": "en-US",
+      "label": "English"
+    }
+  ],
+  "navs": {
+    "en-US": [
+      {
+        "title": "组件",
+        "path": "/components",
+        "order": 1
+      }
+    ]
+  },
+  "title": "react-single-ui",
+  "logo": "https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png",
+  "mode": "site",
+  "repository": {
+    "url": "",
+    "branch": "master"
+  },
+  "theme": {}
+}

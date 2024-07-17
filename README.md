@@ -1,27 +1,43 @@
 # react-single-ui
 
-## Getting Started
+[![NPM version](https://img.shields.io/npm/v/react-single-ui.svg?style=flat)](https://npmjs.org/package/react-single-ui)
+[![NPM downloads](http://img.shields.io/npm/dm/react-single-ui.svg?style=flat)](https://npmjs.org/package/react-single-ui)
 
-Install dependencies,
+A react library developed with dumi
 
-```bash
-$ npm i
-```
+## Usage
 
-Start the dev server,
+TODO
 
-```bash
-$ npm start
-```
+## Options
 
-Build documentation,
+TODO
 
-```bash
-$ npm run docs:build
-```
-
-Build library via `father-build`,
+## Development
 
 ```bash
-$ npm run build
+# install dependencies
+$ pnpm install
+
+# develop library by docs demo
+$ pnpm start
+
+# build library source code
+$ pnpm run build
+
+# build library source code in watch mode
+$ pnpm run build:watch
+
+# build docs
+$ pnpm run docs:build
+
+# Locally preview the production build.
+$ pnpm run docs:preview
+
+# check your project for potential problems
+$ pnpm run doctor
 ```
+
+## LICENSE
+
+MIT
