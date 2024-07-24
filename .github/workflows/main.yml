@@ -14,11 +14,13 @@ jobs:
         with:
           version: 8
           run_install: false
-      - name: Install dependencies
+      - name: Install Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
       - name: Docs Build
         run: pnpm run docs:build
       - name: Delopy to gh-pages
