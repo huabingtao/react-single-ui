@@ -28,4 +28,4 @@ jobs:
         with:
           publish_dir: ./docs-dist
           target_branch: gh-pages
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
