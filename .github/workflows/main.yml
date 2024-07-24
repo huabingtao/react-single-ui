@@ -1,55 +1,29 @@
-name: docs
-
+name: Docs build
 on:
-  # 每当 push 到 main 分支时触发部署
   push:
-    branches: [main]
-  # 手动触发部署
-  workflow_dispatch:
-
+    branches:
+      - main
 jobs:
-  docs:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          # 选择要使用的 node 版本
-          node-version: '18'
-
-      # 缓存 node_modules
-      # - name: Cache dependencies
-      #   uses: actions/cache@v2
-      #   id: yarn-cache
-      #   with:
-      #     path: |
-      #       **/node_modules
-      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-yarn-
-
-      # 如果缓存没有命中，安装依赖
+          version: 8
+          run_install: false
       - name: Install dependencies
-        run: pnpm install
-
-      # 运行构建脚本
-      - name: Build Project
-        run: pnpm docs:build
-
-      # 查看 workflow 的文档来获取更多信息
-      # @see https://github.com/crazy-max/ghaction-github-pages
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: actions/setup-node@v4
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          # 部署到 gh-pages 分支
-          BRANCH: gh-pages
-          # 部署目录为默认输出目录
-          FOLDER: docs-dist
+          node-version: 20
+          cache: 'pnpm'
+      - name: Docs Build
+        run: pnpm run docs:build
+      - name: Delopy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./docs-dist
+          target_branch: gh-pages
+          personal_token: ${{ secrets.ACCESS_TOKEN }}
