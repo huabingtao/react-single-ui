@@ -1,8 +1,9 @@
 ---
-nav:
-  title: 组件
-  path: /components
-  order: 1
+  title: Bagde 徽标
+  toc: false
+  group: 
+    title: 数据展示
+    order: 3
 ---
 
 ## Bagde 徽标
@@ -11,4 +12,5 @@ nav:
 
 <code src="./demo/basic.jsx" ></code>
 
-<API></API>
+## API
+<API id='Badge'></API>

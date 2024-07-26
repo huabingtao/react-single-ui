@@ -1,8 +1,9 @@
----
-nav:
-  title: 组件
-  path: /components
-  order: 1
+---  
+  title: Input 文本输入
+  toc: false
+  group: 
+    title: 表单
+    order: 1
 ---
 
 ## Input 文本输入
@@ -11,4 +12,5 @@ nav:
 
 <code src="./demo/basic.jsx" ></code>
 
-<API></API>
+## API
+<API id="Input"></API>

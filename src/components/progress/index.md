@@ -1,8 +1,9 @@
 ---
-nav:
-  title: 组件
-  path: /components
-  order: 1
+  title: Progress 进度条
+  toc: false
+  group: 
+    title: 数据展示
+    order: 3
 ---
 
 ## Progress 进度条

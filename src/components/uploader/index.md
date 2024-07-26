@@ -1,8 +1,9 @@
 ---
-nav:
-  title: 组件
-  path: /components
-  order: 1
+  title: Uploader 文件上传
+  toc: false
+  group: 
+    title: 表单
+    order: 1
 ---
 
 ## Uploader 文件上传

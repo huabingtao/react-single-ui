@@ -27,6 +27,10 @@ const caculType = (type: string) => {
 };
 
 export interface InputItemProps extends BaseinputProps {
+  /**
+   * 输入框的类名
+   * @description 输入框的类名
+   */
   className?: string;
 }
 

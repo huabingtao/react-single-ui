@@ -65,15 +65,15 @@ const Image: React.FC<ImageProps> = (props) => {
 
   const {
     alt,
-    width,
-    height,
+    width='90px',
+    height='90px',
     src,
-    fit,
+    fit='fill',
     radius,
-    round,
+    round=false,
     onLoad,
     onError,
-    showLoading,
+    showLoading=false,
     showError,
     lazyLoad,
   } = props;
@@ -151,14 +151,6 @@ const Image: React.FC<ImageProps> = (props) => {
       {renderImage()}
     </div>
   );
-};
-
-Image.defaultProps = {
-  width: '90px',
-  height: '90px',
-  round: false,
-  fit: 'fill',
-  showLoading: false,
 };
 
 export default Image;

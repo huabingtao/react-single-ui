@@ -7,13 +7,55 @@ import { prefixCls } from '../../utils';
 export type SizeProps = 'sm' | 'lg';
 
 export interface BadegProps {
+  /**
+   * 颜色
+   * @description 设置徽章的颜色
+   */
   color: string;
-  dot: boolean;
-  max: number;
-  content: React.ReactElement | number;
-  size: SizeProps;
-  fixed: boolean;
-  style: React.CSSProperties;
+
+  /**
+   * 是否为点状徽章
+   * @description 设置为点状徽章
+   * @default false
+   */
+  dot?: boolean;
+
+  /**
+   * 显示的最大数字
+   * @description 设置最大显示数字
+   * @default 99
+   */
+  max?: number;
+
+  /**
+   * 内容
+   * @description 设置徽章内容，可以是 React 元素或数字
+   */
+  content?: React.ReactElement | number;
+
+  /**
+   * 尺寸
+   * @description 设置徽章的尺寸
+   */
+  size?: SizeProps;
+
+  /**
+   * 是否固定位置
+   * @description 设置徽章位置是否固定
+   */
+  fixed?: boolean;
+
+  /**
+   * 样式
+   * @description 自定义徽章样式
+   */
+  style?: React.CSSProperties;
+
+  /**
+   * 子元素
+   * @description 包裹的子元素
+   */
+  children: React.ReactNode;
 }
 
 const BadgePrefixCls = prefixCls + '-badge';

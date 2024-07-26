@@ -1,8 +1,9 @@
 ---
-nav:
-  title: 组件
-  path: /components
-  order: 1
+  title: Toast 轻提示
+  toc: false
+  group: 
+    title: 反馈
+    order: 2
 ---
 
 ## Toast 轻提示

@@ -1,8 +1,9 @@
 ---
-nav:
-  title: 组件
-  path: /components
-  order: 1
+  title: Switch 滑动开关
+  toc: false
+  group: 
+    title: 表单
+    order: 1
 ---
 
 ## Switch 滑动开关

@@ -1,8 +1,9 @@
 ---
-nav:
-  title: 组件
-  path: /components
-  order: 1
+  title: Breadcrmb 面包屑
+  toc: false
+  group: 
+    title: 导航
+    order: 4
 ---
 
 ## Breadcrmb 面包屑
@@ -11,4 +12,4 @@ nav:
 
 <code src="./demo/basic.jsx" ></code>
 
-<API></API>
+<API id="Breadcrmb"></API>

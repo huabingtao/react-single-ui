@@ -1,8 +1,9 @@
 ---
-nav:
-  title: 组件
-  path: /components
-  order: 1
+  title: TreeSelect 分类选择
+  toc: false
+  group: 
+    title: 导航
+    order: 4
 ---
 
 ## TreeSelect 分类选择

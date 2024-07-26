@@ -1,7 +1,9 @@
 ---
-nav:
-  title: 组件
-  path: /components
+  title: Button 按钮
+  toc: false
+  group: 
+    title: 基础
+    order: 0
 ---
 
 ## Button 按钮
@@ -10,4 +12,5 @@ nav:
 
 <code src="./demo/basic.jsx" ></code>
 
-<API></API>
+## API
+<API id="Button"></API>

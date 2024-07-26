@@ -24,16 +24,56 @@ export enum ButtonType {
 }
 
 interface BaseButtonProps {
+  /**
+   * 额外的 CSS 类名
+   * @default ""
+   */
   className?: string;
+
+  /**
+   * 是否禁用按钮
+   * @default false
+   */
   disabled?: boolean;
+
+  /**
+   * 按钮的大小，可选值为 'lg'（大） 或 'sm'（小）
+   */
   size?: ButtonSize;
+
+  /**
+   * 按钮的类型，可选值为 'primary' | 'default' | 'danger' | 'link'
+   * @default "default"
+   */
   btnType?: ButtonType;
+
+  /**
+   * 按钮的子节点
+   */
   children: React.ReactNode;
+
+  /**
+   * 链接按钮的 URL，若设置此值则按钮渲染为 <a> 标签
+   */
   href?: string;
+
+  /**
+   * 是否为块级按钮，块级按钮会占据父容器的全部宽度
+   * @default false
+   */
   block?: boolean;
+
+  /**
+   * 按钮处于激活状态时的 CSS 类名
+   */
   activeClassName?: string;
-  style?: object;
+
+  /**
+   * 内联样式对象
+   */
+  style?: React.CSSProperties;
 }
+
 type NativeButtonProps = BaseButtonProps &
   React.ButtonHTMLAttributes<HTMLElement>;
 type AnchorButtonProps = BaseButtonProps &
@@ -41,8 +81,8 @@ type AnchorButtonProps = BaseButtonProps &
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 const Button: React.FC<ButtonProps> = (props) => {
   const {
-    btnType,
-    block,
+    btnType = ButtonType.Default,
+    block = false,
     disabled = false,
     size,
     children,
@@ -79,10 +119,10 @@ const Button: React.FC<ButtonProps> = (props) => {
   );
 };
 
-Button.defaultProps = {
-  disabled: false,
-  block: false,
-  btnType: ButtonType.Default,
-};
+// 使用 Pick 选择 BaseButtonProps 属性生成文档
+type DocumentedButtonProps = Pick<ButtonProps, keyof BaseButtonProps>;
+
+const DocumentedButton: React.FC<DocumentedButtonProps> = Button;
+export { DocumentedButton };
 
 export default Button;

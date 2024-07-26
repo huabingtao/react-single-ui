@@ -28,6 +28,10 @@ export interface BreadcrmbProps {
    * @description 选择事件
    */
   onSelect?: (selectIndex: number) => void;
+  /**
+   * @description 子元素
+   */
+  children: React.ReactNode;
 }
 
 interface IBreadcrmbContext {
@@ -53,7 +57,7 @@ const Breadcrmb: React.FC<BreadcrmbProps> = (props) => {
 
   const breadcrmbContextContent: IBreadcrmbContext = {
     length: (children as [])?.length || 0,
-    separator,
+    separator: '/',
     inactiveColor,
     activeColor,
     onSelect: handleSelect,
@@ -81,8 +85,5 @@ const Breadcrmb: React.FC<BreadcrmbProps> = (props) => {
   );
 };
 
-Breadcrmb.defaultProps = {
-  separator: '/',
-};
 
 export default Breadcrmb;
