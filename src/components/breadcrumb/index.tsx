@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 import { prefixCls } from '../../utils';
-import { BreadcrmbItemProps } from './breadcrmb-item';
+import { BreadcrumbItemProps } from './breadcrumb-item';
 
-export interface BreadcrmbProps {
+export interface BreadcrumbProps {
   /**
    * @description 分隔符
    * @default "/"
@@ -34,7 +34,7 @@ export interface BreadcrmbProps {
   children: React.ReactNode;
 }
 
-interface IBreadcrmbContext {
+interface IBreadcrumbContext {
   index?: number;
   length: number;
   separator?: string;
@@ -44,46 +44,49 @@ interface IBreadcrmbContext {
   onSelect?: (selectIndex: number) => void;
 }
 
-export const BreadcrmbContext = createContext<IBreadcrmbContext>({ length: 0 });
+export const BreadcrumbContext = createContext<IBreadcrumbContext>({ length: 0 });
 
-const BreadcrmbPrefixCls = prefixCls + '-breadcrmb';
+const BreadcrumbPrefixCls = prefixCls + '-breadcrmb';
 
-const Breadcrmb: React.FC<BreadcrmbProps> = (props) => {
+const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
   const { separator, children, inactiveColor, activeColor, onSelect } = props;
 
   const handleSelect = (index: number) => {
-    onSelect && onSelect(index);
+    if(onSelect){
+      onSelect(index)
+    }
+    // onSelect && onSelect(index);
   };
 
-  const breadcrmbContextContent: IBreadcrmbContext = {
+  const breadcrmbContextContent: IBreadcrumbContext = {
     length: (children as [])?.length || 0,
     separator: '/',
     inactiveColor,
     activeColor,
     onSelect: handleSelect,
   };
-  const classes = classNames(BreadcrmbPrefixCls);
+  const classes = classNames(BreadcrumbPrefixCls);
   const renderChildren = () => {
     return React.Children.map(children, (child, index) => {
       const childElement =
-        child as React.FunctionComponentElement<BreadcrmbItemProps>;
+        child as React.FunctionComponentElement<BreadcrumbItemProps>;
       if (childElement.type.displayName === 'TabBarItem') {
         return React.cloneElement(childElement, { index });
       } else {
         console.error(
-          'Warning: Breadcrmb has a child which is not BreadcrmbItem',
+          'Warning: Breadcrumb has a child which is not BreadcrumbItem',
         );
       }
     });
   };
   return (
     <ul className={classes}>
-      <BreadcrmbContext.Provider value={breadcrmbContextContent}>
+      <BreadcrumbContext.Provider value={breadcrmbContextContent}>
         {renderChildren()}
-      </BreadcrmbContext.Provider>
+      </BreadcrumbContext.Provider>
     </ul>
   );
 };
 
 
-export default Breadcrmb;
+export default Breadcrumb;

@@ -16,8 +16,8 @@ export { default as Uploader } from './components/uploader';
 // navigation
 // export { default as TabBar } from './components/navigation/tab-bar';
 // export { default as TabBarItem } from './components/navigation/tab-bar/item';
-export { default as Breadcrmb } from './components/breadcrmb';
-export { default as BreadcrmbItem } from './components/breadcrmb/breadcrmb-item';
+export { default as Breadcrumb } from './components/breadcrumb';
+export { default as BreadcrmbItem } from './components/breadcrumb/breadcrumb-item';
 export { default as TreeSelect } from './components/tree-select';
 // display
 export { default as Badge } from './components/badge';

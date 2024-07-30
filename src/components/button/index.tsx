@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /*
  * @Author: your name
  * @Date: 2021-05-23 17:20:19
@@ -24,6 +25,11 @@ export enum ButtonType {
 }
 
 interface BaseButtonProps {
+  /**
+   * 按钮原生的 type属性
+   * @default "button"
+   */
+  type?: 'submit' | 'reset' | 'button';
   /**
    * 额外的 CSS 类名
    * @default ""
@@ -89,6 +95,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     className,
     href,
     activeClassName,
+    type = 'button',
     ...restProps
   } = props;
   const buttonPrefixCls = prefixCls + '-btn';
@@ -108,8 +115,8 @@ const Button: React.FC<ButtonProps> = (props) => {
   }
 
   return (
-    <TouchFeedback activeClassName={`${buttonPrefixCls}-active`}>
-      <button className={classes} {...restProps} disabled={disabled}>
+    <TouchFeedback activeClassName={`${buttonPrefixCls}-active ${activeClassName}`}>
+      <button className={classes} type={type} {...restProps} disabled={disabled}>
         {children}
       </button>
     </TouchFeedback>

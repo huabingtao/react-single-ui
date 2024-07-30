@@ -8,8 +8,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export interface BaseIconProps {
   /**
-* @description  icon名称
-*/
+  * @description  icon名称
+  */
   icon: IconProp;
 }
 

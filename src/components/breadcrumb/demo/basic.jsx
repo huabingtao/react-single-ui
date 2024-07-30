@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breadcrmb, BreadcrmbItem } from 'react-single-ui';
+import { Breadcrumb, BreadcrumbItem } from 'react-single-ui';
 import _ from 'lodash';
 
 export default () => {
@@ -18,9 +18,9 @@ export default () => {
     },
   ]);
   const onSelect = (index) => {
-    const copyBreadcrmb1 = Object.assign([], breadcrmb1);
-    copyBreadcrmb1.splice(index + 1, copyBreadcrmb1.length - 1);
-    setBreadCrmb1(copyBreadcrmb1);
+    const copyBreadcrumb1 = Object.assign([], breadcrmb1);
+    copyBreadcrumb1.splice(index + 1, copyBreadcrumb1.length - 1);
+    setBreadCrmb1(copyBreadcrumb1);
   };
 
   const [breadcrmb2, setBreadCrmb2] = useState([
@@ -38,9 +38,9 @@ export default () => {
     },
   ]);
   const onSelect2 = (index) => {
-    const copyBreadcrmb2 = Object.assign([], breadcrmb2);
-    copyBreadcrmb2.splice(index + 1, copyBreadcrmb2.length - 1);
-    setBreadCrmb2(copyBreadcrmb2);
+    const copyBreadcrumb2 = Object.assign([], breadcrmb2);
+    copyBreadcrumb2.splice(index + 1, copyBreadcrumb2.length - 1);
+    setBreadCrmb2(copyBreadcrumb2);
   };
 
   const [breadcrmb3, setBreadCrmb3] = useState([
@@ -58,9 +58,9 @@ export default () => {
     },
   ]);
   const onSelect3 = (index) => {
-    const copyBreadcrmb3 = Object.assign([], breadcrmb3);
-    copyBreadcrmb3.splice(index + 1, copyBreadcrmb3.length - 1);
-    setBreadCrmb3(copyBreadcrmb3);
+    const copyBreadcrumb3 = Object.assign([], breadcrmb3);
+    copyBreadcrumb3.splice(index + 1, copyBreadcrumb3.length - 1);
+    setBreadCrmb3(copyBreadcrumb3);
   };
 
   const [breadcrmb4, setBreadCrmb4] = useState([
@@ -79,49 +79,49 @@ export default () => {
     },
   ]);
   const onSelect4 = (index) => {
-    const copyBreadcrmb4 = Object.assign([], breadcrmb4);
-    copyBreadcrmb4.splice(index + 1, copyBreadcrmb4.length - 1);
-    setBreadCrmb4(copyBreadcrmb4);
+    const copyBreadcrumb4 = Object.assign([], breadcrmb4);
+    copyBreadcrumb4.splice(index + 1, copyBreadcrumb4.length - 1);
+    setBreadCrmb4(copyBreadcrumb4);
   };
 
   return (
     <>
       <h1 className="sn-title">Basic</h1>
-      <Breadcrmb>
+      <Breadcrumb>
         {breadcrmb1.map((item) => {
           return (
-            <BreadcrmbItem key={item.title} disabled={item.disabled}>
+            <BreadcrumbItem key={item.title} disabled={item.disabled}>
               {item.title}
-            </BreadcrmbItem>
+            </BreadcrumbItem>
           );
         })}
-      </Breadcrmb>
+      </Breadcrumb>
       <h1 className="sn-title">Custom color</h1>
-      <Breadcrmb
+      <Breadcrumb
         onSelect={onSelect2}
         activeColor="#0818f5"
         inactiveColor="#9193e263"
       >
         {breadcrmb2.map((item) => {
-          return <BreadcrmbItem key={item.title}>{item.title}</BreadcrmbItem>;
+          return <BreadcrumbItem key={item.title}>{item.title}</BreadcrumbItem>;
         })}
-      </Breadcrmb>
+      </Breadcrumb>
       <h1 className="sn-title">Custom separator</h1>
-      <Breadcrmb separator={'-'} onSelect={onSelect3}>
+      <Breadcrumb separator={'-'} onSelect={onSelect3}>
         {breadcrmb3.map((item) => {
-          return <BreadcrmbItem key={item.title}>{item.title}</BreadcrmbItem>;
+          return <BreadcrumbItem key={item.title}>{item.title}</BreadcrumbItem>;
         })}
-      </Breadcrmb>
+      </Breadcrumb>
       <h1 className="sn-title">Disabled</h1>
-      <Breadcrmb onSelect={onSelect4}>
+      <Breadcrumb onSelect={onSelect4}>
         {breadcrmb4.map((item) => {
           return (
-            <BreadcrmbItem disabled={item.disabled} key={item.title}>
+            <BreadcrumbItem disabled={item.disabled} key={item.title}>
               {item.title}
-            </BreadcrmbItem>
+            </BreadcrumbItem>
           );
         })}
-      </Breadcrmb>
+      </Breadcrumb>
     </>
   );
 };

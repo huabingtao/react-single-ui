@@ -12,4 +12,5 @@
 <code src="./demo/basic.jsx" ></code>
 
 ## API
-<API id="Icon"></API>
+
+<!-- <API id="Icon"></API> -->

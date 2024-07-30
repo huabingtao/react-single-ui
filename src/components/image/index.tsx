@@ -112,11 +112,17 @@ const Image: React.FC<ImageProps> = (props) => {
     if (!src || error) return;
     const handleOnload = (event?: React.FormEvent) => {
       setLoading(false);
-      onLoad && onLoad(event);
+      if(onLoad){
+        onLoad(event);
+      }
+      // onLoad && onLoad(event);
     };
     const handleOnError = (event?: React.FormEvent) => {
       setError(true);
-      onError && onError(event);
+      if(onError){
+        onError(event);
+      }
+      // onError && onError(event);
     };
     const attrs = {
       alt,
