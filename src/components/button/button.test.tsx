@@ -28,7 +28,7 @@ describe('test Button component', () => {
     const element = wrapper.getByText('Nice');
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual('BUTTON');
-    expect(element).toHaveClass('btn btn-default');
+    expect(element).toHaveClass('sn-btn sn-btn-default');
     expect(element).not.toBeDisabled();
     expect(element).toBeInTheDocument();
     fireEvent.click(element);
@@ -38,14 +38,14 @@ describe('test Button component', () => {
     const wrapper = render(<Button {...testProps}>different</Button>);
     const element = wrapper.getByText('different');
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass('btn test-class btn-primary btn-lg');
+    expect(element).toHaveClass('sn-btn test-class sn-btn-primary sn-btn-lg');
   });
   it('should render a link when btnType equals link and href is provided', () => {
     const wrapper = render(<Button {...testLinkProps}>Link</Button>);
     const element = wrapper.getByText('Link');
     expect(element).toBeInTheDocument();
     expect(element.tagName).toEqual('A');
-    expect(element).toHaveClass('btn btn-link');
+    expect(element).toHaveClass('sn-btn sn-btn-link');
   });
   it('should render disabled button when disabled set to true', () => {
     const wrapper = render(<Button {...testDisabledProps}>Disabled</Button>);

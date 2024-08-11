@@ -23,6 +23,7 @@ export interface UploaderProps {
   beforeUpload?: (file: File) => boolean;
   /**
    * @description  文件改变回调函数
+   * @param files
    */
   onChange?: (file: File, files: UploaderFileListItem[], response: any) => void;
   /**

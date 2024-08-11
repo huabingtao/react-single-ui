@@ -10,7 +10,8 @@
       "@@/*": [".dumi/tmp/*"],
       "react-single-ui": ["src"],
       "react-single-ui/*": ["src/*", "*"]
-    }
+    },
+    "types":["jest", "@testing-library/jest-dom"]
   },
   "include": [".dumirc.ts", "src/**/*"]
 }
