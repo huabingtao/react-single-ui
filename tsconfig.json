@@ -11,7 +11,8 @@
       "react-single-ui": ["src"],
       "react-single-ui/*": ["src/*", "*"]
     },
-    "types":["jest", "@testing-library/jest-dom"]
+    "types":["jest", "@testing-library/jest-dom"],
+    "outDir": "./dist", // 其他编译输出到 dist 目录
   },
   "include": [".dumirc.ts", "src/**/*"]
 }

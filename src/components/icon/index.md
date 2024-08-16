@@ -13,4 +13,4 @@
 
 ## API
 
-<!-- <API id="Icon"></API> -->
+<API id="Icon"></API>
