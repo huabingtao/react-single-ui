@@ -4,47 +4,16 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import classNames from 'classnames';
 import { prefixCls } from '../../utils';
 
-// 这个接口会用于文档生成，icon 属性的类型被标记为字符串 'IconProp'
-export interface BaseIconProps {
-  /**
-   * @description icon 名称，实际支持 FontAwesome 的 IconProp 类型
-   */
-  icon: 'IconProp';
+// 使用的时候有props智能提示
+// api 只有部分显示，icon下的类型为'IconProp' 字符串
+export type ActualIconProps = Pick<Omit<FontAwesomeIconProps, 'icon'>  & {icon: 'IconProps' |  IconProp}, 'icon' | 'size' | 'color' | 'className' | 'spin'>
 
-  /**
-   * @description icon 大小
-   */
-  size?: FontAwesomeIconProps['size'];
-
-  /**
-   * @description icon 颜色
-   */
-  color?: string;
-    /**
-   * @className icon 的类名
-   */
-    className?: string;
-}
-
-// 实际运行时支持 IconProp 类型
-type ActualIconProps = Omit<BaseIconProps, 'icon'> & { icon: IconProp };
-
-// 渲染文档的 IconProp 类型
-type DocumentIconProps = Omit<BaseIconProps, 'icon'> & { icon: IconProp };
-
-const Icon: React.FC<FontAwesomeIconProps> = (props) => {
+const Icon: React.FC<ActualIconProps> = (props) => {
   const { className, icon, ...restProps } = props;
+  // 将 'IconProps' 断言为 IconProp
+  const iconProp: IconProp = icon as IconProp;
   const classes = classNames(`${prefixCls}-icon`, className);
-  return <FontAwesomeIcon icon={icon} className={classes} {...restProps} />;
+  return <FontAwesomeIcon icon={iconProp} className={classes} {...restProps} />;
 };
-
-// 用于生成文档的 Icon 组件，仅暴露给文档系统使用
-const DocumentIcon: React.FC<FontAwesomeIconProps> = (props) => {
-  // 这里不会渲染实际的图标，而是用于生成 API 文档
-  return <Icon {...(props as unknown as FontAwesomeIconProps)} />;
-};
-
-export {DocumentIcon}
-
 
 export default Icon;

@@ -1,6 +1,6 @@
 
 export { default as Loading } from './components/loading';
-export { default as Icon } from './components/icon';
+export { default as Icon} from './components/icon';
 export { DocumentedButton as Button } from './components/button';
 export { default as Mask } from './components/mask';
 export { default as Image } from './components/image';
