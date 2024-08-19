@@ -1,5 +1,11 @@
 @import "variables";
 @import "reboot";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.dumi-default-content-footer svg{
+  display: inline;
+}
 .sn-title {
     margin: 0;
     padding: 16px 0 16px;
