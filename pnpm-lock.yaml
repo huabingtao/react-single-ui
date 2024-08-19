@@ -74,10 +74,10 @@ devDependencies:
     specifier: ^7.24.7
     version: 7.24.7(@babel/core@7.25.2)
   '@commitlint/cli':
-    specifier: ^17.1.2
+    specifier: ^17.8.1
     version: 17.8.1
   '@commitlint/config-conventional':
-    specifier: ^17.1.0
+    specifier: ^17.8.1
     version: 17.8.1
   '@testing-library/dom':
     specifier: ^10.4.0
