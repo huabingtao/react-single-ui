@@ -11,7 +11,7 @@
 
 <code src="./demo/icon-list.jsx"></code>
 
-### 部分props代码演示:
+### 代码演示:
 
 <code src="./demo/basic.jsx" ></code>
 

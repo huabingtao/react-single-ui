@@ -8,6 +8,12 @@ export default () => {
       <h1 className="sn-title">Basic</h1>
       <Image src="https://img01.yzcdn.cn/vant/cat.jpeg"></Image>
       {/* <Image showLoading fit="cover" src={img3}></Image> */}
+      <h1 className="sn-title">自定义宽高</h1>
+      <Image
+        width="200px"
+        height="200px"
+        src="https://img01.yzcdn.cn/vant/cat.jpeg"
+      ></Image>
       <h1 className="sn-title">Fit</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', textAlign: 'center' }}>
         <div>
@@ -81,6 +87,8 @@ export default () => {
           <p>scale-down</p>
         </div>
       </div>
+      <h1 className="sn-title">自定义圆角</h1>
+      <Image radius={20} src="https://img01.yzcdn.cn/vant/cat.jpeg"></Image>
       <h1 className="sn-title">Loading</h1>
       <Image showLoading fit="cover" src=""></Image>
       <h1 className="sn-title">Error</h1>

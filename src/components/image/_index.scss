@@ -3,6 +3,7 @@ $imagePrefixCls: "sn-image";
   &-wrap {
     position: relative;
     display: inline-block;
+    overflow: hidden;
     &-round {
       overflow: hidden;
     }

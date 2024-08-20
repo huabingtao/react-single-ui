@@ -4,6 +4,8 @@
   group: 
     title: 基础
     order: 0
+  demo:
+    cols: 2
 ---
 
 ## Button 按钮
@@ -13,4 +15,5 @@
 <code src="./demo/basic.jsx" ></code>
 
 ## API
+
 <API id="Button"></API>

@@ -1,7 +1,17 @@
 import React from 'react';
 import { Icon } from 'react-single-ui';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHouse, faMagnifyingGlass, faUser, faCheck, faDownload, faImage, faPhone, faLocationDot, faMusic } from '@fortawesome/free-solid-svg-icons'; // 全部图标
+import {
+  faHouse,
+  faMagnifyingGlass,
+  faUser,
+  faCheck,
+  faDownload,
+  faImage,
+  faPhone,
+  faLocationDot,
+  faMusic,
+} from '@fortawesome/free-solid-svg-icons'; // 全部图标
 import { faUser as farUser } from '@fortawesome/free-regular-svg-icons';
 
 library.add(
@@ -14,7 +24,7 @@ library.add(
   faPhone,
   faLocationDot,
   faMusic,
-  farUser
+  farUser,
 );
 
 // 定义带有 prefix 的图标数组
@@ -43,19 +53,21 @@ const icons = [
 export default () => {
   return (
     <>
-    <div className="w-full h-full flex flex-wrap justify-between bg-gray-100 p-1">
-      {
-        icons.map((icon, index) => (
+      <div className="w-full h-full flex flex-wrap justify-between bg-gray-100 p-1">
+        {icons.map((icon, index) => (
           <div
             key={index}
             className="w-[30%] mb-1 flex flex-col items-center justify-center aspect-square bg-white text-gray-800 hover:bg-yellow-200"
           >
-            <Icon icon={[icon.prefix, icon.name]} size="2x" className="text-gray-700" />
-            <span className="text-size-0.5 pt-px-4">{icon.name}</span>
+            <Icon
+              icon={[icon.prefix, icon.name]}
+              size="2x"
+              className="text-gray-700"
+            />
+            <span className="text-[12px] pt-[8px]">{icon.name}</span>
           </div>
-        ))
-      }
-    </div>
+        ))}
+      </div>
     </>
   );
 };
