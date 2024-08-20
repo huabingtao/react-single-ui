@@ -11,9 +11,13 @@ import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/index';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons'; // 全部图标
+import {
+  faSpinner,
+  faCircleNotch,
+  faRotate,
+} from '@fortawesome/free-solid-svg-icons'; // 全部图标
 
-library.add(fas);
+library.add(faSpinner, faCircleNotch, faRotate);
 
 export type SizeProp = 'xs' | 'lg' | 'sm';
 
@@ -49,20 +53,24 @@ interface ILoadingProps {
    * @description  传入类名
    */
   className?: string;
+  /**
+   * @description 元素
+   */
+  children?: React.ReactNode;
 }
 
 const Loading: React.FC<ILoadingProps> = (props) => {
   const {
     children,
-    type,
-    textSize,
+    type = 'spinner',
+    textSize = '12',
     className,
     textColor = '12px',
     color = '#000',
     size = 'lg',
   } = props;
   const classes = classnames('single-loading', className);
-  const icon = type === 'spinner' ? 'spinner' : 'circle-notch';
+  const icon = type ? type : 'spinner';
   return (
     <div className={classes}>
       <Icon icon={icon} color={color} size={size} spin></Icon>
@@ -73,8 +81,4 @@ const Loading: React.FC<ILoadingProps> = (props) => {
   );
 };
 
-Loading.defaultProps = {
-  textSize: '12',
-  type: 'spinner',
-};
 export default Loading;
