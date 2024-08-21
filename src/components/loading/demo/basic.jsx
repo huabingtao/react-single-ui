@@ -5,7 +5,7 @@ export default () => {
   return (
     <>
       <h1 className="sn-title">Basic</h1>
-      <Loading size="3x" color="#0094ff" className="mr-3"></Loading>
+      <Loading className="mr-3"></Loading>
       <Loading
         type="circle-notch"
         size="3x"

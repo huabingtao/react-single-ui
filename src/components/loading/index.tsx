@@ -10,18 +10,18 @@
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/index';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library, SizeProp } from '@fortawesome/fontawesome-svg-core';
 import {
   faSpinner,
   faCircleNotch,
   faRotate,
 } from '@fortawesome/free-solid-svg-icons'; // 全部图标
-
+import { prefixCls } from '../../utils';
 library.add(faSpinner, faCircleNotch, faRotate);
 
-export type SizeProp = 'xs' | 'lg' | 'sm';
+export type IconSizeProp = SizeProp;
 
-export type IconType = 'spinner' | 'circle';
+export type IconType = 'spinner' | 'circle' | 'circle-notch';
 
 interface ILoadingProps {
   /**
@@ -30,12 +30,12 @@ interface ILoadingProps {
    */
   color?: string;
   /**
-   * @description  图标类型 接受 'spinner' | 'circle' 两种类型的图标
+   * @description  图标类型 接受 'spinner' | 'circle' | 'circle-notch' 类型的图标
    * @default spinner
    */
   type?: IconType;
   /**
-   * @description  图标大小 接受 'xs' | 'lg' | 'sm' 三种类型
+   * @description  图标大小 接受 IconSizeProp 类型
    * @default sm
    */
   size?: SizeProp;
@@ -65,11 +65,11 @@ const Loading: React.FC<ILoadingProps> = (props) => {
     type = 'spinner',
     textSize = '12',
     className,
-    textColor = '12px',
+    textColor = '#000',
     color = '#000',
     size = 'lg',
   } = props;
-  const classes = classnames('single-loading', className);
+  const classes = classnames(`${prefixCls}-loading`, className);
   const icon = type ? type : 'spinner';
   return (
     <div className={classes}>
