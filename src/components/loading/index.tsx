@@ -23,7 +23,7 @@ export type IconSizeProp = SizeProp;
 
 export type IconType = 'spinner' | 'circle' | 'circle-notch';
 
-interface ILoadingProps {
+interface LoadingProps {
   /**
    * @description  icon 颜色
    * @default 黑色
@@ -59,7 +59,7 @@ interface ILoadingProps {
   children?: React.ReactNode;
 }
 
-const Loading: React.FC<ILoadingProps> = (props) => {
+const Loading: React.FC<LoadingProps> = (props) => {
   const {
     children,
     type = 'spinner',
@@ -72,13 +72,18 @@ const Loading: React.FC<ILoadingProps> = (props) => {
   const classes = classnames(`${prefixCls}-loading`, className);
   const icon = type ? type : 'spinner';
   return (
-    <div className={classes}>
+    <div className={`${classes} inline-flex flex-col items-center`}>
       <Icon icon={icon} color={color} size={size} spin></Icon>
-      <span style={{ fontSize: textSize + 'px', color: textColor }}>
+      <span
+        className="inline-block mt-1"
+        style={{ fontSize: textSize + 'px', color: textColor }}
+      >
         {children}
       </span>
     </div>
   );
 };
+
+export { LoadingProps };
 
 export default Loading;
