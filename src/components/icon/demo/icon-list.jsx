@@ -11,6 +11,15 @@ import {
   faPhone,
   faLocationDot,
   faMusic,
+  faArrowUp,
+  faCaretUp,
+  faFilter,
+  faFile,
+  faList,
+  faRotateRight,
+  faLock,
+  faPlus,
+  faMinus,
 } from '@fortawesome/free-solid-svg-icons'; // 全部图标
 import { faUser as farUser } from '@fortawesome/free-regular-svg-icons';
 
@@ -25,6 +34,15 @@ library.add(
   faLocationDot,
   faMusic,
   farUser,
+  faArrowUp,
+  faCaretUp,
+  faFilter,
+  faFile,
+  faList,
+  faRotateRight,
+  faLock,
+  faPlus,
+  faMinus,
 );
 
 // 定义带有 prefix 的图标数组

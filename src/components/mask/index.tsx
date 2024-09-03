@@ -9,25 +9,53 @@ export interface MaskProps {
    */
   visible: boolean;
   /**
+   * @zIndex 遮罩层级
+   * @default 1
+   */
+  zIndex?: number;
+  /**
    * @description 点击遮罩
    */
   onClick?: () => void;
+  /**
+   * @children  子节点
+   */
+  children?: React.ReactNode;
+  /**
+   * @color 遮罩颜色
+   * @default '#00000066'
+   */
+  backgroundColor?: string;
 }
 
 const div: any = document.createElement('div');
 document.body.appendChild(div);
 
 class Mask extends React.Component<MaskProps, any> {
-  constructor(props: any) {
-    super(props);
-  }
   container: any;
   maskDom = () => {
+    const style = {
+      backgroundColor: this.props.backgroundColor || '#00000066',
+      zIndex: this.props.zIndex || 1,
+    };
+
     return (
-      <div className={`${prefixCls}-mask`} onClick={this.props.onClick}>
+      <div
+        className={`${prefixCls}-mask`}
+        onClick={this.handleClickMask}
+        style={style}
+      >
         {this.props.children}
       </div>
     );
+  };
+
+  handleClickMask = () => {
+    // 点击遮罩层
+    this.removeContainer();
+    if (this.props.onClick) {
+      this.props.onClick();
+    }
   };
 
   getContainer = () => {
@@ -39,6 +67,13 @@ class Mask extends React.Component<MaskProps, any> {
       this.container = container;
     }
     return this.container;
+  };
+
+  removeContainer = () => {
+    if (this.container) {
+      document.body.removeChild(this.container);
+      this.container = null;
+    }
   };
 
   preventDefault = (e: Event) => {
