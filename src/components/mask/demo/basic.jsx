@@ -28,18 +28,21 @@ export default () => {
         打开自定义内容的蒙层
       </Button>
 
-      <Mask visible={visible} onClick={() => setVisible(false)}></Mask>
+      <Mask visible={visible} onMaskClick={() => setVisible(false)}></Mask>
       <Mask
         visible={visibleLight}
         backgroundColor="#00000033"
-        onClick={() => setVisibleLight(false)}
+        onMaskClick={() => setVisibleLight(false)}
       ></Mask>
       <Mask
         visible={visibleDark}
         backgroundColor="#020202cf"
-        onClick={() => setVisibleDark(false)}
+        onMaskClick={() => setVisibleDark(false)}
       ></Mask>
-      <Mask visible={visibleContent} onClick={() => setVisibleContent(false)}>
+      <Mask
+        visible={visibleContent}
+        onMaskClick={() => setVisibleContent(false)}
+      >
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <Image
             fit="fill"

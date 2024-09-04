@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 import { prefixCls } from '../../utils';
-import { BaseinputProps } from './input.d';
+import { BaseInputProps } from './input.d';
 import Input from './input';
 import Icon from '../../components/icon';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+library.add(faTimesCircle);
 
 const caculType = (type: string) => {
   let resType = '';
   switch (type) {
-    case 'phone':
+    case 'tel':
       resType = 'tel';
       break;
     case 'password':
@@ -26,25 +28,25 @@ const caculType = (type: string) => {
   return resType;
 };
 
-export interface InputItemProps extends BaseinputProps {
+export interface InputItemProps extends BaseInputProps {
   /**
-   * 输入框的类名
-   * @description 输入框的类名
+   *
+   * @description 自定义输入框的类名
    */
   className?: string;
 }
 
-const InputPrefixCls = prefixCls + '-input-wrap';
+const InputPrefixCls = prefixCls + '-input';
 
 const InputItem: React.FC<InputItemProps> = (props) => {
   const {
     type = 'text',
+    maxLength,
     label,
     required = false,
     disabled = false,
     readonly = false,
     clearble = false,
-    defaultValue,
     onChange,
     onFocus,
     onBlur,
@@ -65,8 +67,8 @@ const InputItem: React.FC<InputItemProps> = (props) => {
   }, [props.value]);
 
   const handleChange = (value: string | undefined) => {
-    if (type === 'phone') {
-      value = value?.replace(/\D/g, '');
+    if (type === 'tel') {
+      value = value?.replace(/\D/g, '') || '';
     }
     setValue(value || '');
     onChange && onChange(value);
@@ -80,6 +82,14 @@ const InputItem: React.FC<InputItemProps> = (props) => {
   const handleClear = () => {
     setValue('');
     onClear && onClear();
+  };
+  const renderMaxLengthNotice = () => {
+    const curNum = inValue?.length || 0;
+    return maxLength ? (
+      <div className={`${prefixCls}-input-max-length`}>
+        {curNum}/{maxLength}
+      </div>
+    ) : null;
   };
 
   const inputType = caculType(type);
@@ -95,13 +105,15 @@ const InputItem: React.FC<InputItemProps> = (props) => {
         disabled={disabled}
         type={inputType}
         value={inValue}
+        maxLength={maxLength}
         {...restProps}
       ></Input>
       {!disabled && !readonly && clearble && inValue && (
-        <div className={`${prefixCls}-input-clear`}>
-          <Icon icon="times-circle" onClick={handleClear}></Icon>
+        <div className={`${prefixCls}-input-clear`} onClick={handleClear}>
+          <Icon icon="times-circle"></Icon>
         </div>
       )}
+      {renderMaxLengthNotice()}
     </div>
   );
 };

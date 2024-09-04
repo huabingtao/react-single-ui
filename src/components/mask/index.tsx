@@ -2,7 +2,7 @@ import React from 'react';
 import * as ReactDOM from 'react-dom';
 import { prefixCls } from '../../utils';
 
-const IS_REACT_16 = !!(ReactDOM as any).createPortal;
+const IS_REACT_16 = !!ReactDOM.createPortal;
 export interface MaskProps {
   /**
    * @description 是否显示遮罩层
@@ -10,13 +10,13 @@ export interface MaskProps {
   visible: boolean;
   /**
    * @zIndex 遮罩层级
-   * @default 1
+   * @default 999
    */
   zIndex?: number;
   /**
    * @description 点击遮罩
    */
-  onClick?: () => void;
+  onMaskClick?: () => void;
   /**
    * @children  子节点
    */
@@ -28,15 +28,16 @@ export interface MaskProps {
   backgroundColor?: string;
 }
 
-const div: any = document.createElement('div');
+const div: HTMLDivElement = document.createElement('div');
 document.body.appendChild(div);
 
-class Mask extends React.Component<MaskProps, any> {
-  container: any;
+class Mask extends React.Component<MaskProps, HTMLDivElement> {
+  container: HTMLDivElement | null = null;
   maskDom = () => {
+    const { backgroundColor = '#00000066', zIndex = 999 } = this.props;
     const style = {
-      backgroundColor: this.props.backgroundColor || '#00000066',
-      zIndex: this.props.zIndex || 1,
+      backgroundColor,
+      zIndex,
     };
 
     return (
@@ -53,14 +54,15 @@ class Mask extends React.Component<MaskProps, any> {
   handleClickMask = () => {
     // 点击遮罩层
     this.removeContainer();
-    if (this.props.onClick) {
-      this.props.onClick();
+    if (this.props.onMaskClick) {
+      this.props.onMaskClick();
     }
   };
 
   getContainer = () => {
     if (!this.container) {
       const container = document.createElement('div');
+      container.style.height = '100%';
       const containerId = `${prefixCls}-container-${new Date().getTime()}`;
       container.setAttribute('id', containerId);
       document.body.appendChild(container);
@@ -89,14 +91,11 @@ class Mask extends React.Component<MaskProps, any> {
       document.body.addEventListener('scroll', this.preventDefault, {
         passive: false,
       });
-      return (ReactDOM as any).createPortal(
-        this.maskDom(),
-        this.getContainer(),
-      );
+      return ReactDOM.createPortal(this.maskDom(), this.getContainer());
     }
     document.body.removeEventListener('touchmove', this.preventDefault, false);
     document.body.removeEventListener('scroll', this.preventDefault, false);
-    return null as any;
+    return null;
   }
 }
 

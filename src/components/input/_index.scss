@@ -1,51 +1,49 @@
 $inputPrefixCls: "sn-input";
 
 .#{$inputPrefixCls} {
-  &-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  &-required {
+    .#{$inputPrefixCls} {
+      &-label::before {
+        color: #ee0a24;
+        font-size: 14px;
+        content: "*";
+        display: inline-block;
+      }
+    }
+  }
+  &-disabled {
+    > div:first-child {
+      color: #c8c9cc;
+    }
+    input {
+      color: #c8c9cc;
+    }
+  }
+  &-readonly {
+    .#{$inputPrefixCls} {
+      &-self {
+        &::placeholder {
+          color: #323233;
+        }
+      }
+    }
+  }
+  &::after {
+    position: absolute;
     box-sizing: border-box;
-    padding: 10px 16px;
-    &-required {
-      .#{$inputPrefixCls} {
-        &-label::before {
-          color: #ee0a24;
-          font-size: 14px;
-          content: "*";
-          display: inline-block;
-        }
-      }
-    }
-    &-disabled {
-      > div:first-child {
-        color: #c8c9cc;
-      }
-      input {
-        color: #c8c9cc;
-      }
-    }
-    &-readonly {
-      .#{$inputPrefixCls} {
-        &-self {
-          &::placeholder {
-            color: #323233;
-          }
-        }
-      }
-    }
-    &::after {
-      position: absolute;
-      box-sizing: border-box;
-      content: " ";
-      pointer-events: none;
-      right: 16px;
-      bottom: 0;
-      left: 16px;
-      border-bottom: 1px solid #ebedf0;
-      transform: scaleY(0.5);
-    }
+    content: " ";
+    pointer-events: none;
+    right: 16px;
+    bottom: 0;
+    left: 16px;
+    border-bottom: 1px solid #ebedf0;
+    transform: scaleY(0.5);
   }
   &-label {
     color: #000;

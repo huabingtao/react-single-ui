@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { useRef } from 'react';
 import { InputEventHandler } from './input.d';
 
@@ -15,7 +14,6 @@ export interface InputProps
 
 const Input: React.FC<InputProps> = (props) => {
   const { onBlur, onFocus, onChange, ...restProps } = props;
-  // console.log('restProps:', restProps);
 
   const inputRefs = useRef(null);
   const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
