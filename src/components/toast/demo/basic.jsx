@@ -32,50 +32,50 @@ export default () => {
     Toast.hidden();
   };
   const noMask = () => {
-    Toast.show('noMask', '', false, 3, false);
+    Toast.show('noMask', '', false, 0, false);
   };
   return (
     <>
-      <h1 className="sn-title">Basic</h1>
+      <h1 className="sn-title">基础用法</h1>
       <Button block btnType="primary" onClick={show}>
-        Basic toast
+        基础的 Toast
       </Button>
 
       <div style={{ height: '10px' }}></div>
       <Button block btnType="primary" onClick={showInfo}>
-        Info
+        信息 Toast
       </Button>
       <div style={{ height: '10px' }}></div>
       <Button block btnType="primary" onClick={showSuccess}>
-        Success
+        成功
       </Button>
       <div style={{ height: '10px' }}></div>
       <Button block btnType="danger" onClick={showFail}>
-        Fail
+        失败
       </Button>
       <div style={{ height: '10px' }}></div>
       <Button block btnType="primary" onClick={showLoading}>
-        Loading
+        加载状态
       </Button>
-      <h1 className="sn-title">Always show</h1>
+      <h1 className="sn-title">永远展示</h1>
       <Button block btnType="primary" onClick={alowaysShow}>
-        Always show toast
+        打开不会自动关闭的 Toast
       </Button>
       <div style={{ height: '10px' }}></div>
       <Button block btnType="primary" onClick={hidden}>
-        Handle hidden toast
+        手动关闭Toast
       </Button>
-      <h1 className="sn-title">Delay close</h1>
+      <h1 className="sn-title">延时关闭</h1>
       <Button block btnType="primary" onClick={duration}>
-        Duration 3s
+        持续3s后自动关闭
       </Button>
-      <h1 className="sn-title">CallBack close after</h1>
+      <h1 className="sn-title">关闭后回调</h1>
       <Button block btnType="primary" onClick={haveOnClose}>
-        Close after 3 seconds
+        持续3s后自动关闭并执行alert函数
       </Button>
-      <h1 className="sn-title">No mask</h1>
+      <h1 className="sn-title">隐藏蒙层</h1>
       <Button block btnType="primary" onClick={noMask}>
-        No mask
+        没有隐藏蒙层
       </Button>
     </>
   );

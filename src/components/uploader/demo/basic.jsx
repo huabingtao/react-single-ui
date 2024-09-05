@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Uploader } from 'react-single-ui';
 
 export default () => {
-  const [visible, setVisible] = useState(false);
-  const [fileList, setFileList] = useState([
+  const [fileList] = useState([
     {
       url: 'https://img.yzcdn.cn/vant/leaf.jpg',
       status: 'loading',
@@ -15,7 +14,7 @@ export default () => {
       message: '上传失败',
     },
   ]);
-  const [fileList1, setFileList1] = useState([
+  const [fileList1] = useState([
     {
       url: 'https://img.yzcdn.cn/vant/leaf.jpg',
       status: '',
@@ -25,7 +24,7 @@ export default () => {
       status: '',
     },
   ]);
-  const [fileList2, setFileList2] = useState([
+  const [fileList2] = useState([
     {
       url: 'https://img.yzcdn.cn/vant/leaf.jpg',
       status: '',
@@ -38,7 +37,7 @@ export default () => {
       url: 'https://img.yzcdn.cn/vant/tree.jpg',
       status: '',
       beforeDelete: () => {
-        console.log('第二条返回false则没法删除');
+        console.log('第二条返回false则无法删除');
         return false;
       },
     },
@@ -62,14 +61,14 @@ export default () => {
 
   return (
     <>
-      <h1 className="sn-title">Basic</h1>
+      <h1 className="sn-title">基础用法</h1>
       <Uploader
         multiple={true}
         onOversize={onOversize}
         deletable
         onChange={onChange}
       ></Uploader>
-      <h1 className="sn-title">Basic file uploader</h1>
+      <h1 className="sn-title">带文件上传</h1>
       <Uploader
         multiple={true}
         onOversize={onOversize}
@@ -78,7 +77,7 @@ export default () => {
         customFileName="file"
         onChange={onChange}
       ></Uploader>
-      <h1 className="sn-title">BeforeUpload</h1>
+      <h1 className="sn-title">上传前回调函数</h1>
       <Uploader
         multiple={true}
         onOversize={onOversize}
@@ -86,7 +85,7 @@ export default () => {
         onChange={onChange}
         beforeUpload={beforeUpload}
       ></Uploader>
-      <h1 className="sn-title">BeforeDelete</h1>
+      <h1 className="sn-title">删除前回调函数</h1>
       <Uploader
         fileList={fileList2}
         multiple={true}
@@ -94,21 +93,21 @@ export default () => {
         deletable
         onChange={onChange}
       ></Uploader>
-      <h1 className="sn-title">OnRemove</h1>
+      <h1 className="sn-title">删除回调</h1>
       <Uploader
         fileList={fileList}
         multiple={true}
         deletable
         onRemove={onRemove}
       ></Uploader>
-      <h1 className="sn-title">Upload status</h1>
+      <h1 className="sn-title">上传状态</h1>
       <Uploader
         fileList={fileList}
         multiple={true}
         deletable
         onOversize={onOversize}
       ></Uploader>
-      <h1 className="sn-title">Limit the number</h1>
+      <h1 className="sn-title">限制数量</h1>
       <Uploader
         fileList={fileList1}
         multiple={true}
@@ -116,7 +115,7 @@ export default () => {
         deletable
         onOversize={onOversize}
       ></Uploader>
-      <h1 className="sn-title">Limit the maxSize</h1>
+      <h1 className="sn-title">限制大小</h1>
       <Uploader
         fileList={fileList1}
         multiple={true}
@@ -124,7 +123,7 @@ export default () => {
         maxSize={500 * 1024}
         onOversize={onOversize}
       ></Uploader>
-      <h1 className="sn-title">Disabled</h1>
+      <h1 className="sn-title">禁用状态</h1>
       <Uploader fileList={fileList1} multiple={true} disabled></Uploader>
     </>
   );

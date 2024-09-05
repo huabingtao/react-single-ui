@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Breadcrumb, BreadcrumbItem } from 'react-single-ui';
-import _ from 'lodash';
 
 export default () => {
   const [breadcrmb1, setBreadCrmb1] = useState([
@@ -86,8 +85,8 @@ export default () => {
 
   return (
     <>
-      <h1 className="sn-title">Basic</h1>
-      <Breadcrumb>
+      <h1 className="sn-title">基础用法</h1>
+      <Breadcrumb onSelect={onSelect}>
         {breadcrmb1.map((item) => {
           return (
             <BreadcrumbItem key={item.title} disabled={item.disabled}>
@@ -96,7 +95,7 @@ export default () => {
           );
         })}
       </Breadcrumb>
-      <h1 className="sn-title">Custom color</h1>
+      <h1 className="sn-title">自定义颜色</h1>
       <Breadcrumb
         onSelect={onSelect2}
         activeColor="#0818f5"
@@ -106,13 +105,13 @@ export default () => {
           return <BreadcrumbItem key={item.title}>{item.title}</BreadcrumbItem>;
         })}
       </Breadcrumb>
-      <h1 className="sn-title">Custom separator</h1>
+      <h1 className="sn-title">自定义分隔符</h1>
       <Breadcrumb separator={'-'} onSelect={onSelect3}>
         {breadcrmb3.map((item) => {
           return <BreadcrumbItem key={item.title}>{item.title}</BreadcrumbItem>;
         })}
       </Breadcrumb>
-      <h1 className="sn-title">Disabled</h1>
+      <h1 className="sn-title">禁用状态</h1>
       <Breadcrumb onSelect={onSelect4}>
         {breadcrmb4.map((item) => {
           return (

@@ -1,17 +1,20 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import * as ReactDOM from 'react-dom';
+import React, { ChangeEvent, useRef, useState } from 'react';
 import { filterFiles, isOversize, prefixCls, toArray } from '../../utils';
 import axios from 'axios';
 import UploaderPreviewItem from './uploaderPreviewItem';
 import { Icon } from '../..';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { Interceptor, UploaderFileListItem } from './type';
 import { ImageFit } from '../image';
 import { isArray } from 'lodash';
 import classNames from 'classnames';
+import { library } from '@fortawesome/fontawesome-svg-core';
+library.add(faCamera);
 
 const uploadPrefixCls = `${prefixCls}-uploader`;
 export type UploaderMaxSize = number | string | ((file: File) => boolean);
 export type lifeCycleCallBack = () => void;
+export type BeforeUploadReturnType = boolean | File | Promise<boolean | File>;
 export interface UploaderProps {
   /**
    * @description  上传地址 如果不传则组件提供文件选择功能
@@ -20,12 +23,16 @@ export interface UploaderProps {
   /**
    * @description  上传前执行回调函数
    */
-  beforeUpload?: (file: File) => boolean;
+  beforeUpload?: (file: File) => BeforeUploadReturnType;
   /**
    * @description  文件改变回调函数
    * @param files
    */
-  onChange?: (file: File, files: UploaderFileListItem[], response: any) => void;
+  onChange?: (
+    file: File,
+    files: UploaderFileListItem[],
+    response: unknown,
+  ) => void;
   /**
    * @description  上传失败回调函数
    */
@@ -49,7 +56,7 @@ export interface UploaderProps {
   /**
    * @description  已上传的文件列表
    */
-  fileList?: Array<any>;
+  fileList?: Array<UploaderFileListItem>;
   /**
    * @description  允许上传的文件类型
    * @default image/*
@@ -94,7 +101,7 @@ export interface UploaderProps {
   customFileName?: string;
 }
 const Uploader: React.FC<UploaderProps> = (props) => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const {
     multiple = true,
     disabled = false,
@@ -150,17 +157,16 @@ const Uploader: React.FC<UploaderProps> = (props) => {
     if (!item.file) {
       return;
     }
-    const formData: any = new FormData();
-    // @ts-ignore
+    const formData: FormData = new FormData();
     formData.append(
       customFileName ? customFileName : (item.file?.name as string),
-      item.file as any,
+      item.file,
     );
     axios
       .post(action as string, formData, {
         headers: { 'Content-Type': 'multipart/form-data', ...customHeaer },
         onUploadProgress: (e) => {
-          let percentage = Math.round((e.loaded * 100) / e.total) || 0;
+          const percentage = Math.round((e.loaded * 100) / (e.total ?? 0)) || 0;
           updateFileList(result, { percent: percentage, status: 'uploading' });
         },
       })
@@ -244,8 +250,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
 
   // If the input data is not cleared, onchange will not be executed when uploading the same file
   const resetInput = () => {
-    if (inputRef?.current as any) {
-      // @ts-ignore
+    if (inputRef?.current) {
       inputRef.current.value = '';
     }
   };
@@ -273,7 +278,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
               result.content = contents[index] as string;
             }
             if (beforeUpload) {
-              const beforeResult: any = beforeUpload(file);
+              const beforeResult: BeforeUploadReturnType = beforeUpload(file);
               if (!beforeResult) {
                 return false;
               }
@@ -282,7 +287,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
                   .then((data) => {
                     return data;
                   })
-                  .catch((_) => {
+                  .catch(() => {
                     return;
                   });
               } else if (beforeResult) {

@@ -1,18 +1,20 @@
-import React, { useEffect } from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
 import { isImageFile, isPromise, prefixCls } from '../../utils';
 import { ImageFit } from '../image';
 import { Interceptor, UploaderFileListItem } from './type';
 import Image from '../image';
 import Icon from '../icon';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Progress from '../progress';
+import { library } from '@fortawesome/fontawesome-svg-core';
+library.add(faTimes);
 
 const ItemPrefixCls = `${prefixCls}-uploader-item`;
 
 export interface UploaderPreviewItemProps {
-  index?: Number;
+  index?: number;
   imageFit?: ImageFit;
-  deletable?: Boolean;
+  deletable?: boolean;
   previewSize?: string;
   beforeDelete?: Interceptor;
   item: UploaderFileListItem;

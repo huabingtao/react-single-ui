@@ -4,13 +4,13 @@ import { Progress } from 'react-single-ui';
 export default () => {
   return (
     <>
-      <h1 className="sn-title">Basic</h1>
+      <h1 className="sn-title">基础用法</h1>
       <Progress percent={20}></Progress>
-      <h1 className="sn-title">Show pivot</h1>
+      <h1 className="sn-title">自定义样式</h1>
       <Progress percent={40} showPivot></Progress>
-      <h1 className="sn-title">Unfilled</h1>
+      <div style={{ height: '10px' }}></div>
       <Progress percent={60} unfilled></Progress>
-      <h1 className="sn-title">Custom style</h1>
+      <div style={{ height: '10px' }}></div>
       <Progress
         percent={20}
         showPivot

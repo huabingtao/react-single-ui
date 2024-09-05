@@ -4,7 +4,7 @@ import { Loading } from 'react-single-ui';
 export default () => {
   return (
     <>
-      <h1 className="sn-title">Basic</h1>
+      <h1 className="sn-title">基础用法</h1>
       <Loading className="mr-3"></Loading>
       <Loading
         type="circle-notch"
@@ -18,17 +18,17 @@ export default () => {
         color="#0094ff"
         className="mr-3"
       ></Loading>
-      <h1 className="sn-title">Add title</h1>
+      <h1 className="sn-title">包含描述信息</h1>
       <Loading className="mr-3" size="3x" color="#0094ff" textColor="#0094ff">
-        Loading
+        客官别着急
+      </Loading>
+      <Loading className="mr-3" size="3x" color="#0094ff" textColor="#0094ff">
+        努力加载中
       </Loading>
       <Loading className="mr-3" size="3x" color="#0094ff" textColor="#0094ff">
         Loading...
       </Loading>
-      <Loading className="mr-3" size="3x" color="#0094ff" textColor="#0094ff">
-        load
-      </Loading>
-      <h1 className="sn-title">Size</h1>
+      <h1 className="sn-title">尺寸</h1>
       <Loading className="mr-3" size="3x" color="#0094ff" textColor="#0094ff">
         3x
       </Loading>

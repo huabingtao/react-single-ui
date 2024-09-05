@@ -1,5 +1,5 @@
-import { UploaderMaxSize } from '../components/form/uploader';
-import { UploaderFileListItem } from '../components/form/uploader/type';
+import { UploaderMaxSize } from '../components/uploader';
+import { UploaderFileListItem } from '../components/uploader/type';
 
 export const prefixCls = 'sn';
 export function toArray<T>(item: T | T[]): T[] {
@@ -38,16 +38,22 @@ export function isImageFile(item: UploaderFileListItem): boolean {
   return false;
 }
 
-export function isFunction(val: unknown): val is Function {
+export function isFunction<T extends (...args: unknown[]) => unknown>(
+  val: unknown,
+): val is T {
   return typeof val === 'function';
 }
 
-export function isObject(val: unknown): val is Record<any, any> {
+export function isObject(val: unknown): val is Record<string, unknown> {
   return val !== null && typeof val === 'object';
 }
 
-export function isPromise<T = any>(val: unknown): val is Promise<T> {
-  return isObject(val) && isFunction(val.then) && isFunction(val.catch);
+export function isPromise<T = unknown>(val: unknown): val is Promise<T> {
+  return (
+    isObject(val) &&
+    isFunction((val as unknown as Promise<T>).then) &&
+    isFunction((val as unknown as Promise<T>).catch)
+  );
 }
 
 export function isOversize(
@@ -59,7 +65,7 @@ export function isOversize(
       if (isFunction(maxSize)) {
         return maxSize(item.file);
       }
-      return item.file.size > maxSize;
+      return item.file.size > Number(maxSize);
     }
     return false;
   });

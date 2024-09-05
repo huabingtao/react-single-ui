@@ -84,21 +84,21 @@ export default () => {
 
   return (
     <>
-      <h1 className="sn-title">Basic</h1>
+      <h1 className="sn-title">基础用法</h1>
       <Button block btnType="primary" onClick={show1}>
-        Alert Modal
+        基础的弹窗
       </Button>
       <div style={{ height: '10px' }}></div>
       <Button block btnType="primary" onClick={show2}>
-        Customed Button Color
+        自定义按钮颜色
       </Button>
-      <h1 className="sn-title">Api function</h1>
+      <h1 className="sn-title">函数调用</h1>
       <Button block btnType="primary" onClick={show3}>
-        Api function
+        通过函数调用弹窗
       </Button>
-      <h1 className="sn-title">Promise</h1>
+      <h1 className="sn-title">异步调用</h1>
       <Button block btnType="primary" onClick={show4}>
-        Promise Modal delay 1s
+        异步弹窗 （1s后关闭）
       </Button>
       <Modal
         visible={visible1}

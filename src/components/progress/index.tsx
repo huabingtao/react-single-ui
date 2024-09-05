@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 import { prefixCls } from '../../utils';
@@ -56,13 +55,16 @@ export interface ProgressProps {
    * @description 进度条样式
    */
   percentStyle?: React.CSSProperties;
+  /**
+   * @description 子节点
+   */
+  children?: React.ReactNode;
 }
 
 const ProgressPrefixCls = prefixCls + '-progress';
 
 const Progress: React.FC<ProgressProps> = (props) => {
-  let {
-    children,
+  const {
     percent,
     fixed,
     unfilled,
@@ -73,9 +75,9 @@ const Progress: React.FC<ProgressProps> = (props) => {
     textColor,
     pivotColor,
     inactive,
-    wrapStyle,
-    percentStyle,
+    children,
   } = props;
+  let { wrapStyle, percentStyle } = props;
 
   let barRef: HTMLDivElement | null;
   let wrapRef: HTMLDivElement | null;
@@ -119,17 +121,18 @@ const Progress: React.FC<ProgressProps> = (props) => {
         className={`${ProgressPrefixCls}-bar-pivot`}
       >
         {text}
+        {children}
       </span>
     );
   };
 
-  const setWrapRef = (el: any) => {
+  const setWrapRef = (el: HTMLDivElement) => {
     wrapRef = el;
   };
-  const setBarRef = (el: any) => {
+  const setBarRef = (el: HTMLDivElement) => {
     barRef = el;
   };
-  const setPivotRef = (el: any) => {
+  const setPivotRef = (el: HTMLDivElement) => {
     pivotRef = el;
   };
 

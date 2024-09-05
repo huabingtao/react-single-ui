@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Image } from 'react-single-ui';
-const bigImg = require('../big.jpeg');
+import bigImg from '../big.jpeg';
 
 export default () => {
   return (
     <>
-      <h1 className="sn-title">Basic</h1>
+      <h1 className="sn-title">基础用法</h1>
       <Image src="https://img01.yzcdn.cn/vant/cat.jpeg"></Image>
-      {/* <Image showLoading fit="cover" src={img3}></Image> */}
       <h1 className="sn-title">自定义宽高</h1>
       <Image
         width="200px"
         height="200px"
         src="https://img01.yzcdn.cn/vant/cat.jpeg"
       ></Image>
-      <h1 className="sn-title">Fit</h1>
+      <h1 className="sn-title">剪切方式</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', textAlign: 'center' }}>
         <div>
           {/* 'contain' | 'cover' | 'fill' | 'none' | 'scale-down' */}
@@ -44,7 +43,7 @@ export default () => {
           <p>scale-down</p>
         </div>
       </div>
-      <h1 className="sn-title">Round</h1>
+      <h1 className="sn-title">圆角图片</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', textAlign: 'center' }}>
         <div>
           <Image
@@ -89,11 +88,11 @@ export default () => {
       </div>
       <h1 className="sn-title">自定义圆角</h1>
       <Image radius={20} src="https://img01.yzcdn.cn/vant/cat.jpeg"></Image>
-      <h1 className="sn-title">Loading</h1>
+      <h1 className="sn-title">加载中</h1>
       <Image showLoading fit="cover" src=""></Image>
-      <h1 className="sn-title">Error</h1>
+      <h1 className="sn-title">加载错误</h1>
       <Image showError fit="cover" src=""></Image>
-      <h1 className="sn-title">LazyLoad</h1>
+      <h1 className="sn-title">图片懒加载</h1>
       <Image
         lazyLoad
         width="100%"
