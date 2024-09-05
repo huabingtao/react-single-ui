@@ -13,9 +13,6 @@ export default () => {
   const show3 = () => {
     Modal.alert({ title: '标题', message: '函数调用', footer: footer3 });
   };
-  const show4 = () => {
-    Modal.alert({ title: '标题', message: '延迟1s后关闭', footer: footer4 });
-  };
 
   const footer1 = [
     {
@@ -62,25 +59,6 @@ export default () => {
       style: { color: '#108ee9' },
     },
   ];
-  const footer4 = [
-    {
-      text: '取消',
-      onPress: () =>
-        new Promise((resolve) => {
-          // Toast.info('onPress Promise', 1);
-          setTimeout(resolve, 1000);
-        }),
-    },
-    {
-      text: '确认',
-      onPress: () =>
-        new Promise((resolve) => {
-          // Toast.info('onPress Promise', 1);
-          setTimeout(resolve, 1000);
-        }),
-      style: { color: '#108ee9' },
-    },
-  ];
 
   return (
     <>
@@ -96,10 +74,7 @@ export default () => {
       <Button block btnType="primary" onClick={show3}>
         通过函数调用弹窗
       </Button>
-      <h1 className="sn-title">异步调用</h1>
-      <Button block btnType="primary" onClick={show4}>
-        异步弹窗 （1s后关闭）
-      </Button>
+
       <Modal
         visible={visible1}
         title="标题"
