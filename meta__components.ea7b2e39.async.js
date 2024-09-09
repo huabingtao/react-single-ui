@@ -490,8 +490,8 @@ export default () => {
 import { Input, Toast } from 'react-single-ui';
 
 export default () => {
-  const [value1] = useState('\u90FD\u662F\u53D7\u63A7\u7EC4\u4EF6');
-  const [value2, setValue2] = useState('\u5F20\u6587\u5FE0');
+  const [value1] = useState('');
+  const [value2, setValue2] = useState('\u5F20\u4E09');
   const onChage1 = (value) => {
     console.log('value:', value);
     // setValue1(value);
@@ -794,10 +794,9 @@ export default () => {
 import { Switch } from 'react-single-ui';
 
 export default () => {
-  const [value1, setValue1] = useState(false);
+  const [value1] = useState(false);
   const onClick = (value) => {
     console.log('value:', value);
-    setValue1(value);
   };
 
   return (
