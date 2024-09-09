@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: 'react-single-ui',
+  title: 'react-single',
   outputPath: 'docs-dist',
   apiParser: {},
   themeConfig: {
@@ -14,12 +14,12 @@ export default defineConfig({
     },
     deviceWidth: 375,
     nav: [
-      { title: '指南', link: '/guide' },
+      // { title: '指南', link: '/guide' },
     ],
     socialLinks: {
-      github: 'https://github.com/huabingtao/react-single-ui'
+      github: 'https://github.com/huabingtao/react-single-ui',
     },
-    footer:'Copyright © 2024 | Powered by react-single-ui'
+    footer: 'Copyright © 2024 | Powered by react-single-ui',
   },
   base: '/react-single-ui/',
   publicPath: '/react-single-ui/',
@@ -31,5 +31,5 @@ export default defineConfig({
         dir: 'src/components',
       },
     ],
-  }
+  },
 });

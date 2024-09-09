@@ -1,4 +1,6 @@
 ---
+  demo:
+    cols: 2
   title: Modal 模态框
   toc: false
   group: 
@@ -10,6 +12,8 @@
 
 ### 代码演示
 
-<code src="./demo/basic.jsx" ></code>
+<!-- <code src="./demo/basic.jsx" ></code> -->
 
-<API></API>
+<code src="./demo/basic.tsx" ></code>
+
+<API id="Modal"></API>

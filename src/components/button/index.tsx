@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 /*
  * @Author: your name
  * @Date: 2021-05-23 17:20:19
@@ -51,7 +50,7 @@ interface BaseButtonProps {
    * 按钮的类型，可选值为 'primary' | 'default' | 'danger' | 'link'
    * @default "default"
    */
-  btnType?: ButtonType;
+  btnType?: `${ButtonType}`;
 
   /**
    * 按钮的子节点
@@ -85,7 +84,7 @@ type NativeButtonProps = BaseButtonProps &
 type AnchorButtonProps = BaseButtonProps &
   React.AnchorHTMLAttributes<HTMLElement>;
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
-const Button: React.FC<ButtonProps> = (props):React.ReactElement | null => {
+const Button: React.FC<ButtonProps> = (props): React.ReactElement | null => {
   const {
     btnType = ButtonType.Default,
     block = false,
@@ -115,8 +114,15 @@ const Button: React.FC<ButtonProps> = (props):React.ReactElement | null => {
   }
 
   return (
-    <TouchFeedback activeClassName={`${buttonPrefixCls}-active ${activeClassName}`}>
-      <button className={classes} type={type} {...restProps} disabled={disabled}>
+    <TouchFeedback
+      activeClassName={`${buttonPrefixCls}-active ${activeClassName}`}
+    >
+      <button
+        className={classes}
+        type={type}
+        {...restProps}
+        disabled={disabled}
+      >
         {children}
       </button>
     </TouchFeedback>

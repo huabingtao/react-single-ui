@@ -14,19 +14,48 @@ export interface Action<T> {
 }
 
 export interface ModalProps<T> {
+  /**
+   * @description 模态框的标题。可以是字符串、元素或任何 React 节点。
+   * @default undefined
+   */
   title?: React.ReactNode;
+
+  /**
+   * @description 模态框是否可见。
+   * @default false
+   */
   visible?: boolean;
+
+  /**
+   * @description 点击遮罩层（外部区域）是否可以关闭模态框。
+   * @default true
+   */
   maskClosable?: boolean;
+
+  /**
+   * @description 底部显示的操作按钮数组。
+   * @default []
+   */
   footer?: Action<T>[];
+
+  // TODO: 待开发
+  /**
+   * @description 关闭模态框时触发的回调函数（待实现）。
+   */
   onClose?: () => void;
+
+  /**
+   * @description 模态框显示的消息内容，可以是字符串、元素或任何 React 节点。
+   */
   message?: React.ReactNode;
 }
 
-export type Alert = (
-  title: React.ReactNode,
-  message: React.ReactNode,
-  actions?: Action<React.CSSProperties>[],
-) => { close: () => void };
+// 定义 Alert 类型
+export type Alert = (options: {
+  title: React.ReactNode;
+  message: React.ReactNode;
+  footer?: Action<React.CSSProperties>[];
+}) => { close: () => void };
 
 const Modal: React.FC<ModalProps<React.CSSProperties>> & { alert: Alert } = (
   props,
@@ -101,7 +130,7 @@ const Modal: React.FC<ModalProps<React.CSSProperties>> & { alert: Alert } = (
 };
 
 // 实现 alert 函数并将其挂载到 Modal 上
-Modal.alert = function (title, message, actions) {
+Modal.alert = function ({ title, message, footer }) {
   const div = document.createElement('div');
   document.body.appendChild(div);
   const root = createRoot(div);
@@ -112,7 +141,7 @@ Modal.alert = function (title, message, actions) {
     }
   };
   root.render(
-    <Modal visible={true} title={title} message={message} footer={actions} />,
+    <Modal visible={true} title={title} message={message} footer={footer} />,
   );
   return { close };
 };
