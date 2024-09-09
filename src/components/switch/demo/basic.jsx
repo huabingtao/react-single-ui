@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { Switch } from 'react-single-ui';
 
 export default () => {
-  const [value1, setValue1] = useState(false);
+  const [value1] = useState(false);
   const onClick = (value) => {
     console.log('value:', value);
-    setValue1(value);
   };
 
   return (

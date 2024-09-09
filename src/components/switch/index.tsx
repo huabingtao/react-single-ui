@@ -1,7 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 import classNames from 'classnames';
-// import './index.scss';
 
 import { prefixCls } from '../../utils';
 
@@ -9,17 +7,17 @@ export interface SwitchProps {
   /**
    * @description 指示开关是处于“开”（true）还是“关”（false）状态。
    * @default false
-  */
+   */
   value: boolean;
   /**
    * @description 是否被禁用。
    * @default false
-  */
+   */
   disabled?: boolean;
   /**
    * @description 开关的大小，可以是 'lg'（大）或 'sm'（小）。
    * @default 'sm'
-  */
+   */
   size?: 'lg' | 'sm';
   /**
    * @description 开关处于“开”状态时的颜色。
@@ -48,12 +46,12 @@ const Switch: React.FC<SwitchProps> = (props) => {
     inactiveColor,
     ...restRrops
   } = props;
-  let checked = value;
+  const [checked, setChecked] = useState(value);
   const handleClick = () => {
     if (disabled) return;
-    checked = !value;
-    if(props.onClick){
-      props.onClick(checked)
+    setChecked(!checked);
+    if (props.onClick) {
+      props.onClick(!value);
     }
     // props.onClick && props.onClick(checked);
   };

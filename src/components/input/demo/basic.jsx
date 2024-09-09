@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Input, Toast } from 'react-single-ui';
 
 export default () => {
-  const [value1] = useState('都是受控组件');
-  const [value2, setValue2] = useState('张文忠');
+  const [value1] = useState('');
+  const [value2, setValue2] = useState('张三');
   const onChage1 = (value) => {
     console.log('value:', value);
     // setValue1(value);
