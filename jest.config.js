@@ -6,4 +6,8 @@ module.exports = {
     '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
   },
   setupFilesAfterEnv: ['./jest-setup.ts'],
+  moduleNameMapper: {
+    // TODO: 暂时解决jest 无法识别@import 语法
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+  },
 };

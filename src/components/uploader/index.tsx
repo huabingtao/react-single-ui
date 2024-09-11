@@ -29,7 +29,7 @@ export interface UploaderProps {
    * @param files
    */
   onChange?: (
-    file: File,
+    file: File | File[] | '',
     files: UploaderFileListItem[],
     response: unknown,
   ) => void;
@@ -245,6 +245,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       uploadFiles(items);
     } else {
       setFileList([...fileList, ...items]);
+      onChange && onChange('', [...fileList, ...items], '文件选择');
     }
   };
 

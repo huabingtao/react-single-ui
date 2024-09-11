@@ -4,10 +4,13 @@ import { ImageFit } from '../image';
 import { Interceptor, UploaderFileListItem } from './type';
 import Image from '../image';
 import Icon from '../icon';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faTimes,
+  faExclamationCircle,
+} from '@fortawesome/free-solid-svg-icons';
 import Progress from '../progress';
 import { library } from '@fortawesome/fontawesome-svg-core';
-library.add(faTimes);
+library.add(faTimes, faExclamationCircle);
 
 const ItemPrefixCls = `${prefixCls}-uploader-item`;
 

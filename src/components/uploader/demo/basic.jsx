@@ -62,13 +62,8 @@ export default () => {
   return (
     <>
       <h1 className="sn-title">基础用法</h1>
-      <Uploader
-        multiple={true}
-        onOversize={onOversize}
-        deletable
-        onChange={onChange}
-      ></Uploader>
-      <h1 className="sn-title">带文件上传</h1>
+      <Uploader onChange={onChange}></Uploader>
+      <h1 className="sn-title">文件上传到服务器</h1>
       <Uploader
         multiple={true}
         onOversize={onOversize}
