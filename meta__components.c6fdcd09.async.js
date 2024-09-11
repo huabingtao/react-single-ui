@@ -1051,13 +1051,8 @@ export default () => {
   return (
     <>
       <h1 className="sn-title">\u57FA\u7840\u7528\u6CD5</h1>
-      <Uploader
-        multiple={true}
-        onOversize={onOversize}
-        deletable
-        onChange={onChange}
-      ></Uploader>
-      <h1 className="sn-title">\u5E26\u6587\u4EF6\u4E0A\u4F20</h1>
+      <Uploader onChange={onChange}></Uploader>
+      <h1 className="sn-title">\u6587\u4EF6\u4E0A\u4F20\u5230\u670D\u52A1\u5668</h1>
       <Uploader
         multiple={true}
         onOversize={onOversize}
