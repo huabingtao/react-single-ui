@@ -11,8 +11,9 @@
       "react-single-ui": ["src"],
       "react-single-ui/*": ["src/*", "*"]
     },
-    "types":["jest", "@testing-library/jest-dom"],
-    "outDir": "./dist", // 其他编译输出到 dist 目录
+    "types": ["jest", "@testing-library/jest-dom"],
+    "outDir": "./dist" // 其他编译输出到 dist 目录
   },
-  "include": [".dumirc.ts", "src/**/*"]
+  "include": [".dumirc.ts", "src/**/*"],
+  "exclude": ["src/components/**/toast.test.tsx"]
 }

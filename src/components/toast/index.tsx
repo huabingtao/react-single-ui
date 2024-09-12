@@ -1,50 +1,50 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import classNames from 'classnames';
-// import Notification from 'rmc-notification';
-// import Notification from '../../../../node_modules/rmc-notification/lib/index.js';
-
-const Notification = require('rmc-notification').default;
-// console.log('Notification:', Notification);
+import Notification from 'rmc-notification';
 
 import Icon from '.././icon';
 import { prefixCls } from '../../utils';
+// import { createRoot } from 'react-dom/client';
 
 export interface BaseProps<T> {
-  type: T;
-  content: React.ReactNode;
-  mask: boolean;
-  duration: number;
-  onClose: Function;
+  type?: T;
+  content?: React.ReactNode;
+  mask?: boolean;
+  duration?: number;
+  onClose?: () => void;
 }
+// eslint-disable-next-line
 let messageInstance: any = null;
 let messageNeedHide: boolean;
 export type ToastType = 'success' | 'fail' | 'info' | 'loading';
 
 const div = document.createElement('div');
+// const root = createRoot(div);
 document.body.appendChild(div);
+
 const ToastPrefixCls = prefixCls + '-toast';
 function getMessageInstance(
   mask: boolean,
-  callback: (notification: any) => void,
+  callback: (notification: unknown) => void,
 ) {
   const classes = classNames({
     [`${ToastPrefixCls}-mask`]: mask,
     [`${ToastPrefixCls}-nomask`]: !mask,
   });
-
-  (Notification as any).newInstance(
+  // eslint-disable-next-line
+  Notification.newInstance(
     {
       prefixCls: `${ToastPrefixCls}`,
       style: {}, // clear rmc-notification default style
       transitionName: `${ToastPrefixCls}-fade`,
       className: classes,
     },
+    // eslint-disable-next-line
     (notification: any) => callback && callback(notification),
   );
 }
 const notic = (props: BaseProps<ToastType>) => {
-  const { content, mask, duration, onClose, type } = props;
+  const { content, mask = true, duration, onClose, type = 'info' } = props;
 
   const iconTypes: { [key: string]: string } = {
     info: '',
@@ -67,12 +67,14 @@ const notic = (props: BaseProps<ToastType>) => {
     }
 
     if (messageNeedHide) {
+      // eslint-disable-next-line
       notification.destroy();
       messageNeedHide = false;
       return;
     }
 
     messageInstance = notification;
+    // eslint-disable-next-line
     notification.notice({
       content: (
         <div
@@ -83,6 +85,7 @@ const notic = (props: BaseProps<ToastType>) => {
           {!!iconType && (
             <div className={`${ToastPrefixCls}-icon-wrap`}>
               <Icon
+                // eslint-disable-next-line
                 icon={iconType as any}
                 size="2x"
                 spin={type === 'loading'}
@@ -95,42 +98,21 @@ const notic = (props: BaseProps<ToastType>) => {
       duration,
       onClose() {
         onClose && onClose();
+        // eslint-disable-next-line
         notification.destroy();
         notification = null;
         messageInstance = null;
       },
     });
   });
-
-  // Notification.newInstance(
-  //   { prefixCls: `${ToastPrefixCls}`, style: {}, className: classes },
-  //   (notification: any) => {
-  //     messageInstance = notification;
-  //     notification.notice({
-  //       content: (
-  //         <div className={`${ToastPrefixCls}-content`} role="alert" aria-live="assertive">
-  //           {!!iconType && <div className={`${ToastPrefixCls}-icon-wrap`}><Icon icon="check-circle" size="lg"></Icon></div>}
-  //           <div>{content}</div>
-  //         </div>
-  //       ),
-  //       duration,
-  //       onClose() {
-  //         onClose && onClose();
-  //         notification.destroy();
-  //         notification = null;
-  //         messageInstance = null;
-  //       },
-  //     });
-  //   },
-  // );
 };
 const Toast = {
   show: (
     content: React.ReactNode,
-    type: ToastType,
-    mask: boolean,
-    duration: number,
-    onClose: Function,
+    type?: ToastType,
+    mask?: boolean,
+    duration?: number,
+    onClose?: () => void,
   ) => {
     const params = {
       content,
@@ -145,11 +127,11 @@ const Toast = {
     content: React.ReactNode,
     mask: boolean,
     duration: number,
-    onClose: Function,
+    onClose: () => void,
   ) => {
     const params = {
       content,
-      type: 'info' as 'info',
+      type: 'info' as const,
       mask,
       duration,
       onClose,
@@ -160,11 +142,11 @@ const Toast = {
     content: React.ReactNode,
     mask: boolean,
     duration: number,
-    onClose: Function,
+    onClose: () => void,
   ) => {
     const params = {
       content,
-      type: 'success' as 'success',
+      type: 'success' as const,
       mask,
       duration,
       onClose,
@@ -175,11 +157,11 @@ const Toast = {
     content: React.ReactNode,
     mask: boolean,
     duration: number,
-    onClose: Function,
+    onClose: () => void,
   ) => {
     const params = {
       content,
-      type: 'fail' as 'fail',
+      type: 'fail' as const,
       mask,
       duration,
       onClose,
@@ -190,11 +172,11 @@ const Toast = {
     content: React.ReactNode,
     mask: boolean,
     duration: number,
-    onClose: Function,
+    onClose: () => void,
   ) => {
     const params = {
       content,
-      type: 'loading' as 'loading',
+      type: 'loading' as const,
       mask,
       duration,
       onClose,

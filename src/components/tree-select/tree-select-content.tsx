@@ -1,19 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { prefixCls } from '../../utils';
-import {
-  TreeSelectItemProps,
-  TreeSelectProps,
-  TreeSidebarProps,
-} from './index.d';
+import { TreeSelectItemProps, TreeSidebarProps } from './index.d';
 import { TreeSelectContext } from '.';
 import _ from 'lodash';
 import { Icon } from '../..';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+library.add(faCheck);
 
 const TreeSelectContentCls = prefixCls + '-tree-select-content';
 
-const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = (props) => {
+const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = () => {
   const context = useContext(TreeSelectContext);
   const {
     data,
@@ -24,7 +22,7 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = (props) => {
     activeColor,
     inactiveColor,
   } = context;
-  let selfData: any = [];
+  let selfData: TreeSelectItemProps[] = [];
   if (data && data[index] && data[index].children) {
     selfData = data[index].children;
   }
@@ -32,7 +30,7 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = (props) => {
   const [childActiveId, setActiveId] = useState(
     activeId as Array<number | string>,
   );
-  const handleChangeTreeItem = (item: TreeSidebarProps, index: number) => {
+  const handleChangeTreeItem = (item: TreeSidebarProps) => {
     if (item.disabled) return;
     const v = item.value;
     if (childActiveId?.includes(v)) {
@@ -54,7 +52,7 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = (props) => {
     }
   };
 
-  const calcCls = (item: TreeSidebarProps, index: number) => {
+  const calcCls = (item: TreeSidebarProps) => {
     const classes = classNames(`${TreeSelectContentCls}-item`, {
       [`${TreeSelectContentCls}-item-active`]: childActiveId.includes(
         item.value,
@@ -88,9 +86,9 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = (props) => {
       };
       return (
         <li
-          className={calcCls(item, index)}
+          className={calcCls(item)}
           style={itemStyle(item.value)}
-          onClick={handleChangeTreeItem.bind(undefined, item, index)}
+          onClick={handleChangeTreeItem.bind(undefined, item)}
           key={index}
         >
           <span>{item.label}</span>

@@ -1,6 +1,4 @@
 import React, { createContext, useState } from 'react';
-import ReactDOM from 'react-dom';
-
 import { prefixCls } from '../../utils';
 import TreeSelectSidebar from './tree-select-sidebar';
 import { TreeSelectProps, TreeSidebarProps } from './index.d';
@@ -13,7 +11,7 @@ const TreeSelectCls = prefixCls + '-tree-select';
 
 const TreeSelect: React.FC<TreeSelectProps<TreeSidebarProps>> = (props) => {
   const {
-    data,
+    data = [],
     onChangeTree,
     onChangeTreeItem,
     inactiveColor,
@@ -56,7 +54,5 @@ const TreeSelect: React.FC<TreeSelectProps<TreeSidebarProps>> = (props) => {
     </div>
   );
 };
-
-TreeSelect.defaultProps = {};
 
 export default TreeSelect;

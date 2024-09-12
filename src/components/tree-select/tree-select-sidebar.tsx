@@ -1,21 +1,16 @@
-import React, { createContext, useContext, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 
 import { prefixCls } from '../../utils';
-import {
-  TreeSelectProps,
-  TreeSelectItemProps,
-  TreeSidebarProps,
-} from './index.d';
+import { TreeSidebarProps } from './index.d';
 import { TreeSelectContext } from '.';
 
 const TreeSelectCls = prefixCls + '-tree-select';
 
 const TreeSelectSidebar: React.FC<Partial<TreeSidebarProps>> = () => {
   const context = useContext(TreeSelectContext);
-  const { data, index, onChangeTree, activeColor } = context;
-  const [treeIndex, setTreeIndex] = useState(index || 0);
+  const { data, index = 0, onChangeTree, activeColor } = context;
+  const [treeIndex, setTreeIndex] = useState(index);
 
   const handleChangeTree = (item: TreeSidebarProps, index: number) => {
     if (item.disabled) return;
@@ -63,7 +58,5 @@ const TreeSelectSidebar: React.FC<Partial<TreeSidebarProps>> = () => {
   };
   return <ul className={`${TreeSelectCls}-sidebar`}>{renderChildren()}</ul>;
 };
-
-TreeSelectSidebar.defaultProps = {};
 
 export default TreeSelectSidebar;

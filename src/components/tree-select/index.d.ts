@@ -2,18 +2,18 @@ import React from 'react';
 
 export interface TreeSelectProps<T> {
   /**
-   * @description 左侧选择的index
+   * @description 左侧选中的index
    * @default 0
    */
   index?: number;
   /**
-   * @description 右侧选择的 id
+   * @description 右侧选中的 id
    * @default []
    */
   activeId?: number | string | Array<number | string>;
   /**
    * @description 高度，默认单位为px
-   * @default 300px
+   * @default 300
    */
   height?: React.CSSProperties;
   /**
@@ -33,7 +33,7 @@ export interface TreeSelectProps<T> {
   /**
    * @description 是否设置多选
    */
-  multiple: boolean;
+  multiple?: boolean;
   /**
    * @description 左侧选项点击回调函数
    */
@@ -49,13 +49,13 @@ export interface TreeSelectProps<T> {
 
 export interface TreeSelectItemProps {
   label: string;
-  value: any;
+  value: unknow;
   disabled?: boolean;
 }
 
 export interface TreeSidebarProps {
   label: string;
-  value: any;
+  value: unknow;
   disabled?: boolean;
   children?: TreeSelectItemProps[];
 }
