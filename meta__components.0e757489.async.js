@@ -1,4 +1,4 @@
-"use strict";(self.webpackChunkreact_single_ui=self.webpackChunkreact_single_ui||[]).push([[838],{58491:function(s,e,n){n.r(e),n.d(e,{data:function(){return r}});var r=[{label:"\u6C5F\u82CF",value:1,children:[{label:"\u6DEE\u5B89",value:11},{label:"\u76D0\u57CE",value:12,disabled:!0},{label:"\u626C\u5DDE",value:13},{label:"\u65E0\u9521",value:14}]},{label:"\u6D59\u6C5F",value:2,children:[{label:"\u676D\u5DDE",value:21},{label:"\u7ECD\u5174",value:22},{label:"\u5609\u5174",value:23}]},{label:"\u5E7F\u4E1C",value:3,disabled:!0,children:[{label:"\u5E7F\u5DDE",value:31},{label:"\u6DF1\u5733",value:32},{label:"\u4F5B\u5C71",value:32}]}]},52565:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(37199),p={"badge-demo-basic":{component:l.memo(l.lazy(function(){return n.e(954).then(n.bind(n,25739))})),asset:{type:"BLOCK",id:"badge-demo-basic",refAtomIds:["badge"],dependencies:{"index.jsx":{type:"FILE",value:n(79940).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"},"@fortawesome/free-solid-svg-icons":{type:"NPM",value:"6.6.0"},"@fortawesome/fontawesome-svg-core":{type:"NPM",value:"6.6.0"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302),"@fortawesome/free-solid-svg-icons":n(36617),"@fortawesome/fontawesome-svg-core":n(24168)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},8442:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(83099),p={"breadcrumb-demo-basic":{component:l.memo(l.lazy(function(){return n.e(230).then(n.bind(n,27539))})),asset:{type:"BLOCK",id:"breadcrumb-demo-basic",refAtomIds:["breadcrumb"],dependencies:{"index.jsx":{type:"FILE",value:n(32343).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},92787:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(51727),p={"button-demo-basic":{component:l.memo(l.lazy(function(){return n.e(219).then(n.bind(n,92766))})),asset:{type:"BLOCK",id:"button-demo-basic",refAtomIds:["button"],dependencies:{"index.jsx":{type:"FILE",value:n(79190).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},49855:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(46763),p={"icon-demo-icon-list":{component:l.memo(l.lazy(function(){return n.e(618).then(n.bind(n,82586))})),asset:{type:"BLOCK",id:"icon-demo-icon-list",refAtomIds:["icon"],dependencies:{"index.jsx":{type:"FILE",value:n(19938).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"},"@fortawesome/fontawesome-svg-core":{type:"NPM",value:"6.6.0"},"@fortawesome/free-solid-svg-icons":{type:"NPM",value:"6.6.0"},"@fortawesome/free-regular-svg-icons":{type:"NPM",value:"6.6.0"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302),"@fortawesome/fontawesome-svg-core":n(24168),"@fortawesome/free-solid-svg-icons":n(36617),"@fortawesome/free-regular-svg-icons":n(5499)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}},"icon-demo-basic":{component:l.memo(l.lazy(function(){return n.e(618).then(n.bind(n,64077))})),asset:{type:"BLOCK",id:"icon-demo-basic",refAtomIds:["icon"],dependencies:{"index.jsx":{type:"FILE",value:n(80756).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"},"@fortawesome/fontawesome-svg-core":{type:"NPM",value:"6.6.0"},"@fortawesome/free-solid-svg-icons":{type:"NPM",value:"6.6.0"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302),"@fortawesome/fontawesome-svg-core":n(24168),"@fortawesome/free-solid-svg-icons":n(36617)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},7777:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(43626),p={"image-demo-basic":{component:l.memo(l.lazy(function(){return n.e(633).then(n.bind(n,33329))})),asset:{type:"BLOCK",id:"image-demo-basic",refAtomIds:["image"],dependencies:{"index.jsx":{type:"FILE",value:n(45025).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},94451:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(81032),p={"input-demo-basic":{component:l.memo(l.lazy(function(){return n.e(295).then(n.bind(n,30182))})),asset:{type:"BLOCK",id:"input-demo-basic",refAtomIds:["input"],dependencies:{"index.jsx":{type:"FILE",value:n(78369).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},60846:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(49026),p={"loading-demo-basic":{component:l.memo(l.lazy(function(){return n.e(205).then(n.bind(n,75757))})),asset:{type:"BLOCK",id:"loading-demo-basic",refAtomIds:["loading"],dependencies:{"index.jsx":{type:"FILE",value:n(19731).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},29975:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(93159),p={"mask-demo-basic":{component:l.memo(l.lazy(function(){return n.e(241).then(n.bind(n,47462))})),asset:{type:"BLOCK",id:"mask-demo-basic",refAtomIds:["mask"],dependencies:{"index.jsx":{type:"FILE",value:n(25122).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},28165:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(40050),p={"modal-demo-basic":{component:l.memo(l.lazy(function(){return n.e(941).then(n.bind(n,95801))})),asset:{type:"BLOCK",id:"modal-demo-basic",refAtomIds:["modal"],dependencies:{"index.tsx":{type:"FILE",value:n(81140).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.tsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},15229:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(9970),p={"progress-demo-basic":{component:l.memo(l.lazy(function(){return n.e(424).then(n.bind(n,4067))})),asset:{type:"BLOCK",id:"progress-demo-basic",refAtomIds:["progress"],dependencies:{"index.jsx":{type:"FILE",value:n(69725).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},40988:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(86633),p={"switch-demo-basic":{component:l.memo(l.lazy(function(){return n.e(771).then(n.bind(n,40755))})),asset:{type:"BLOCK",id:"switch-demo-basic",refAtomIds:["switch"],dependencies:{"index.jsx":{type:"FILE",value:n(20236).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},66446:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(67282),p={"toast-demo-basic":{component:l.memo(l.lazy(function(){return n.e(250).then(n.bind(n,15448))})),asset:{type:"BLOCK",id:"toast-demo-basic",refAtomIds:["toast"],dependencies:{"index.jsx":{type:"FILE",value:n(38989).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},53306:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(95200),p={"tree-select-demo-basic":{component:l.memo(l.lazy(function(){return n.e(433).then(n.bind(n,65538))})),asset:{type:"BLOCK",id:"tree-select-demo-basic",refAtomIds:["tree-select"],dependencies:{"index.jsx":{type:"FILE",value:n(65469).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"},"./data.js":{type:"FILE",value:n(81706).Z}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302),"./data.js":n(58491)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},40748:function(s,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),c=n(87999),d=n.n(c),l=n(75271),f=n(77142),p={"uploader-demo-basic":{component:l.memo(l.lazy(function(){return n.e(68).then(n.bind(n,34677))})),asset:{type:"BLOCK",id:"uploader-demo-basic",refAtomIds:["uploader"],dependencies:{"index.jsx":{type:"FILE",value:n(10822).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var i=d()(a()().mark(function m(){var o,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(o=t.sent).default.apply(o,_));case 3:case"end":return t.stop()}},m)}));function u(){return i.apply(this,arguments)}return u}()}}}},60978:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(37199);const a=[]},40536:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(83099);const a=[{value:"\u4EE3\u7801\u6F14\u793A:",paraId:0,tocIndex:0}]},73439:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(51727);const a=[]},8747:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(46763);const a=[{value:"\u66F4\u591A\u914D\u7F6E",paraId:0}]},21641:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(43626);const a=[]},57252:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(81032);const a=[]},72003:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(49026);const a=[]},94818:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(93159);const a=[{value:"\u521B\u5EFA\u4E00\u4E2A\u906E\u7F69\u5C42\uFF0C\u7528\u4E8E\u5F3A\u8C03\u7279\u5B9A\u7684\u9875\u9762\u5143\u7D20\uFF0C\u5E76\u963B\u6B62\u7528\u6237\u8FDB\u884C\u5176\u4ED6\u64CD\u4F5C\u3002",paraId:0,tocIndex:1},{value:"\u540D\u79F0",paraId:1,tocIndex:4},{value:"\u9ED8\u8BA4\u503C",paraId:1,tocIndex:4},{value:"\u63CF\u8FF0",paraId:1,tocIndex:4},{value:"--z-index",paraId:1,tocIndex:4},{value:"10",paraId:1,tocIndex:4},{value:"\u906E\u7F69\u5C42\u5C42\u7EA7",paraId:1,tocIndex:4}]},71378:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(40050);const a=[]},50365:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(9970);const a=[{value:"\u4EE3\u7801\u6F14\u793A:",paraId:0,tocIndex:0}]},81320:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(86633);const a=[{value:"\u4EE3\u7801\u6F14\u793A:",paraId:0,tocIndex:0}]},59299:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(67282);const a=[{value:"\u4EE3\u7801\u6F14\u793A:",paraId:0,tocIndex:0},{value:"Toast.success(content, duration, onClose, mask)",paraId:1,tocIndex:1},{value:"Toast.fail(content, duration, onClose, mask)",paraId:1,tocIndex:1},{value:"Toast.info(content, duration, onClose, mask)",paraId:1,tocIndex:1},{value:"Toast.loading(content, duration, onClose, mask)",paraId:1,tocIndex:1}]},3368:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(95200);const a=[]},89468:function(s,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(77142);const a=[]},79940:function(s,e){e.Z=`import React from 'react';
+"use strict";(self.webpackChunkreact_single_ui=self.webpackChunkreact_single_ui||[]).push([[838],{52565:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(37199),p={"badge-demo-basic":{component:o.memo(o.lazy(function(){return n.e(954).then(n.bind(n,25739))})),asset:{type:"BLOCK",id:"badge-demo-basic",refAtomIds:["badge"],dependencies:{"index.jsx":{type:"FILE",value:n(79940).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"},"@fortawesome/free-solid-svg-icons":{type:"NPM",value:"6.6.0"},"@fortawesome/fontawesome-svg-core":{type:"NPM",value:"6.6.0"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302),"@fortawesome/free-solid-svg-icons":n(36617),"@fortawesome/fontawesome-svg-core":n(24168)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},8442:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(83099),p={"breadcrumb-demo-basic":{component:o.memo(o.lazy(function(){return n.e(230).then(n.bind(n,27539))})),asset:{type:"BLOCK",id:"breadcrumb-demo-basic",refAtomIds:["breadcrumb"],dependencies:{"index.jsx":{type:"FILE",value:n(32343).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},92787:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(51727),p={"button-demo-basic":{component:o.memo(o.lazy(function(){return n.e(219).then(n.bind(n,92766))})),asset:{type:"BLOCK",id:"button-demo-basic",refAtomIds:["button"],dependencies:{"index.jsx":{type:"FILE",value:n(79190).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},49855:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(46763),p={"icon-demo-icon-list":{component:o.memo(o.lazy(function(){return n.e(618).then(n.bind(n,82586))})),asset:{type:"BLOCK",id:"icon-demo-icon-list",refAtomIds:["icon"],dependencies:{"index.jsx":{type:"FILE",value:n(19938).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"},"@fortawesome/fontawesome-svg-core":{type:"NPM",value:"6.6.0"},"@fortawesome/free-solid-svg-icons":{type:"NPM",value:"6.6.0"},"@fortawesome/free-regular-svg-icons":{type:"NPM",value:"6.6.0"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302),"@fortawesome/fontawesome-svg-core":n(24168),"@fortawesome/free-solid-svg-icons":n(36617),"@fortawesome/free-regular-svg-icons":n(5499)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}},"icon-demo-basic":{component:o.memo(o.lazy(function(){return n.e(618).then(n.bind(n,64077))})),asset:{type:"BLOCK",id:"icon-demo-basic",refAtomIds:["icon"],dependencies:{"index.jsx":{type:"FILE",value:n(80756).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"},"@fortawesome/fontawesome-svg-core":{type:"NPM",value:"6.6.0"},"@fortawesome/free-solid-svg-icons":{type:"NPM",value:"6.6.0"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302),"@fortawesome/fontawesome-svg-core":n(24168),"@fortawesome/free-solid-svg-icons":n(36617)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},7777:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(43626),p={"image-demo-basic":{component:o.memo(o.lazy(function(){return n.e(633).then(n.bind(n,33329))})),asset:{type:"BLOCK",id:"image-demo-basic",refAtomIds:["image"],dependencies:{"index.jsx":{type:"FILE",value:n(45025).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},94451:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(81032),p={"input-demo-basic":{component:o.memo(o.lazy(function(){return n.e(295).then(n.bind(n,30182))})),asset:{type:"BLOCK",id:"input-demo-basic",refAtomIds:["input"],dependencies:{"index.jsx":{type:"FILE",value:n(78369).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},60846:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(49026),p={"loading-demo-basic":{component:o.memo(o.lazy(function(){return n.e(205).then(n.bind(n,75757))})),asset:{type:"BLOCK",id:"loading-demo-basic",refAtomIds:["loading"],dependencies:{"index.jsx":{type:"FILE",value:n(19731).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},29975:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(93159),p={"mask-demo-basic":{component:o.memo(o.lazy(function(){return n.e(241).then(n.bind(n,47462))})),asset:{type:"BLOCK",id:"mask-demo-basic",refAtomIds:["mask"],dependencies:{"index.jsx":{type:"FILE",value:n(25122).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},28165:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(40050),p={"modal-demo-basic":{component:o.memo(o.lazy(function(){return n.e(941).then(n.bind(n,95801))})),asset:{type:"BLOCK",id:"modal-demo-basic",refAtomIds:["modal"],dependencies:{"index.tsx":{type:"FILE",value:n(81140).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.tsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},15229:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(9970),p={"progress-demo-basic":{component:o.memo(o.lazy(function(){return n.e(424).then(n.bind(n,4067))})),asset:{type:"BLOCK",id:"progress-demo-basic",refAtomIds:["progress"],dependencies:{"index.jsx":{type:"FILE",value:n(69725).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},40988:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(86633),p={"switch-demo-basic":{component:o.memo(o.lazy(function(){return n.e(771).then(n.bind(n,40755))})),asset:{type:"BLOCK",id:"switch-demo-basic",refAtomIds:["switch"],dependencies:{"index.jsx":{type:"FILE",value:n(20236).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},66446:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(67282),p={"toast-demo-basic":{component:o.memo(o.lazy(function(){return n.e(250).then(n.bind(n,15448))})),asset:{type:"BLOCK",id:"toast-demo-basic",refAtomIds:["toast"],dependencies:{"index.jsx":{type:"FILE",value:n(38989).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},53306:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(95200),p={"tree-select-demo-basic":{component:o.memo(o.lazy(function(){return n.e(433).then(n.bind(n,65538))})),asset:{type:"BLOCK",id:"tree-select-demo-basic",refAtomIds:["tree-select"],dependencies:{"index.jsx":{type:"FILE",value:n(65469).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"},"./data.ts":{type:"FILE",value:n(85239).Z}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302),"./data.ts":n(57092)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},40748:function(l,e,n){n.r(e),n.d(e,{demos:function(){return p}});var r=n(90228),a=n.n(r),i=n(87999),c=n.n(i),o=n(75271),h=n(77142),p={"uploader-demo-basic":{component:o.memo(o.lazy(function(){return n.e(68).then(n.bind(n,34677))})),asset:{type:"BLOCK",id:"uploader-demo-basic",refAtomIds:["uploader"],dependencies:{"index.jsx":{type:"FILE",value:n(10822).Z},react:{type:"NPM",value:"18.3.1"},"react-single-ui":{type:"NPM",value:"0.0.1"}},entry:"index.jsx"},context:{react:n(75271),"react-single-ui":n(83302)},renderOpts:{compile:function(){var u=c()(a()().mark(function m(){var s,_=arguments;return a()().wrap(function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,n.e(814).then(n.bind(n,11814));case 2:return t.abrupt("return",(s=t.sent).default.apply(s,_));case 3:case"end":return t.stop()}},m)}));function d(){return u.apply(this,arguments)}return d}()}}}},57092:function(l,e,n){n.r(e),n.d(e,{data:function(){return r},disabledData:function(){return i},simpleData:function(){return a}});var r=[{label:"\u6C5F\u82CF",value:1,children:[{label:"\u6DEE\u5B89",value:11},{label:"\u76D0\u57CE",value:12,disabled:!0},{label:"\u626C\u5DDE",value:13},{label:"\u65E0\u9521",value:14}]},{label:"\u6D59\u6C5F",value:2,children:[{label:"\u676D\u5DDE",value:21},{label:"\u7ECD\u5174",value:22},{label:"\u5609\u5174",value:23}]},{label:"\u5E7F\u4E1C",value:3,disabled:!0,children:[{label:"\u5E7F\u5DDE",value:31},{label:"\u6DF1\u5733",value:32},{label:"\u4F5B\u5C71",value:32}]}],a=[{label:"\u6C5F\u82CF",value:1,children:[{label:"\u6DEE\u5B89",value:11},{label:"\u76D0\u57CE",value:12},{label:"\u626C\u5DDE",value:13},{label:"\u65E0\u9521",value:14}]},{label:"\u6D59\u6C5F",value:2,children:[{label:"\u676D\u5DDE",value:21},{label:"\u7ECD\u5174",value:22},{label:"\u5609\u5174",value:23}]},{label:"\u5E7F\u4E1C",value:3,children:[{label:"\u5E7F\u5DDE",value:31},{label:"\u6DF1\u5733",value:32},{label:"\u4F5B\u5C71",value:32}]}],i=[{label:"\u6C5F\u82CF",value:1,disabled:!0,children:[{label:"\u6DEE\u5B89",value:11,disabled:!0},{label:"\u76D0\u57CE",value:12,disabled:!0},{label:"\u626C\u5DDE",value:13,disabled:!0},{label:"\u65E0\u9521",value:14,disabled:!0}]},{label:"\u6D59\u6C5F",value:2,disabled:!0,children:[{label:"\u676D\u5DDE",value:21,disabled:!0},{label:"\u7ECD\u5174",value:22,disabled:!0},{label:"\u5609\u5174",value:23,disabled:!0}]},{label:"\u5E7F\u4E1C",value:3,disabled:!0,children:[{label:"\u5E7F\u5DDE",value:31,disabled:!0},{label:"\u6DF1\u5733",value:32,disabled:!0},{label:"\u4F5B\u5C71",value:32,disabled:!0}]}]},60978:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(37199);const a=[]},40536:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(83099);const a=[{value:"\u4EE3\u7801\u6F14\u793A:",paraId:0,tocIndex:0}]},73439:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(51727);const a=[]},8747:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(46763);const a=[{value:"\u66F4\u591A\u914D\u7F6E",paraId:0}]},21641:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(43626);const a=[]},57252:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(81032);const a=[]},72003:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(49026);const a=[]},94818:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(93159);const a=[{value:"\u521B\u5EFA\u4E00\u4E2A\u906E\u7F69\u5C42\uFF0C\u7528\u4E8E\u5F3A\u8C03\u7279\u5B9A\u7684\u9875\u9762\u5143\u7D20\uFF0C\u5E76\u963B\u6B62\u7528\u6237\u8FDB\u884C\u5176\u4ED6\u64CD\u4F5C\u3002",paraId:0,tocIndex:1},{value:"\u540D\u79F0",paraId:1,tocIndex:4},{value:"\u9ED8\u8BA4\u503C",paraId:1,tocIndex:4},{value:"\u63CF\u8FF0",paraId:1,tocIndex:4},{value:"--z-index",paraId:1,tocIndex:4},{value:"10",paraId:1,tocIndex:4},{value:"\u906E\u7F69\u5C42\u5C42\u7EA7",paraId:1,tocIndex:4}]},71378:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(40050);const a=[]},50365:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(9970);const a=[{value:"\u4EE3\u7801\u6F14\u793A:",paraId:0,tocIndex:0}]},81320:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(86633);const a=[{value:"\u4EE3\u7801\u6F14\u793A:",paraId:0,tocIndex:0}]},59299:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(67282);const a=[{value:"\u4EE3\u7801\u6F14\u793A:",paraId:0,tocIndex:0},{value:"Toast.success(content, duration, onClose, mask)",paraId:1,tocIndex:1},{value:"Toast.fail(content, duration, onClose, mask)",paraId:1,tocIndex:1},{value:"Toast.info(content, duration, onClose, mask)",paraId:1,tocIndex:1},{value:"Toast.loading(content, duration, onClose, mask)",paraId:1,tocIndex:1}]},3368:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(95200);const a=[]},89468:function(l,e,n){n.r(e),n.d(e,{texts:function(){return a}});var r=n(77142);const a=[]},79940:function(l,e){e.Z=`import React from 'react';
 import { Badge, Icon } from 'react-single-ui';
 import { faCoffee, faBan, faBell } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -80,7 +80,7 @@ export default () => {
     </>
   );
 };
-`},32343:function(s,e){e.Z=`import React, { useState } from 'react';
+`},32343:function(l,e){e.Z=`import React, { useState } from 'react';
 import { Breadcrumb, BreadcrumbItem } from 'react-single-ui';
 
 export default () => {
@@ -206,7 +206,7 @@ export default () => {
     </>
   );
 };
-`},79190:function(s,e){e.Z=`import React from 'react';
+`},79190:function(l,e){e.Z=`import React from 'react';
 import { Button } from 'react-single-ui';
 
 export default () => {
@@ -239,7 +239,7 @@ export default () => {
     </>
   );
 };
-`},80756:function(s,e){e.Z=`import React from 'react';
+`},80756:function(l,e){e.Z=`import React from 'react';
 import { Icon } from 'react-single-ui';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'; // \u5168\u90E8\u56FE\u6807
@@ -257,7 +257,7 @@ export default () => {
     </>
   );
 };
-`},19938:function(s,e){e.Z=`import React from 'react';
+`},19938:function(l,e){e.Z=`import React from 'react';
 import { Icon } from 'react-single-ui';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -348,7 +348,7 @@ export default () => {
     </>
   );
 };
-`},45025:function(s,e){e.Z=`import React from 'react';
+`},45025:function(l,e){e.Z=`import React from 'react';
 import { Image } from 'react-single-ui';
 import bigImg from '../big.jpeg';
 
@@ -486,7 +486,7 @@ export default () => {
     </>
   );
 };
-`},78369:function(s,e){e.Z=`import React, { useState } from 'react';
+`},78369:function(l,e){e.Z=`import React, { useState } from 'react';
 import { Input, Toast } from 'react-single-ui';
 
 export default () => {
@@ -565,7 +565,7 @@ export default () => {
     </>
   );
 };
-`},19731:function(s,e){e.Z=`import React from 'react';
+`},19731:function(l,e){e.Z=`import React from 'react';
 import { Loading } from 'react-single-ui';
 
 export default () => {
@@ -608,7 +608,7 @@ export default () => {
     </>
   );
 };
-`},25122:function(s,e){e.Z=`import React, { useState } from 'react';
+`},25122:function(l,e){e.Z=`import React, { useState } from 'react';
 import { Mask, Button, Image } from 'react-single-ui';
 import presentImage from './present.png';
 export default () => {
@@ -666,7 +666,7 @@ export default () => {
     </>
   );
 };
-`},81140:function(s,e){e.Z=`import React, { useState } from 'react';
+`},81140:function(l,e){e.Z=`import React, { useState } from 'react';
 import { Modal, Button } from 'react-single-ui';
 
 export default () => {
@@ -763,7 +763,7 @@ export default () => {
     </>
   );
 };
-`},69725:function(s,e){e.Z=`import React from 'react';
+`},69725:function(l,e){e.Z=`import React from 'react';
 import { Progress } from 'react-single-ui';
 
 export default () => {
@@ -790,7 +790,7 @@ export default () => {
     </>
   );
 };
-`},20236:function(s,e){e.Z=`import React, { useState } from 'react';
+`},20236:function(l,e){e.Z=`import React, { useState } from 'react';
 import { Switch } from 'react-single-ui';
 
 export default () => {
@@ -817,7 +817,7 @@ export default () => {
     </>
   );
 };
-`},38989:function(s,e){e.Z=`import React from 'react';
+`},38989:function(l,e){e.Z=`import React from 'react';
 import { Toast, Button } from 'react-single-ui';
 
 export default () => {
@@ -899,7 +899,7 @@ export default () => {
     </>
   );
 };
-`},65469:function(s,e){e.Z=`import React from 'react';
+`},65469:function(l,e){e.Z=`import React from 'react';
 import { TreeSelect } from 'react-single-ui';
 import { data } from './data';
 export default () => {
@@ -925,7 +925,9 @@ export default () => {
     </>
   );
 };
-`},81706:function(s,e){e.Z=`export const data = [
+`},85239:function(l,e){e.Z=`import { TreeSidebarProps } from '../index.d';
+
+export const data: TreeSidebarProps[] = [
   {
     label: '\u6C5F\u82CF',
     value: 1,
@@ -987,7 +989,142 @@ export default () => {
     ],
   },
 ];
-`},10822:function(s,e){e.Z=`import React, { useState } from 'react';
+
+export const simpleData: TreeSidebarProps[] = [
+  {
+    label: '\u6C5F\u82CF',
+    value: 1,
+    children: [
+      {
+        label: '\u6DEE\u5B89',
+        value: 11,
+      },
+      {
+        label: '\u76D0\u57CE',
+        value: 12,
+      },
+      {
+        label: '\u626C\u5DDE',
+        value: 13,
+      },
+      {
+        label: '\u65E0\u9521',
+        value: 14,
+      },
+    ],
+  },
+  {
+    label: '\u6D59\u6C5F',
+    value: 2,
+    children: [
+      {
+        label: '\u676D\u5DDE',
+        value: 21,
+      },
+      {
+        label: '\u7ECD\u5174',
+        value: 22,
+      },
+      {
+        label: '\u5609\u5174',
+        value: 23,
+      },
+    ],
+  },
+  {
+    label: '\u5E7F\u4E1C',
+    value: 3,
+    children: [
+      {
+        label: '\u5E7F\u5DDE',
+        value: 31,
+      },
+      {
+        label: '\u6DF1\u5733',
+        value: 32,
+      },
+      {
+        label: '\u4F5B\u5C71',
+        value: 32,
+      },
+    ],
+  },
+];
+
+export const disabledData: TreeSidebarProps[] = [
+  {
+    label: '\u6C5F\u82CF',
+    value: 1,
+    disabled: true,
+    children: [
+      {
+        label: '\u6DEE\u5B89',
+        value: 11,
+        disabled: true,
+      },
+      {
+        label: '\u76D0\u57CE',
+        value: 12,
+        disabled: true,
+      },
+      {
+        label: '\u626C\u5DDE',
+        value: 13,
+        disabled: true,
+      },
+      {
+        label: '\u65E0\u9521',
+        value: 14,
+        disabled: true,
+      },
+    ],
+  },
+  {
+    label: '\u6D59\u6C5F',
+    value: 2,
+    disabled: true,
+    children: [
+      {
+        label: '\u676D\u5DDE',
+        value: 21,
+        disabled: true,
+      },
+      {
+        label: '\u7ECD\u5174',
+        value: 22,
+        disabled: true,
+      },
+      {
+        label: '\u5609\u5174',
+        value: 23,
+        disabled: true,
+      },
+    ],
+  },
+  {
+    label: '\u5E7F\u4E1C',
+    value: 3,
+    disabled: true,
+    children: [
+      {
+        label: '\u5E7F\u5DDE',
+        value: 31,
+        disabled: true,
+      },
+      {
+        label: '\u6DF1\u5733',
+        value: 32,
+        disabled: true,
+      },
+      {
+        label: '\u4F5B\u5C71',
+        value: 32,
+        disabled: true,
+      },
+    ],
+  },
+];
+`},10822:function(l,e){e.Z=`import React, { useState } from 'react';
 import { Uploader } from 'react-single-ui';
 
 export default () => {
