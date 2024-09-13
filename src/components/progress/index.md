@@ -12,4 +12,4 @@
 
 <code src="./demo/basic.jsx" ></code>
 
-<API></API>
+<API id="Progress"></API>

@@ -15,11 +15,11 @@ export default () => {
         percent={20}
         showPivot
         pivotColor="#fd7e14"
-        color="#fd7e14"
+        color="#27364b"
       ></Progress>
       <div style={{ marginTop: '20px' }}></div>
       <Progress percent={40} showPivot wrapStyle={{ height: '8px' }}></Progress>
-      <h1 className="sn-title">Inactive</h1>
+      <h1 className="sn-title">置灰</h1>
       <Progress percent={80} showPivot inactive></Progress>
       <Progress percent={70} fixed={true}></Progress>
     </>

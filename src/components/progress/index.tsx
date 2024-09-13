@@ -2,8 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { prefixCls } from '../../utils';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export interface ProgressProps {
   /**
@@ -12,18 +11,22 @@ export interface ProgressProps {
   percent: number;
   /**
    * @description 设置为 true 将吸附到顶部
+   * @default false
    */
   fixed?: boolean;
   /**
    * @description 是否显示填充轨道默认填充
+   * @default true
    */
   unfilled?: boolean;
   /**
    * @description 进度条颜色
+   * @default #0d6efd
    */
   color?: string;
   /**
    * @description 轨道颜色
+   * @default #ebedf0
    */
   trackColor?: string;
   /**
@@ -41,18 +44,20 @@ export interface ProgressProps {
   textColor?: string;
   /**
    * @description 进度文字背景颜色
+   * @default #1989fa
    */
   pivotColor?: string;
   /**
    * @description 是否置灰
+   * @default false
    */
   inactive?: boolean;
   /**
-   * @description 进度条包裹层样式
+   * @description 自定义进度条包裹层样式
    */
   wrapStyle?: React.CSSProperties;
   /**
-   * @description 进度条样式
+   * @description 自定义进度条样式
    */
   percentStyle?: React.CSSProperties;
   /**
@@ -61,12 +66,12 @@ export interface ProgressProps {
   children?: React.ReactNode;
 }
 
-const ProgressPrefixCls = prefixCls + '-progress';
-
+export const ProgressPrefixCls = prefixCls + '-progress';
+export const percentCls = classNames(`${ProgressPrefixCls}-bar`);
 const Progress: React.FC<ProgressProps> = (props) => {
   const {
     percent,
-    fixed,
+    fixed = false,
     unfilled,
     color,
     trackColor,
@@ -85,6 +90,7 @@ const Progress: React.FC<ProgressProps> = (props) => {
 
   const wrapCls = classNames(ProgressPrefixCls, `${ProgressPrefixCls}-wrap`, {
     [`${ProgressPrefixCls}-wrap-fixed`]: fixed,
+    [`${ProgressPrefixCls}-inactive`]: inactive,
   });
   const background = unfilled
     ? { background: 'transparent' }
@@ -94,20 +100,14 @@ const Progress: React.FC<ProgressProps> = (props) => {
     ...wrapStyle,
   };
 
-  const percentCls = classNames(`${ProgressPrefixCls}-bar`);
-
   percentStyle = {
     width: `${percent}%`,
-    background: inactive ? 'rgb(202, 202, 202)' : color,
+    backgroundColor: inactive ? 'rgb(202, 202, 202)' : color,
     ...percentStyle,
   };
 
   const renderPivot = () => {
-    if (barRef) {
-      console.log('barRef.style.width:', barRef.style.width);
-    }
     const text = pivoteText || `${percent}%`;
-
     if (!showPivot) return '';
     const style = {
       color: textColor,
@@ -147,7 +147,7 @@ const Progress: React.FC<ProgressProps> = (props) => {
         );
       }
     }, 10);
-  }, []);
+  }, [percent]);
 
   return (
     <div
