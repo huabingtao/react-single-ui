@@ -1,6 +1,5 @@
-import React, { createContext, useState } from 'react';
-import ReactDOM from 'react-dom';
 import classNames from 'classnames';
+import React, { createContext } from 'react';
 
 import { prefixCls } from '../../utils';
 import { BreadcrumbItemProps } from './breadcrumb-item';
@@ -44,23 +43,31 @@ interface IBreadcrumbContext {
   onSelect?: (selectIndex: number) => void;
 }
 
-export const BreadcrumbContext = createContext<IBreadcrumbContext>({ length: 0 });
+export const BreadcrumbContext = createContext<IBreadcrumbContext>({
+  length: 0,
+});
 
 const BreadcrumbPrefixCls = prefixCls + '-breadcrmb';
 
 const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
-  const { separator, children, inactiveColor, activeColor, onSelect } = props;
+  const {
+    separator = '/',
+    children,
+    inactiveColor,
+    activeColor,
+    onSelect,
+  } = props;
 
   const handleSelect = (index: number) => {
-    if(onSelect){
-      onSelect(index)
+    if (onSelect) {
+      onSelect(index);
     }
     // onSelect && onSelect(index);
   };
 
   const breadcrmbContextContent: IBreadcrumbContext = {
     length: (children as [])?.length || 0,
-    separator: '/',
+    separator,
     inactiveColor,
     activeColor,
     onSelect: handleSelect,
@@ -87,6 +94,5 @@ const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
     </ul>
   );
 };
-
 
 export default Breadcrumb;
