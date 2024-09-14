@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkreact_single_ui=self.webpackChunkreact_single_ui||[]).push([[904],{9590:function(u,_,n){n.r(_),n.d(_,{demos:function(){return s}});var t=n(75271),e=n(60166),s={}},34222:function(u,_,n){n.r(_),n.d(_,{texts:function(){return e}});var t=n(60166);const e=[{value:"This is a guide example.",paraId:0}]}}]);
