@@ -1,2 +1,4 @@
 /dist
 *.yaml
+/.dumi
+/node_modules

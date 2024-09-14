@@ -2,28 +2,27 @@
   "name": "react-single-ui",
   "version": "0.0.1",
   "description": "A react library developed with dumi",
+  "license": "MIT",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "npm run dev",
-    "dev": "dumi dev",
     "build": "father build",
     "build:watch": "father dev",
+    "dev": "dumi dev",
     "docs:build": "dumi build",
     "docs:preview": "dumi preview",
-    "prepare": "husky install && dumi setup",
     "doctor": "father doctor",
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && npm run build",
+    "start": "npm run dev",
     "test": "jest"
   },
-  "authors": [],
-  "license": "MIT",
-  "files": [
-    "dist"
-  ],
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -46,12 +45,26 @@
       "prettier --parser=typescript --write"
     ]
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "peerDependencies": {
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@types/jest": "^29.5.12",
+    "@types/lodash": "^4.17.7",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.7.2",
+    "classnames": "^2.5.1",
+    "jest": "29.7.0",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.41",
+    "postcss-import": "^16.1.0",
+    "react-lazyload": "^3.2.1",
+    "rmc-feedback": "^2.0.0",
+    "rmc-notification": "^1.0.0",
+    "tailwindcss": "^3.4.10"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -74,38 +87,27 @@
     "dumi": "^2.3.0",
     "dumi-theme-mobile": "^2.0.0",
     "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "father": "^4.1.0",
     "husky": "^8.0.1",
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^13.3.0",
-    "prettier": "^2.7.1",
-    "prettier-plugin-organize-imports": "^3.0.0",
-    "prettier-plugin-packagejson": "^2.2.18",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.0.0",
+    "prettier-plugin-packagejson": "^2.5.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "stylelint": "^14.9.1",
+    "stylelint": "^14.4.0",
     "ts-jest": "^29.0.0",
     "typescript": "4.9"
   },
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.6.0",
-    "@fortawesome/fontawesome-svg-core": "^6.6.0",
-    "@fortawesome/free-brands-svg-icons": "^6.6.0",
-    "@fortawesome/free-regular-svg-icons": "^6.6.0",
-    "@fortawesome/free-solid-svg-icons": "^6.6.0",
-    "@fortawesome/react-fontawesome": "^0.2.2",
-    "@types/jest": "^29.5.12",
-    "@types/lodash": "^4.17.7",
-    "autoprefixer": "^10.4.20",
-    "axios": "^1.7.2",
-    "classnames": "^2.5.1",
-    "jest": "29.7.0",
-    "lodash": "^4.17.21",
-    "postcss": "^8.4.41",
-    "postcss-import": "^16.1.0",
-    "react-lazyload": "^3.2.1",
-    "rmc-feedback": "^2.0.0",
-    "rmc-notification": "^1.0.0",
-    "tailwindcss": "^3.4.10"
-  }
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": []
 }
