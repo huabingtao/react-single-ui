@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mask, Button, Image } from 'react-single-ui';
+import { Button, Image, Mask } from 'react-single-ui';
 import presentImage from './present.png';
 export default () => {
   const [visible, setVisible] = useState(false);
@@ -28,7 +28,11 @@ export default () => {
         打开自定义内容的蒙层
       </Button>
 
-      <Mask visible={visible} onMaskClick={() => setVisible(false)}></Mask>
+      <Mask
+        visible={visible}
+        className="custom-01"
+        onMaskClick={() => setVisible(false)}
+      ></Mask>
       <Mask
         visible={visibleLight}
         backgroundColor="#00000033"

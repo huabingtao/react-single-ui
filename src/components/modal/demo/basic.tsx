@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-single-ui';
+import { Button, Modal } from 'react-single-ui';
 
 export default () => {
   const [visible1, setVisible1] = useState(false);
@@ -11,7 +11,6 @@ export default () => {
     setVisible2(true);
   };
   const show3 = () => {
-    console.log(Modal.alert);
     Modal.alert({
       title: '标题',
       message: '这是通过 Modal.alert 的方式调用',

@@ -1,8 +1,8 @@
 // alert.tsx
+import _ from 'lodash';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Modal, { Action, ModalProps } from './modal';
-import _ from 'lodash';
 
 export default function Alert(props: ModalProps<React.CSSProperties>) {
   const { title, message, footer } = props;

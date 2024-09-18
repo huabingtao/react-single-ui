@@ -1,11 +1,11 @@
 // modal.tsx
 import React from 'react';
-import { prefixCls } from '../../utils';
-import Mask from '../mask/index';
-import Button, { ButtonType } from '../button/index';
 import { createRoot } from 'react-dom/client';
+import { prefixCls } from '../../utils';
+import Button, { ButtonType } from '../button/index';
+import Mask from '../mask/index';
 
-const modalPrefixCls = prefixCls + '-modal';
+export const modalPrefixCls = prefixCls + '-modal';
 
 export interface Action<T> {
   text: string;
@@ -52,7 +52,7 @@ export interface ModalProps<T> {
 
 // 定义 Alert 类型
 export type Alert = (options: {
-  title: React.ReactNode;
+  title?: React.ReactNode;
   message: React.ReactNode;
   footer?: Action<React.CSSProperties>[];
 }) => { close: () => void };
@@ -81,6 +81,7 @@ const Modal: React.FC<ModalProps<React.CSSProperties>> & { alert: Alert } = (
       }
     }
     const onClickFn = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
       e.preventDefault();
       if (button.onPress) {
         button.onPress();
@@ -113,17 +114,19 @@ const Modal: React.FC<ModalProps<React.CSSProperties>> & { alert: Alert } = (
 
     return (
       <div className={`${modalPrefixCls}`}>
-        <div className={`${modalPrefixCls}-header`}>{title}</div>
+        {title && <div className={`${modalPrefixCls}-header`}>{title}</div>}
         <div className={`${modalPrefixCls}-body`}>{message}</div>
-        <div className={`${modalPrefixCls}-footer`}>
-          {footer?.map((button, i) => renderFooterButton(button, i))}
-        </div>
+        {footer && (
+          <div className={`${modalPrefixCls}-footer`}>
+            {footer?.map((button, i) => renderFooterButton(button, i))}
+          </div>
+        )}
       </div>
     );
   };
 
   return (
-    <Mask visible={visible} {...restProps}>
+    <Mask visible={visible}>
       <ModalNode {...restProps}></ModalNode>
     </Mask>
   );

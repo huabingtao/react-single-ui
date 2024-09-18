@@ -1,8 +1,7 @@
-import React from 'react';
-import * as ReactDOM from 'react-dom';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { prefixCls } from '../../utils';
 
-const IS_REACT_16 = !!ReactDOM.createPortal;
 export interface MaskProps {
   /**
    * @description 是否显示遮罩层
@@ -13,6 +12,11 @@ export interface MaskProps {
    * @default 999
    */
   zIndex?: number;
+  /**
+   * className 自定义类名
+   * @default ''
+   */
+  className?: string;
   /**
    * @description 点击遮罩
    */
@@ -28,75 +32,68 @@ export interface MaskProps {
   backgroundColor?: string;
 }
 
-const div: HTMLDivElement = document.createElement('div');
-document.body.appendChild(div);
+const Mask: React.FC<MaskProps> = ({
+  visible = false,
+  className,
+  backgroundColor = '#00000066',
+  zIndex = 999,
+  onMaskClick,
+  children,
+}) => {
+  const [container, setContainer] = useState<HTMLDivElement | null>(null);
 
-class Mask extends React.Component<MaskProps, HTMLDivElement> {
-  container: HTMLDivElement | null = null;
-  maskDom = () => {
-    const { backgroundColor = '#00000066', zIndex = 999 } = this.props;
-    const style = {
-      backgroundColor,
-      zIndex,
-    };
-
-    return (
-      <div
-        className={`${prefixCls}-mask`}
-        onClick={this.handleClickMask}
-        style={style}
-      >
-        {this.props.children}
-      </div>
-    );
-  };
-
-  handleClickMask = () => {
-    // 点击遮罩层
-    this.removeContainer();
-    if (this.props.onMaskClick) {
-      this.props.onMaskClick();
-    }
-  };
-
-  getContainer = () => {
-    if (!this.container) {
-      const container = document.createElement('div');
-      container.style.height = '100%';
+  // 创建 container 并在组件卸载时移除
+  useEffect(() => {
+    // console.log('useEffect visible:', visible); // 将日志放在 useEffect 中
+    if (visible) {
+      const newContainer = document.createElement('div');
+      newContainer.style.height = '100%';
       const containerId = `${prefixCls}-container-${new Date().getTime()}`;
-      container.setAttribute('id', containerId);
-      document.body.appendChild(container);
-      this.container = container;
-    }
-    return this.container;
-  };
+      newContainer.setAttribute('id', containerId);
+      document.body.appendChild(newContainer);
+      setContainer(newContainer);
 
-  removeContainer = () => {
-    if (this.container) {
-      document.body.removeChild(this.container);
-      this.container = null;
-    }
-  };
-
-  preventDefault = (e: Event) => {
-    e.preventDefault();
-  };
-
-  render() {
-    const { visible } = this.props;
-    if (IS_REACT_16 && visible) {
-      document.body.addEventListener('touchmove', this.preventDefault, {
+      // 禁用滚动
+      const preventDefault = (e: Event) => e.preventDefault();
+      document.body.addEventListener('touchmove', preventDefault, {
         passive: false,
       });
-      document.body.addEventListener('scroll', this.preventDefault, {
+      document.body.addEventListener('scroll', preventDefault, {
         passive: false,
       });
-      return ReactDOM.createPortal(this.maskDom(), this.getContainer());
+
+      return () => {
+        document.body.removeChild(newContainer);
+        document.body.removeEventListener('touchmove', preventDefault);
+        document.body.removeEventListener('scroll', preventDefault);
+      };
     }
-    document.body.removeEventListener('touchmove', this.preventDefault, false);
-    document.body.removeEventListener('scroll', this.preventDefault, false);
-    return null;
+  }, [visible]);
+
+  // 处理遮罩点击
+  const handleClickMask = () => {
+    if (onMaskClick) {
+      onMaskClick();
+    }
+  };
+
+  const classes = `${prefixCls}-mask ${className}`;
+
+  const maskDom = (
+    <div
+      className={classes}
+      onClick={handleClickMask}
+      style={{ backgroundColor, zIndex }}
+    >
+      {children}
+    </div>
+  );
+
+  if (visible && container) {
+    return createPortal(maskDom, container);
   }
-}
+
+  return null;
+};
 
 export default Mask;
