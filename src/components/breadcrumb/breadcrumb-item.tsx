@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
-import ReactDOM from 'react-dom';
 import classNames from 'classnames';
-import { prefixCls } from '../../utils';
+import React, { useContext } from 'react';
 import { BreadcrumbContext } from '.';
+import { prefixCls } from '../../utils';
 
 export interface BreadcrumbItemProps {
   /**
@@ -12,10 +11,14 @@ export interface BreadcrumbItemProps {
   index?: number;
 
   /**
+   * 名称
+   */
+  title?: string;
+  /**
    * 长度
    * @description 面包屑项的总长度
    */
-  length: number;
+  length?: number;
 
   /**
    * 分隔符
@@ -53,25 +56,25 @@ export interface BreadcrumbItemProps {
    * 子元素
    * @description 包裹的子元素
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
+const BreadcrumbItemPrefixCls = prefixCls + '-breadcrmb-item';
 
-const TabBarItemPrefixCls = prefixCls + '-breadcrmb-item';
-
-const TabBarItem: React.FC<BreadcrumbItemProps> = (props) => {
+const BreadcrumbItem: React.FC<BreadcrumbItemProps> = (props) => {
   const { index, disabled, children } = props;
-  const classes = classNames(TabBarItemPrefixCls, {
-    [`${TabBarItemPrefixCls}-disabled`]: disabled,
+  const classes = classNames(BreadcrumbItemPrefixCls, {
+    [`${BreadcrumbItemPrefixCls}-disabled`]: disabled,
   });
   const context = useContext(BreadcrumbContext);
   const handleClick = () => {
     if (disabled) return;
-    if(context.onSelect){
+    if (context.onSelect) {
       context.onSelect(index as number);
     }
     // context.onSelect && context.onSelect(index as number);
   };
+  // 设置最后一个颜色高亮 其余的默认颜色
   const style = {
     color:
       context.length - 1 === index
@@ -81,13 +84,13 @@ const TabBarItem: React.FC<BreadcrumbItemProps> = (props) => {
 
   return (
     <li className={classes} onClick={handleClick} style={style}>
-      <span className={`${TabBarItemPrefixCls}-link`}>{children}</span>
-      <span className={`${TabBarItemPrefixCls}-separator`}>
+      <span className={`${BreadcrumbItemPrefixCls}-link`}>{children}</span>
+      <span className={`${BreadcrumbItemPrefixCls}-separator`}>
         {context.length - 1 !== index && context.separator}
       </span>
     </li>
   );
 };
-TabBarItem.displayName = 'TabBarItem';
+BreadcrumbItem.displayName = 'BreadcrumbItem';
 
-export default TabBarItem;
+export default BreadcrumbItem;

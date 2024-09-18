@@ -30,7 +30,7 @@ export interface BreadcrumbProps {
   /**
    * @description 子元素
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 interface IBreadcrumbContext {
@@ -47,7 +47,7 @@ export const BreadcrumbContext = createContext<IBreadcrumbContext>({
   length: 0,
 });
 
-const BreadcrumbPrefixCls = prefixCls + '-breadcrmb';
+export const BreadcrumbPrefixCls = prefixCls + '-breadcrmb';
 
 const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
   const {
@@ -77,7 +77,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
     return React.Children.map(children, (child, index) => {
       const childElement =
         child as React.FunctionComponentElement<BreadcrumbItemProps>;
-      if (childElement.type.displayName === 'TabBarItem') {
+      if (childElement.type.displayName === 'BreadcrumbItem') {
         return React.cloneElement(childElement, { index });
       } else {
         console.error(

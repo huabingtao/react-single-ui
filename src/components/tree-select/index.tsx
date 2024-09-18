@@ -1,8 +1,8 @@
 import React, { createContext, useState } from 'react';
 import { prefixCls } from '../../utils';
-import TreeSelectSidebar from './tree-select-sidebar';
 import { TreeSelectProps, TreeSidebarProps } from './index.d';
 import TreeSelectContent from './tree-select-content';
+import TreeSelectSidebar from './tree-select-sidebar';
 
 export const TreeSelectContext = createContext<
   TreeSelectProps<TreeSidebarProps>

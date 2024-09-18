@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
+import React, { useContext, useState } from 'react';
 
+import { TreeSelectContext } from '.';
 import { prefixCls } from '../../utils';
 import { TreeSidebarProps } from './index.d';
-import { TreeSelectContext } from '.';
 
 const TreeSelectCls = prefixCls + '-tree-select';
 
