@@ -609,7 +609,7 @@ export default () => {
   );
 };
 `},10894:function(l,e){e.Z=`import React, { useState } from 'react';
-import { Mask, Button, Image } from 'react-single-ui';
+import { Button, Image, Mask } from 'react-single-ui';
 import presentImage from './present.png';
 export default () => {
   const [visible, setVisible] = useState(false);
@@ -638,7 +638,11 @@ export default () => {
         \u6253\u5F00\u81EA\u5B9A\u4E49\u5185\u5BB9\u7684\u8499\u5C42
       </Button>
 
-      <Mask visible={visible} onMaskClick={() => setVisible(false)}></Mask>
+      <Mask
+        visible={visible}
+        className="custom-01"
+        onMaskClick={() => setVisible(false)}
+      ></Mask>
       <Mask
         visible={visibleLight}
         backgroundColor="#00000033"
@@ -667,7 +671,7 @@ export default () => {
   );
 };
 `},22032:function(l,e){e.Z=`import React, { useState } from 'react';
-import { Modal, Button } from 'react-single-ui';
+import { Button, Modal } from 'react-single-ui';
 
 export default () => {
   const [visible1, setVisible1] = useState(false);
@@ -679,7 +683,6 @@ export default () => {
     setVisible2(true);
   };
   const show3 = () => {
-    console.log(Modal.alert);
     Modal.alert({
       title: '\u6807\u9898',
       message: '\u8FD9\u662F\u901A\u8FC7 Modal.alert \u7684\u65B9\u5F0F\u8C03\u7528',
