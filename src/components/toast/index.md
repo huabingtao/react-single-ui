@@ -10,11 +10,13 @@
 
 代码演示:
 
-<code src="./demo/basic.jsx" ></code>
+<code  src="./demo/basic.jsx" ></code>
 
 ## API
 
-- `Toast.success(content, duration, onClose, mask)`
-- `Toast.fail(content, duration, onClose, mask)`
-- `Toast.info(content, duration, onClose, mask)`
-- `Toast.loading(content, duration, onClose, mask)`
+<API id="Toast"></API>
+
+- `Toast.info({content:'content',duration:3,onAfterClose:() => {}})`
+- `Toast.loading({content:'content',duration:3})`
+- `Toast.success({content:'content',duration:3})`
+- `Toast.fail({content:'content',duration:3})`

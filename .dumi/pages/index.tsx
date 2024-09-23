@@ -11,7 +11,7 @@ const HomePage = () => {
       className={`${color} max-w-md mx-auto md:max-w-2xl h-[640px] flex flex-col items-center justify-center gap-y-10 z-10`}
     >
       <article className="dark:text-white flex flex-col items-center !flex-initial">
-        <h1 className="text-6xl font-black leading-[60px] mb-6">
+        <h1 className="text-6xl font-black leading-[60px] mb-6 text-center">
           React Single Ui
         </h1>
         <p>轻量，开源的移动端 React 组件库</p>

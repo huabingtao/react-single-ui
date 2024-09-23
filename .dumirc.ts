@@ -13,11 +13,18 @@ export default defineConfig({
       ],
     },
     deviceWidth: 375,
-    nav: [
-      // { title: '指南', link: '/guide' },
-    ],
+    nav: [{ title: '指南', link: '/guide/introduce' }],
+
     socialLinks: {
       github: 'https://github.com/huabingtao/react-single-ui',
+    },
+    slidebar: {
+      '/guide': [
+        {
+          title: '指南',
+          children: ['/guide/introduce', '/guide/quickstart'],
+        },
+      ],
     },
     footer: 'Copyright © 2024 | Powered by react-single-ui',
   },

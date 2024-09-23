@@ -1,10 +1,10 @@
-import React from 'react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import classNames from 'classnames';
+import React from 'react';
 import { prefixCls } from '../../utils';
 
 // 使用的时候有props智能提示

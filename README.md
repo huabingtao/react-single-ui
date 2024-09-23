@@ -7,35 +7,16 @@ A react library developed with dumi
 
 ## Usage
 
-TODO
-
-## Options
-
-TODO
-
-## Development
-
 ```bash
-# install dependencies
-$ pnpm install
 
-# develop library by docs demo
-$ pnpm start
+# 通过 npm 安装
+npm install react-single-ui
 
-# build library source code
-$ pnpm run build
+# 通过 yarn 安装
+yarn add react-single-ui
 
-# build library source code in watch mode
-$ pnpm run build:watch
-
-# build docs
-$ pnpm run docs:build
-
-# Locally preview the production build.
-$ pnpm run docs:preview
-
-# check your project for potential problems
-$ pnpm run doctor
+# 通过 pnpm 安装
+pnpm add react-single-ui
 ```
 
 ## LICENSE

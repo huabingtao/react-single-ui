@@ -6,8 +6,8 @@
  * @Description: In User Settings Edit
  * @FilePath: /single/src/base/button/index.tsx
  */
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
 import TouchFeedback from 'rmc-feedback';
 import { prefixCls } from '../../utils';
 

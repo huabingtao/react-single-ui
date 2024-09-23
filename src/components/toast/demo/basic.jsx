@@ -1,49 +1,74 @@
-import React from 'react';
-import { Toast, Button } from 'react-single-ui';
-
+import React, { useEffect, useState } from 'react';
+import { Button, Toast } from 'react-single-ui';
+const CountDownText = () => {
+  const [count, setCount] = useState(5);
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setCount((x) => {
+        if (x > 1) {
+          return x - 1;
+        } else {
+          return x;
+        }
+      });
+    }, 1000);
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, []);
+  return <span>还剩 {count} 秒</span>;
+};
 export default () => {
   const show = () => {
-    Toast.show('text only');
+    Toast.info({
+      content: '基础的 Toast',
+    });
   };
   const duration = () => {
-    Toast.show('延时3秒', 'default', false, 3);
-  };
-  const showInfo = () => {
-    Toast.info('信息 Toast', false, 3);
+    Toast.info({
+      content: <CountDownText />,
+      duration: 5,
+    });
   };
   const showSuccess = () => {
-    Toast.success('成功 Toast', false, 3);
+    Toast.success({
+      content: '成功 Toast',
+    });
   };
   const showFail = () => {
-    Toast.fail('失败 Toast', false, 3);
+    Toast.fail({
+      content: '失败 Toast',
+      duration: 3,
+    });
   };
   const showLoading = () => {
-    Toast.loading('loading...', false, 3);
+    Toast.loading({
+      content: '加载中...',
+      duration: 3,
+    });
   };
   const haveOnClose = () => {
-    Toast.show('延时3秒后关闭，执行回调函数', 'default', false, 3, () => {
-      alert('Toast Closed!');
+    Toast.info({
+      content: '延时3秒后关闭，执行回调函数',
+      onAfterClose: () => {
+        alert('关闭了');
+      },
     });
   };
   const alowaysShow = () => {
-    Toast.show('总是显示在页面上', 'default', false, 0);
+    Toast.info({
+      content: '总是显示在页面上',
+      duration: 0,
+    });
   };
   const hidden = () => {
-    Toast.hidden();
-  };
-  const noMask = () => {
-    Toast.show('noMask', '', false, 0, false);
+    Toast.closeAll();
   };
   return (
     <>
       <h1 className="sn-title">基础用法</h1>
       <Button block btnType="primary" onClick={show}>
         基础的 Toast
-      </Button>
-
-      <div style={{ height: '10px' }}></div>
-      <Button block btnType="primary" onClick={showInfo}>
-        信息 Toast
       </Button>
       <div style={{ height: '10px' }}></div>
       <Button block btnType="primary" onClick={showSuccess}>
@@ -67,15 +92,11 @@ export default () => {
       </Button>
       <h1 className="sn-title">延时关闭</h1>
       <Button block btnType="primary" onClick={duration}>
-        持续3s后自动关闭
+        持续5s后自动关闭
       </Button>
       <h1 className="sn-title">关闭后回调</h1>
       <Button block btnType="primary" onClick={haveOnClose}>
         持续3s后自动关闭并执行alert函数
-      </Button>
-      <h1 className="sn-title">隐藏蒙层</h1>
-      <Button block btnType="primary" onClick={noMask}>
-        没有隐藏蒙层
       </Button>
     </>
   );

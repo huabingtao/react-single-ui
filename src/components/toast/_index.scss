@@ -2,6 +2,7 @@ $toastPrefixCls: 'sn-toast';
 
 .#{$toastPrefixCls} {
   width: calc(100vw);
+  height: calc(100vh);
   position: fixed;
   display: flex;
   justify-content: center;
@@ -15,23 +16,6 @@ $toastPrefixCls: 'sn-toast';
   }
   &-icon-wrap{
     padding: 10px 0;
-  }
-  &-mask {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 0;
-    top: 0;
-    transform: translateZ(1px);
-  }
-  &-nomask {
-    position: fixed;
-    max-width: 50%;
-    width: auto;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
   &-content{
     text-align: center;

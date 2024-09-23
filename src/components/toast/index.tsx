@@ -1,196 +1,139 @@
-import React from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
-import Notification from 'rmc-notification';
-
-import Icon from '.././icon';
+import React, { useMemo } from 'react';
+import { createRoot } from 'react-dom/client';
 import { prefixCls } from '../../utils';
-// import { createRoot } from 'react-dom/client';
+import Icon from '../icon';
+import Loading from '../loading';
 
-export interface BaseProps<T> {
+library.add(faCheck, faXmark);
+const toastCloseRefs: (() => void)[] = [];
+export interface ToastProps<T> {
+  /**
+   * Toast 类型
+   * @default info
+   */
   type?: T;
+  /**
+   * Toast 内容
+   */
   content?: React.ReactNode;
-  mask?: boolean;
+  /**
+   * 显示时长，单位为秒
+   * @default 3
+   */
   duration?: number;
-  onClose?: () => void;
+  /**
+   * 是否允许背景点击
+   * @default true
+   */
+  maskClickable?: boolean;
+  /**
+   * 完全关闭回调
+   */
+  onAfterClose?: () => void;
 }
-// eslint-disable-next-line
-let messageInstance: any = null;
-let messageNeedHide: boolean;
+
 export type ToastType = 'success' | 'fail' | 'info' | 'loading';
 
-const div = document.createElement('div');
-// const root = createRoot(div);
-document.body.appendChild(div);
+export const ToastPrefixCls = prefixCls + '-toast';
 
-const ToastPrefixCls = prefixCls + '-toast';
-function getMessageInstance(
-  mask: boolean,
-  callback: (notification: unknown) => void,
-) {
-  const classes = classNames({
-    [`${ToastPrefixCls}-mask`]: mask,
-    [`${ToastPrefixCls}-nomask`]: !mask,
+type TostFnType = (options: {
+  content: React.ReactNode;
+  duration?: number;
+}) => void;
+
+const Toast: React.FC<ToastProps<ToastType>> & {
+  info: TostFnType;
+  success: TostFnType;
+  fail: TostFnType;
+  loading: TostFnType;
+  closeAll: () => void;
+} = ({ type = 'info', content, maskClickable = true }) => {
+  const classes = classNames(ToastPrefixCls, {
+    [`${ToastPrefixCls}-${type}`]: type,
   });
-  // eslint-disable-next-line
-  Notification.newInstance(
-    {
-      prefixCls: `${ToastPrefixCls}`,
-      style: {}, // clear rmc-notification default style
-      transitionName: `${ToastPrefixCls}-fade`,
-      className: classes,
-    },
-    // eslint-disable-next-line
-    (notification: any) => callback && callback(notification),
-  );
-}
-const notic = (props: BaseProps<ToastType>) => {
-  const { content, mask = true, duration, onClose, type = 'info' } = props;
 
-  const iconTypes: { [key: string]: string } = {
-    info: '',
-    success: 'check-circle',
-    fail: 'times-circle',
-    loading: 'spinner',
+  const iconElement = useMemo(() => {
+    if (type === null || type === undefined) return null;
+    switch (type) {
+      case 'success':
+        return <Icon icon={faCheck} size="2x" />;
+      case 'fail':
+        return <Icon icon={faXmark} size="2x" />;
+      case 'loading':
+        return <Loading size="2x" color="#fff" />;
+      default:
+        return '';
+    }
+  }, [type]);
+
+  return (
+    <div
+      className={classes}
+      style={{ pointerEvents: maskClickable ? 'none' : 'auto' }}
+    >
+      <div className={`${ToastPrefixCls}-content`}>
+        {type !== 'info' && (
+          <div className={`${ToastPrefixCls}-icon-wrap`}>{iconElement}</div>
+        )}
+        <p>{content}</p>
+      </div>
+    </div>
+  );
+};
+
+// 通用的渲染方法
+const showToast = (
+  type: ToastType,
+  { content, duration = 3, onAfterClose }: ToastProps<ToastType>,
+) => {
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  const root = createRoot(div);
+
+  const close = () => {
+    const index = toastCloseRefs.indexOf(close);
+    if (index !== -1) {
+      toastCloseRefs.splice(index, 1); // 移除关闭引用
+    }
+
+    // toastCloseRefs.splice(toastCloseRefs.indexOf(close), 1);
+    root.unmount();
+    if (div && div.parentNode) {
+      div.parentNode.removeChild(div);
+    }
+    if (onAfterClose) onAfterClose();
   };
 
-  const iconType = iconTypes[type];
-  messageNeedHide = false; // 这个属性暂时没搞清楚起了什么作用
+  if (duration) {
+    setTimeout(() => {
+      close();
+    }, duration * 1000);
+  }
 
-  getMessageInstance(mask, (notification) => {
-    if (!notification) {
-      return;
-    }
+  toastCloseRefs.push(close);
 
-    if (messageInstance) {
-      messageInstance.destroy(); // 如果之前有生成过实例就先关闭当前toast
-      messageInstance = null;
-    }
+  root.render(<Toast type={type} content={content} />);
 
-    if (messageNeedHide) {
-      // eslint-disable-next-line
-      notification.destroy();
-      messageNeedHide = false;
-      return;
-    }
-
-    messageInstance = notification;
-    // eslint-disable-next-line
-    notification.notice({
-      content: (
-        <div
-          className={`${ToastPrefixCls}-content`}
-          role="alert"
-          aria-live="assertive"
-        >
-          {!!iconType && (
-            <div className={`${ToastPrefixCls}-icon-wrap`}>
-              <Icon
-                // eslint-disable-next-line
-                icon={iconType as any}
-                size="2x"
-                spin={type === 'loading'}
-              ></Icon>
-            </div>
-          )}
-          <div>{content}</div>
-        </div>
-      ),
-      duration,
-      onClose() {
-        onClose && onClose();
-        // eslint-disable-next-line
-        notification.destroy();
-        notification = null;
-        messageInstance = null;
-      },
-    });
-  });
+  return close;
 };
-const Toast = {
-  show: (
-    content: React.ReactNode,
-    type?: ToastType,
-    mask?: boolean,
-    duration?: number,
-    onClose?: () => void,
-  ) => {
-    const params = {
-      content,
-      type,
-      mask,
-      duration,
-      onClose,
-    };
-    return notic(params);
-  },
-  info: (
-    content: React.ReactNode,
-    mask: boolean,
-    duration: number,
-    onClose: () => void,
-  ) => {
-    const params = {
-      content,
-      type: 'info' as const,
-      mask,
-      duration,
-      onClose,
-    };
-    return notic(params);
-  },
-  success: (
-    content: React.ReactNode,
-    mask: boolean,
-    duration: number,
-    onClose: () => void,
-  ) => {
-    const params = {
-      content,
-      type: 'success' as const,
-      mask,
-      duration,
-      onClose,
-    };
-    return notic(params);
-  },
-  fail: (
-    content: React.ReactNode,
-    mask: boolean,
-    duration: number,
-    onClose: () => void,
-  ) => {
-    const params = {
-      content,
-      type: 'fail' as const,
-      mask,
-      duration,
-      onClose,
-    };
-    return notic(params);
-  },
-  loading: (
-    content: React.ReactNode,
-    mask: boolean,
-    duration: number,
-    onClose: () => void,
-  ) => {
-    const params = {
-      content,
-      type: 'loading' as const,
-      mask,
-      duration,
-      onClose,
-    };
-    return notic(params);
-  },
-  hidden: () => {
-    if (messageInstance) {
-      messageInstance.destroy();
-      messageInstance = null;
-    } else {
-      messageNeedHide = true;
+
+Toast.closeAll = () => {
+  // 调用每个 Toast 的关闭函数
+  while (toastCloseRefs.length > 0) {
+    const close = toastCloseRefs.pop(); // 从数组尾部开始关闭
+    if (close) {
+      close();
     }
-  },
+  }
 };
+
+// 添加静态方法支持多种类型的 Toast
+Toast.info = (props: ToastProps<'info'>) => showToast('info', props);
+Toast.success = (props: ToastProps<'success'>) => showToast('success', props);
+Toast.fail = (props: ToastProps<'fail'>) => showToast('fail', props);
+Toast.loading = (props: ToastProps<'loading'>) => showToast('loading', props);
 
 export default Toast;
