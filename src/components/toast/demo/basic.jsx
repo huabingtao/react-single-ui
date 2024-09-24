@@ -59,6 +59,7 @@ export default () => {
     Toast.info({
       content: '总是显示在页面上',
       duration: 0,
+      maskClickable: false,
     });
   };
   const hidden = () => {

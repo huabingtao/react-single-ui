@@ -59,14 +59,11 @@ const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
   } = props;
 
   const handleSelect = (index: number) => {
-    if (onSelect) {
-      onSelect(index);
-    }
-    // onSelect && onSelect(index);
+    onSelect && onSelect(index);
   };
 
   const breadcrmbContextContent: IBreadcrumbContext = {
-    length: (children as [])?.length || 0,
+    length: (children as [])?.length,
     separator,
     inactiveColor,
     activeColor,

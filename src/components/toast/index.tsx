@@ -9,12 +9,13 @@ import Loading from '../loading';
 
 library.add(faCheck, faXmark);
 const toastCloseRefs: (() => void)[] = [];
+export type CloseToastFn = () => void;
 export interface ToastProps<T> {
   /**
    * Toast 类型
    * @default info
    */
-  type?: T;
+  type: T;
   /**
    * Toast 内容
    */
@@ -42,7 +43,17 @@ export const ToastPrefixCls = prefixCls + '-toast';
 type TostFnType = (options: {
   content: React.ReactNode;
   duration?: number;
-}) => void;
+  type?: ToastType;
+  /**
+   * 是否允许背景点击
+   * @default true
+   */
+  maskClickable?: boolean;
+  /**
+   * 完全关闭回调
+   */
+  onAfterClose?: () => void;
+}) => CloseToastFn;
 
 const Toast: React.FC<ToastProps<ToastType>> & {
   info: TostFnType;
@@ -50,13 +61,13 @@ const Toast: React.FC<ToastProps<ToastType>> & {
   fail: TostFnType;
   loading: TostFnType;
   closeAll: () => void;
-} = ({ type = 'info', content, maskClickable = true }) => {
+} = ({ type, content, maskClickable = true }) => {
   const classes = classNames(ToastPrefixCls, {
     [`${ToastPrefixCls}-${type}`]: type,
   });
 
   const iconElement = useMemo(() => {
-    if (type === null || type === undefined) return null;
+    // if (type === null || type === undefined) return null;
     switch (type) {
       case 'success':
         return <Icon icon={faCheck} size="2x" />;
@@ -87,7 +98,7 @@ const Toast: React.FC<ToastProps<ToastType>> & {
 // 通用的渲染方法
 const showToast = (
   type: ToastType,
-  { content, duration = 3, onAfterClose }: ToastProps<ToastType>,
+  { content, duration = 3, onAfterClose, ...restProps }: ToastProps<ToastType>,
 ) => {
   const div = document.createElement('div');
   document.body.appendChild(div);
@@ -115,7 +126,7 @@ const showToast = (
 
   toastCloseRefs.push(close);
 
-  root.render(<Toast type={type} content={content} />);
+  root.render(<Toast content={content} {...restProps} />);
 
   return close;
 };
@@ -131,9 +142,13 @@ Toast.closeAll = () => {
 };
 
 // 添加静态方法支持多种类型的 Toast
-Toast.info = (props: ToastProps<'info'>) => showToast('info', props);
-Toast.success = (props: ToastProps<'success'>) => showToast('success', props);
-Toast.fail = (props: ToastProps<'fail'>) => showToast('fail', props);
-Toast.loading = (props: ToastProps<'loading'>) => showToast('loading', props);
+Toast.info = (props): CloseToastFn =>
+  showToast('info', { ...props, type: 'info' });
+Toast.success = (props): CloseToastFn =>
+  showToast('success', { ...props, type: 'success' });
+Toast.fail = (props): CloseToastFn =>
+  showToast('fail', { ...props, type: 'fail' });
+Toast.loading = (props): CloseToastFn =>
+  showToast('loading', { ...props, type: 'loading' });
 
 export default Toast;

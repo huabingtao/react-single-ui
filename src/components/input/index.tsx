@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
 import classNames from 'classnames';
+import React, { useEffect } from 'react';
 
-import { prefixCls } from '../../utils';
-import { BaseInputProps } from './input.d';
-import Input from './input';
-import Icon from '../../components/icon';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import Icon from '../../components/icon';
+import { prefixCls } from '../../utils';
+import Input from './input';
+import { BaseInputProps } from './input.d';
 library.add(faTimesCircle);
 
 const caculType = (type: string) => {

@@ -79,4 +79,20 @@ describe('Mask Component', () => {
     fireEvent.click(document.body);
     expect(mockOnMaskClick).not.toHaveBeenCalled();
   });
+
+  it('should prevent and touchmove when mask is visible', () => {
+    render(<Mask visible={true} className="test-06" />);
+    // 监视 preventDefault
+    const preventDefaultSpy = jest.spyOn(Event.prototype, 'preventDefault');
+
+    // 触发 touchmove 和 scroll 事件
+    fireEvent.touchMove(document.body);
+    fireEvent.scroll(document.body);
+
+    // 验证 preventDefault 是否被调用
+    expect(preventDefaultSpy).toHaveBeenCalledTimes(2);
+
+    // 清理 mock
+    preventDefaultSpy.mockRestore();
+  });
 });

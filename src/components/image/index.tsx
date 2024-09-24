@@ -1,11 +1,10 @@
-import classNames from 'classnames';
-import React from 'react';
-import { useState, useEffect } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faImage, faSadTear } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
+import React, { useEffect, useState } from 'react';
+import LazyLoad from 'react-lazyload';
 import { prefixCls } from '../../utils';
 import Icon from '../icon';
-import LazyLoad from 'react-lazyload';
 
 library.add(faImage, faSadTear);
 
@@ -115,9 +114,7 @@ const Image: React.FC<ImageProps> = (props) => {
     if (!src || error) return;
     const handleOnload = (event?: React.FormEvent) => {
       setLoading(false);
-      if (onLoad) {
-        onLoad(event);
-      }
+      onLoad && onLoad(event);
     };
     const handleOnError = (event?: React.FormEvent) => {
       setError(true);

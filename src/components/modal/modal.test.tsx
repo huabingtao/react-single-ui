@@ -32,12 +32,16 @@ describe('Modal', () => {
         onPress: () => {
           handlePressCancel();
         },
+        style: {
+          color: 'grey',
+        },
       },
       {
         text: '确认',
         onPress: () => {
           handlePressComfirm();
         },
+        style: 'default',
       },
     ];
     render(

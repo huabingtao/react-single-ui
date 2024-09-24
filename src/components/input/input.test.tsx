@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
-import Input from './index';
 import React from 'react';
 import { prefixCls } from '../../utils';
+import Input from './index';
 import { BaseInputProps } from './input.d';
 const TestInputWrapper: React.FC<{
   testId?: string;
@@ -13,6 +13,30 @@ const TestInputWrapper: React.FC<{
 type InputType = Exclude<BaseInputProps['type'], undefined>;
 
 describe('Test Input component', () => {
+  it('should render correctly Input value when onChange called', () => {
+    const handleOnchange = jest.fn();
+    const { container } = render(
+      <TestInputWrapper>
+        <Input onChange={handleOnchange}></Input>
+      </TestInputWrapper>,
+    );
+    const inputElement = container.getElementsByTagName('input')[0];
+    fireEvent.change(inputElement, { target: { value: 'test' } });
+    expect(inputElement.value).toBe('test');
+  });
+  it('should render correctly tel Input value when onChange called', () => {
+    const handleOnchange = jest.fn();
+    const { container } = render(
+      <TestInputWrapper>
+        <Input type="tel" onChange={handleOnchange}></Input>
+      </TestInputWrapper>,
+    );
+    const inputElement = container.getElementsByTagName('input')[0];
+    fireEvent.change(inputElement, { target: { value: 'test' } });
+    expect(inputElement.value).not.toBe('test');
+    fireEvent.change(inputElement, { target: { value: '123' } });
+    expect(inputElement.value).toBe('123');
+  });
   it('should render correctly default Input', () => {
     const { container } = render(
       <TestInputWrapper>
@@ -117,5 +141,20 @@ describe('Test Input component', () => {
     fireEvent.blur(inputElement);
     expect(handleFocus).toHaveBeenCalledTimes(1);
     expect(handleBlur).toHaveBeenCalledTimes(1);
+  });
+  it('should onClear event be called when clear button clicked', () => {
+    const handleClear = jest.fn();
+    const { getByTestId } = render(
+      <TestInputWrapper testId="test-onClear">
+        <Input value="test" clearble={true} onClear={handleClear}></Input>
+      </TestInputWrapper>,
+    );
+    const wrapper = getByTestId('test-onClear');
+    const clearButtonElement = wrapper.querySelector(
+      `.${prefixCls}-input-clear`,
+    );
+    expect(clearButtonElement).toBeInTheDocument();
+    fireEvent.click(clearButtonElement!);
+    expect(handleClear).toHaveBeenCalled();
   });
 });

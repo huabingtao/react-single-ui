@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react';
+import '@testing-library/dom';
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 
 import BreadcrumbItem, { BreadcrumbItemProps } from './breadcrumb-item';
@@ -45,6 +46,10 @@ const disabledBreancrumbList = [
 ];
 
 describe('Breadcrumb', () => {
+  beforeEach(() => {
+    // 在每个测试用例前重置所有的 mock
+    jest.clearAllMocks();
+  });
   const renderBreadcrumb = (
     id: string,
     breancrumbList: BreadcrumbItemProps[],
@@ -70,11 +75,17 @@ describe('Breadcrumb', () => {
     };
   };
   it('should render correctly Breadcrumb width default props', () => {
+    const handleSelect = jest.fn();
     const { element: wrapElement } = renderBreadcrumb(
       'test-breadcrumb-01',
       breancrumbList,
-      {},
+      {
+        onSelect: handleSelect,
+      },
     );
+
+    fireEvent.click(wrapElement.querySelector('li') as HTMLElement);
+    expect(handleSelect).toHaveBeenCalledTimes(1);
     expect(wrapElement).toBeInTheDocument();
     expect(wrapElement.querySelector('ul')).toBeInTheDocument();
     expect(wrapElement.querySelector('ul')).toHaveClass(BreadcrumbPrefixCls);
@@ -127,8 +138,26 @@ describe('Breadcrumb', () => {
     const item = wrapElement.querySelectorAll('li');
     item.forEach((i) => {
       expect(i).toHaveClass(`${BreadcrumbPrefixCls}-item-disabled`);
-      i.click();
+      fireEvent.click(i);
     });
     expect(handleSelect).toHaveBeenCalledTimes(0);
+  });
+
+  it('should log error when a child is not BreadcrumbItem', () => {
+    const consoleSpy = jest
+      .spyOn(console, 'error')
+      .mockImplementation(() => {}); // mock console.error
+    render(
+      <TestWrapper testId={'test-breadcrumb-05'}>
+        <Breadcrumb>
+          {breancrumbList.map((item) => {
+            return <div key={item.title}>{item.title}</div>;
+          })}
+        </Breadcrumb>
+      </TestWrapper>,
+    );
+    expect(consoleSpy).toHaveBeenCalledWith(
+      'Warning: Breadcrumb has a child which is not BreadcrumbItem',
+    );
   });
 });

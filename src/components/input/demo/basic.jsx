@@ -13,10 +13,14 @@ export default () => {
     // Toast.show(`change value:${value}`);
   };
   const handleFocus1 = (value) => {
-    Toast.show(`focus value:${value}`);
+    Toast.info({
+      content: `focus value:${value}`,
+    });
   };
   const handleBlur1 = (value) => {
-    Toast.show(`blur value:${value}`);
+    Toast.info({
+      content: `blur value:${value}`,
+    });
   };
   const handleClear = () => {
     setValue2('');

@@ -1,8 +1,8 @@
-import React from 'react';
 import classNames from 'classnames';
+import React, { useLayoutEffect, useRef } from 'react';
 
+import { useState } from 'react';
 import { prefixCls } from '../../utils';
-import { useEffect, useState } from 'react';
 
 export interface ProgressProps {
   /**
@@ -84,9 +84,9 @@ const Progress: React.FC<ProgressProps> = (props) => {
   } = props;
   let { wrapStyle, percentStyle } = props;
 
-  let barRef: HTMLDivElement | null;
-  let wrapRef: HTMLDivElement | null;
-  let pivotRef: HTMLDivElement | null;
+  const barRef = useRef<HTMLDivElement | null>(null); // 使用 useRef
+  const wrapRef = useRef<HTMLDivElement | null>(null); // 使用 useRef
+  const pivotRef = useRef<HTMLDivElement | null>(null); // 使用 useRef
 
   const wrapCls = classNames(ProgressPrefixCls, `${ProgressPrefixCls}-wrap`, {
     [`${ProgressPrefixCls}-wrap-fixed`]: fixed,
@@ -109,6 +109,7 @@ const Progress: React.FC<ProgressProps> = (props) => {
   const renderPivot = () => {
     const text = pivoteText || `${percent}%`;
     if (!showPivot) return '';
+
     const style = {
       color: textColor,
       background: inactive ? 'rgb(202, 202, 202)' : pivotColor,
@@ -116,7 +117,7 @@ const Progress: React.FC<ProgressProps> = (props) => {
     };
     return (
       <span
-        ref={setPivotRef}
+        ref={pivotRef}
         style={style}
         className={`${ProgressPrefixCls}-bar-pivot`}
       >
@@ -126,32 +127,39 @@ const Progress: React.FC<ProgressProps> = (props) => {
     );
   };
 
-  const setWrapRef = (el: HTMLDivElement) => {
-    wrapRef = el;
-  };
-  const setBarRef = (el: HTMLDivElement) => {
-    barRef = el;
-  };
-  const setPivotRef = (el: HTMLDivElement) => {
-    pivotRef = el;
-  };
+  // const setWrapRef = (el: HTMLDivElement) => {
+  //   wrapRef = el;
+  // };
+  // const setBarRef = (el: HTMLDivElement) => {
+  //   barRef = el;
+  // };
+  // const setPivotRef = (el: HTMLDivElement) => {
+  //   pivotRef = el;
+  // };
 
   const [pivotLeft, setPivotLeft] = useState(0);
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (barRef && wrapRef && pivotRef) {
+  useLayoutEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (barRef.current && wrapRef.current && pivotRef.current) {
+        // 计算 pivotLeft，确保 pivot（进度文字）显示在正确位置
         setPivotLeft(
-          ((wrapRef.offsetWidth - pivotRef.offsetWidth) * +percent) / 100 ||
-            barRef.offsetWidth,
+          ((wrapRef.current.offsetWidth - pivotRef.current.offsetWidth) *
+            +percent) /
+            100 || barRef.current.offsetWidth,
         );
       }
     }, 10);
+
+    return () => {
+      // 清除 timeout，防止内存泄漏
+      clearTimeout(timeoutId);
+    };
   }, [percent]);
 
   return (
     <div
-      ref={setWrapRef}
+      ref={wrapRef}
       className={wrapCls}
       style={wrapStyle}
       role="progressbar"
@@ -159,7 +167,7 @@ const Progress: React.FC<ProgressProps> = (props) => {
       aria-valuemin={0}
       aria-valuemax={100}
     >
-      <div className={percentCls} style={percentStyle} ref={setBarRef}>
+      <div className={percentCls} style={percentStyle} ref={barRef}>
         {renderPivot()}
       </div>
     </div>

@@ -1,5 +1,5 @@
+import { act, render } from '@testing-library/react';
 import React from 'react';
-import { render, act } from '@testing-library/react';
 import Image, { ImageFit, ImageProps } from './index';
 
 const defaultImageProps: ImageProps = {
@@ -64,8 +64,9 @@ describe('test image component', () => {
   });
 
   it('should render correctly Image with showLoading', () => {
+    const handleOnLoad = jest.fn();
     const { container } = render(
-      <Image {...defaultImageProps} showLoading></Image>,
+      <Image {...defaultImageProps} onLoad={handleOnLoad} showLoading></Image>,
     );
     const loadElement = container.querySelector('.sn-image-loading');
     expect(loadElement).toBeInTheDocument();
@@ -75,18 +76,41 @@ describe('test image component', () => {
     act(() => {
       imgElement?.dispatchEvent(loadEvent);
     });
+    expect(handleOnLoad).toHaveBeenCalled();
     expect(loadElement).not.toBeInTheDocument();
     expect(imgElement).toBeInTheDocument();
   });
 
   it('should render correctly Image with showError', () => {
-    const { container } = render(<Image src="./xxx.jpg" showError></Image>);
+    const handleOnError = jest.fn();
+    const { container } = render(
+      <Image src="./xxx.jpg" onError={handleOnError} showError></Image>,
+    );
     const errorEvent = new Event('error');
     const imgElement = container.querySelector('img');
     act(() => {
       imgElement?.dispatchEvent(errorEvent);
     });
     const errorElement = container.querySelector('.sn-image-error');
+    expect(handleOnError).toHaveBeenCalledTimes(1);
     expect(errorElement).toBeInTheDocument();
+  });
+
+  it('should render empty when src is empty', () => {
+    const { container } = render(<Image src=""></Image>);
+    const imgElement = container.querySelector('img');
+    expect(imgElement).not.toBeInTheDocument();
+  });
+  it('should use lazyLoad when prop is true', () => {
+    const handleOnLoad = jest.fn();
+    const { container } = render(
+      <Image {...defaultImageProps} onLoad={handleOnLoad} lazyLoad></Image>,
+    );
+    // 手动创建并触发 onLoad 事件
+    const loadEvent = new Event('load');
+    const imgElement = container.querySelector('img');
+    act(() => {
+      imgElement?.dispatchEvent(loadEvent);
+    });
   });
 });

@@ -1,6 +1,6 @@
 import { render, waitFor } from '@testing-library/react';
-import Progress, { ProgressPrefixCls, percentCls } from '.';
 import React from 'react';
+import Progress, { percentCls, ProgressPrefixCls } from '.';
 
 const TestProgressWrap: React.FC<{
   testId?: string;
@@ -10,6 +10,12 @@ const TestProgressWrap: React.FC<{
 };
 
 describe('Test Progress Component', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+  afterEach(() => {
+    jest.useRealTimers();
+  });
   const renderProgress = (
     props: Partial<React.ComponentProps<typeof Progress>>,
     testId: string,
@@ -19,20 +25,26 @@ describe('Test Progress Component', () => {
         <Progress percent={30} {...props} />
       </TestProgressWrap>,
     );
+    // NOTE: jest测试组件内部的setTImeout
+    jest.runAllTimers();
     const wrap = getByTestId(testId);
     return wrap.querySelector('div')!;
   };
 
-  it('should render correctly base Progress', () => {
-    const wrapElement = renderProgress({}, 'test-progress-01');
+  it('should render correctly base Progress', async () => {
+    let wrapElement = null;
+
+    wrapElement = renderProgress({}, 'test-progress-01');
 
     expect(wrapElement).toBeInTheDocument();
     expect(wrapElement).toHaveClass(ProgressPrefixCls);
     expect(wrapElement).toHaveAttribute('aria-valuenow', '30');
-    expect(wrapElement.querySelector(`.${percentCls}`)).toHaveStyle({
+    expect(wrapElement!.querySelector(`.${percentCls}`)).toHaveStyle({
       width: '30%',
     });
-    expect(wrapElement.querySelector(`.${percentCls}`)).toHaveClass(percentCls);
+    expect(wrapElement!.querySelector(`.${percentCls}`)).toHaveClass(
+      percentCls,
+    );
   });
 
   it('should render showPivot and change pivote text', () => {
@@ -78,7 +90,10 @@ describe('Test Progress Component', () => {
   });
 
   it('should render inactive Progress', () => {
-    const wrapElement = renderProgress({ inactive: true }, 'test-progress-05');
+    const wrapElement = renderProgress(
+      { inactive: true, showPivot: true },
+      'test-progress-05',
+    );
 
     expect(wrapElement).toBeInTheDocument();
     expect(wrapElement).toHaveClass(`${ProgressPrefixCls}-inactive`);

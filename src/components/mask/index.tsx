@@ -54,7 +54,10 @@ const Mask: React.FC<MaskProps> = ({
       setContainer(newContainer);
 
       // 禁用滚动
-      const preventDefault = (e: Event) => e.preventDefault();
+      const preventDefault = (e: Event) => {
+        e.preventDefault();
+        e.stopPropagation();
+      };
       document.body.addEventListener('touchmove', preventDefault, {
         passive: false,
       });

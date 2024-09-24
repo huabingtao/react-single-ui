@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'; // 引入 jest-dom
 import { act, screen } from '@testing-library/react';
-import Toast, { ToastPrefixCls } from './';
+import Toast, { CloseToastFn, ToastPrefixCls } from './';
 
 describe('Test Toast component', () => {
   beforeEach(() => {
@@ -78,6 +78,7 @@ describe('Test Toast component', () => {
       expect(screen.getByText('always show toast')).toBeInTheDocument();
       jest.advanceTimersByTime(4000);
       expect(screen.queryByText('always show toast')).toBeInTheDocument();
+      Toast.closeAll();
     });
   });
 
@@ -96,6 +97,77 @@ describe('Test Toast component', () => {
       expect(
         screen.queryByText('show toast 5 seconds'),
       ).not.toBeInTheDocument();
+      Toast.closeAll();
     });
+  });
+
+  it('hould render toast with mask allowing clicks when maskClickable is true', async () => {
+    await act(() => {
+      Toast.info({
+        content: 'test mask',
+        maskClickable: true,
+        duration: 0,
+      });
+    });
+
+    await act(() => {
+      const wrapper = document.querySelector(`.${ToastPrefixCls}`);
+      expect(wrapper).toHaveStyle('pointer-events: none');
+      Toast.closeAll();
+    });
+  });
+
+  it('should render toast with mask blocking clicks when maskClickable is false', async () => {
+    await act(() => {
+      Toast.info({
+        content: 'test maskClickable',
+        maskClickable: false,
+        duration: 0,
+      });
+    });
+
+    await act(() => {
+      const wrapper = document.querySelector(`.${ToastPrefixCls}`);
+      expect(wrapper).toHaveStyle('pointer-events: auto');
+      Toast.closeAll();
+    });
+  });
+
+  it('should render close all toast when closeAll is called', async () => {
+    await act(() => {
+      Toast.info({
+        content: 'test close all',
+        duration: 0,
+      });
+      Toast.success({
+        content: 'test close all',
+        duration: 0,
+      });
+      jest.advanceTimersByTime(4000);
+    });
+    await act(() => {
+      const toastElements = document.querySelectorAll(`.${ToastPrefixCls}`);
+      expect(toastElements.length).toBe(2);
+    });
+  });
+
+  it('should correctly handle afterClose callback', async () => {
+    const afterClose = jest.fn();
+    let close: CloseToastFn | null = null;
+    await act(async () => {
+      close = Toast.info({
+        content: 'test afterClose',
+        duration: 0,
+        onAfterClose: afterClose,
+      });
+    });
+    // 确保在关闭 Toast 时推进计时器
+    await act(async () => {
+      close && close(); // 调用关闭函数
+      jest.advanceTimersByTime(1000); // 推进 1000ms
+    });
+
+    // 断言 afterClose 被调用
+    expect(afterClose).toHaveBeenCalled();
   });
 });
