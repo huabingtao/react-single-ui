@@ -501,10 +501,14 @@ export default () => {
     // Toast.show(\`change value:\${value}\`);
   };
   const handleFocus1 = (value) => {
-    Toast.show(\`focus value:\${value}\`);
+    Toast.info({
+      content: \`focus value:\${value}\`,
+    });
   };
   const handleBlur1 = (value) => {
-    Toast.show(\`blur value:\${value}\`);
+    Toast.info({
+      content: \`blur value:\${value}\`,
+    });
   };
   const handleClear = () => {
     setValue2('');
@@ -881,6 +885,7 @@ export default () => {
     Toast.info({
       content: '\u603B\u662F\u663E\u793A\u5728\u9875\u9762\u4E0A',
       duration: 0,
+      maskClickable: false,
     });
   };
   const hidden = () => {
