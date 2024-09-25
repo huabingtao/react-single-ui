@@ -9,7 +9,7 @@ const TreeSelectCls = prefixCls + '-tree-select';
 
 const TreeSelectSidebar: React.FC<Partial<TreeSidebarProps>> = () => {
   const context = useContext(TreeSelectContext);
-  const { data, index = 0, onChangeTree, activeColor } = context;
+  const { data, index, onChangeTree, activeColor } = context;
   const [treeIndex, setTreeIndex] = useState(index);
 
   const handleChangeTree = (item: TreeSidebarProps, index: number) => {

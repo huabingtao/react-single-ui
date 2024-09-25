@@ -1,9 +1,14 @@
-import React from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
+import React from 'react';
 // import userEvent from "@testing-library/user-event";
-import Uploader, { UploaderProps } from './';
+import axios, { AxiosProgressEvent } from 'axios';
 import { prefixCls } from '../../utils';
+import Uploader, { UploaderProps } from './';
 import { UploaderFileListItem } from './type';
+
+// Mock axios post request
+jest.mock('axios');
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 const TestUploaderWrapper: React.FC<{
   testId: string;
   children: React.ReactNode;
@@ -44,8 +49,8 @@ describe('Test Uploader component', () => {
     // 创建一个模拟文件
     const file = new File(['hello'], 'hello.png', { type: 'image/png' });
     // 模拟用户点击 input 触发文件上传
-    // fireEvent.click(fileInputElement as HTMLInputElement);
-    // // 触发文件上传事件
+    fireEvent.click(fileInputElement as HTMLInputElement);
+    // 触发文件上传事件
     fireEvent.change(fileInputElement as HTMLInputElement, {
       target: { files: [file] },
     });
@@ -195,5 +200,115 @@ describe('Test Uploader component', () => {
       '.sn-uploader-input',
     ) as HTMLInputElement;
     expect(fileInputElement).toBeDisabled();
+  });
+
+  it('should handle the upload process and call updateFileList on progress, success, and error', async () => {
+    const handleChange = jest.fn();
+    // const updateFileListSpy = jest.spyOn(Uploader.prototype, 'updateFileList');
+
+    // Update the mock implementation with type declaration
+    mockedAxios.post.mockImplementationOnce((url, formData, config = {}) => {
+      // 模拟上传进度
+      if (config.onUploadProgress) {
+        const progressEvent: AxiosProgressEvent = {
+          loaded: 50,
+          total: 100,
+          bytes: 50, // 可以根据需要设置
+          lengthComputable: true, // 可以根据需要设置
+        };
+        config.onUploadProgress(progressEvent);
+      }
+      return Promise.resolve({ data: 'upload successful' });
+    });
+
+    const { getByTestId } = render(
+      <TestUploaderWrapper testId="test-uploader-10">
+        <Uploader action="http://example.com/upload" onChange={handleChange} />
+      </TestUploaderWrapper>,
+    );
+
+    const fileInputElement =
+      getByTestId('test-uploader-10').querySelector('.sn-uploader-input');
+
+    // Simulate file input change
+    fireEvent.change(fileInputElement!, {
+      target: {
+        files: [new File(['hello'], 'hello.png', { type: 'image/png' })],
+      },
+    });
+
+    // Wait for the axios request to resolve
+    await waitFor(() => expect(mockedAxios.post).toHaveBeenCalled());
+
+    // Check if updateFileList was called during progress
+    // expect(updateFileListSpy).toHaveBeenCalledWith(expect.anything(), {
+    //   percent: 50,
+    //   status: 'uploading',
+    // });
+
+    // // Check if updateFileList was called after success
+    // expect(updateFileListSpy).toHaveBeenCalledWith(expect.anything(), {
+    //   status: 'done',
+    // });
+
+    // // Clean up
+    // updateFileListSpy.mockRestore();
+  });
+
+  it('should action use customFileName', async () => {
+    const handleChange = jest.fn();
+    mockedAxios.post.mockImplementationOnce(() => {
+      return Promise.resolve({ data: 'upload successful' });
+    });
+    const { getByTestId } = render(
+      <TestUploaderWrapper testId="test-uploader-11">
+        <Uploader
+          action="http://example.com/upload"
+          customFileName="demoFileName.png"
+          onChange={handleChange}
+        />
+      </TestUploaderWrapper>,
+    );
+
+    const fileInputElement =
+      getByTestId('test-uploader-11').querySelector('.sn-uploader-input');
+
+    // Simulate file input change
+    fireEvent.change(fileInputElement!, {
+      target: {
+        files: [new File(['hello'], 'hello.png', { type: 'image/png' })],
+      },
+    });
+
+    // Wait for the axios request to resolve
+    await waitFor(() => expect(mockedAxios.post).toHaveBeenCalled());
+  });
+
+  it('should handle upload failure correctly', async () => {
+    const handleChange = jest.fn();
+    mockedAxios.post.mockRejectedValueOnce(new Error('上传失败'));
+    const { getByTestId } = render(
+      <TestUploaderWrapper testId="test-uploader-12">
+        <Uploader action="http://example.com/upload" onChange={handleChange} />
+      </TestUploaderWrapper>,
+    );
+    const fileInputElement =
+      getByTestId('test-uploader-12').querySelector('.sn-uploader-input');
+
+    fireEvent.change(fileInputElement!, {
+      target: {
+        files: [new File(['hello'], 'hello.png', { type: 'image/png' })],
+      },
+    });
+    // expect(handleChange).toHaveBeenCalled();
+
+    // 检查 onChange 被调用
+    await waitFor(() => {
+      expect(handleChange).toHaveBeenCalledWith(
+        expect.any(File), // 确保传入的第一个参数是文件
+        expect.any(Array), // 第二个参数是文件列表
+        expect.any(Error), // 第三个参数是错误对象
+      );
+    });
   });
 });

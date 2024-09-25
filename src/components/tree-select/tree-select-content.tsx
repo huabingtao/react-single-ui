@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
+import _ from 'lodash';
+import React, { useContext, useState } from 'react';
+import { TreeSelectContext } from '.';
+import { Icon } from '../..';
 import { prefixCls } from '../../utils';
 import { TreeSelectItemProps, TreeSidebarProps } from './index.d';
-import { TreeSelectContext } from '.';
-import _ from 'lodash';
-import { Icon } from '../..';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
 library.add(faCheck);
 
 const TreeSelectContentCls = prefixCls + '-tree-select-content';
@@ -15,7 +15,7 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = () => {
   const context = useContext(TreeSelectContext);
   const {
     data,
-    index = 0,
+    index,
     activeId,
     multiple,
     onChangeTreeItem,
@@ -23,7 +23,7 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = () => {
     inactiveColor,
   } = context;
   let selfData: TreeSelectItemProps[] = [];
-  if (data && data[index] && data[index].children) {
+  if (data && index !== undefined && data[index] && data[index].children) {
     selfData = data[index].children;
   }
 
@@ -68,8 +68,8 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = () => {
         color: childActiveId.includes(value)
           ? activeColor
           : inactiveColor
-          ? inactiveColor
-          : '',
+            ? inactiveColor
+            : '',
       };
     }
     return {};

@@ -1,14 +1,14 @@
-import React, { ChangeEvent, useRef, useState } from 'react';
-import { filterFiles, isOversize, prefixCls, toArray } from '../../utils';
-import axios from 'axios';
-import UploaderPreviewItem from './uploaderPreviewItem';
-import { Icon } from '../..';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
-import { Interceptor, UploaderFileListItem } from './type';
-import { ImageFit } from '../image';
-import { isArray } from 'lodash';
-import classNames from 'classnames';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import classNames from 'classnames';
+import { isArray } from 'lodash';
+import React, { ChangeEvent, useRef, useState } from 'react';
+import { Icon } from '../..';
+import { filterFiles, isOversize, prefixCls, toArray } from '../../utils';
+import { ImageFit } from '../image';
+import { Interceptor, UploaderFileListItem } from './type';
+import UploaderPreviewItem from './uploaderPreviewItem';
 library.add(faCamera);
 
 const uploadPrefixCls = `${prefixCls}-uploader`;
@@ -158,8 +158,9 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       return;
     }
     const formData: FormData = new FormData();
+
     formData.append(
-      customFileName ? customFileName : (item.file?.name as string),
+      customFileName ? customFileName : (item.file.name as string),
       item.file,
     );
     axios
@@ -242,6 +243,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
       if (!items.length) {
         return;
       }
+
       uploadFiles(items);
     } else {
       setFileList([...fileList, ...items]);
@@ -299,6 +301,7 @@ const Uploader: React.FC<UploaderProps> = (props) => {
           });
 
           fileList = fileList.filter((item) => item);
+
           if (fileList.length) {
             onAfterRead(fileList as UploaderFileListItem[]);
           }

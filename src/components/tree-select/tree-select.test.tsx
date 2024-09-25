@@ -1,8 +1,8 @@
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import TreeSelect from '.';
-import { disabledData, simpleData } from './demo/data';
-import { fireEvent, render } from '@testing-library/react';
 import { prefixCls } from '../../utils';
+import { disabledData, simpleData } from './demo/data';
 import { TreeSidebarProps } from './index.d';
 
 const TreeSelectWrap: React.FC<{
@@ -13,9 +13,13 @@ const TreeSelectWrap: React.FC<{
 };
 describe('Test TreeSelect Component', () => {
   it('should render correctly TreeSelect with default props', () => {
+    const handleChangeTreeItem = jest.fn(() => {});
     const { getByTestId } = render(
       <TreeSelectWrap testId="tree-select-01">
-        <TreeSelect data={simpleData}></TreeSelect>
+        <TreeSelect
+          data={simpleData}
+          onChangeTreeItem={handleChangeTreeItem}
+        ></TreeSelect>
       </TreeSelectWrap>,
     );
     const wrapElement = getByTestId('tree-select-01');
@@ -34,6 +38,11 @@ describe('Test TreeSelect Component', () => {
     expect(firstItem).toHaveClass(
       `${prefixCls}-tree-select-sidebar-item-active`,
     );
+    const contentItems = treeSelectElement?.querySelectorAll(
+      `.${prefixCls}-tree-select-content-item`,
+    );
+    fireEvent.click(contentItems![0]);
+    expect(handleChangeTreeItem).toHaveBeenCalled();
   });
 
   it('should trigger onChangeTree with the correct index and className', () => {
@@ -127,5 +136,81 @@ describe('Test TreeSelect Component', () => {
     });
     expect(handleChangeTree).toHaveBeenCalledTimes(0);
     expect(handleChangeTreeItem).toHaveBeenCalledTimes(0);
+  });
+  it('should render custom activeColor correctly', () => {
+    const backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    const { getByTestId } = render(
+      <TreeSelectWrap testId="tree-select-05">
+        <TreeSelect
+          data={simpleData}
+          activeColor={backgroundColor}
+        ></TreeSelect>
+      </TreeSelectWrap>,
+    );
+    const wrapElement = getByTestId('tree-select-05');
+    const activeElement = wrapElement.querySelector(
+      `.${prefixCls}-tree-select-sidebar-item-active`,
+    );
+    const span = activeElement?.querySelector('span');
+    expect(span).toHaveStyle(`background-color: ${backgroundColor}`);
+  });
+  it('should render data is empty correctly', () => {
+    const consoleSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    render(
+      <TreeSelectWrap testId="tree-select-06">
+        <TreeSelect data={[]}></TreeSelect>
+      </TreeSelectWrap>,
+    );
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+      'The data is not a Array or the length of the data is 0',
+    );
+  });
+
+  it('should render correctly activeId when activeId be set', () => {
+    const handleChangeTreeItem = jest.fn(() => {});
+    const { getByTestId } = render(
+      <TreeSelectWrap testId="tree-select-07">
+        <TreeSelect
+          data={simpleData}
+          activeId={[11, 12]}
+          onChangeTreeItem={handleChangeTreeItem}
+        ></TreeSelect>
+      </TreeSelectWrap>,
+    );
+    const wrapElement = getByTestId('tree-select-07');
+    const treeSelectElement = wrapElement.querySelector(
+      `.${prefixCls}-tree-select`,
+    );
+    const activeElements = treeSelectElement?.querySelectorAll(
+      `.${prefixCls}-tree-select-content-item-active`,
+    );
+    expect(activeElements?.length).toBe(2);
+    const firstItem = activeElements?.[0] as HTMLElement;
+    fireEvent.click(firstItem);
+    expect(handleChangeTreeItem).toHaveBeenCalled();
+  });
+
+  it('should render correctly multiple onChangeTreeItem when activeId be not set', () => {
+    const handleChangeTreeItem = jest.fn(() => {});
+    const { getByTestId } = render(
+      <TreeSelectWrap testId="tree-select-08">
+        <TreeSelect
+          data={simpleData}
+          multiple
+          onChangeTreeItem={handleChangeTreeItem}
+        ></TreeSelect>
+      </TreeSelectWrap>,
+    );
+    const wrapElement = getByTestId('tree-select-08');
+    const treeSelectElement = wrapElement.querySelector(
+      `.${prefixCls}-tree-select`,
+    );
+    const elements = treeSelectElement?.querySelectorAll(
+      `.${prefixCls}-tree-select-content-item`,
+    );
+    const firstItem = elements?.[0] as HTMLElement;
+    fireEvent.click(firstItem);
+    expect(handleChangeTreeItem).toHaveBeenCalled();
   });
 });

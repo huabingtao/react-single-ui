@@ -6,7 +6,7 @@ import TreeSelectSidebar from './tree-select-sidebar';
 
 export const TreeSelectContext = createContext<
   TreeSelectProps<TreeSidebarProps>
->({ multiple: false, data: [] });
+>({ multiple: false, index: 0 });
 const TreeSelectCls = prefixCls + '-tree-select';
 
 const TreeSelect: React.FC<TreeSelectProps<TreeSidebarProps>> = (props) => {
@@ -21,7 +21,7 @@ const TreeSelect: React.FC<TreeSelectProps<TreeSidebarProps>> = (props) => {
     multiple,
     height = '300px',
   } = props;
-  const [treeIndex, setTreeIndex] = useState(index || 0);
+  const [treeIndex = index, setTreeIndex] = useState(index);
   const handleChangeTreeItem = (
     item: TreeSidebarProps,
     activeId?: Array<number | string> | string | number,

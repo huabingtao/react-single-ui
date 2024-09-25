@@ -144,9 +144,11 @@ describe('Breadcrumb', () => {
   });
 
   it('should log error when a child is not BreadcrumbItem', () => {
+    // NOTE: 测试组件打印好的错误信息
     const consoleSpy = jest
       .spyOn(console, 'error')
-      .mockImplementation(() => {}); // mock console.error
+      .mockImplementation(() => {});
+
     render(
       <TestWrapper testId={'test-breadcrumb-05'}>
         <Breadcrumb>
