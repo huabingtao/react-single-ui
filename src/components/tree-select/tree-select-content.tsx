@@ -24,7 +24,7 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = () => {
   } = context;
   let selfData: TreeSelectItemProps[] = [];
   if (data && index !== undefined && data[index] && data[index].children) {
-    selfData = data[index].children;
+    selfData = data[index].children as TreeSelectItemProps[];
   }
 
   const [childActiveId, setActiveId] = useState(
