@@ -8,7 +8,6 @@
  */
 import classNames from 'classnames';
 import React from 'react';
-import TouchFeedback from 'rmc-feedback';
 import { prefixCls } from '../../utils';
 
 export enum ButtonSize {
@@ -114,9 +113,7 @@ const Button: React.FC<ButtonProps> = (props): React.ReactElement | null => {
   }
 
   return (
-    <TouchFeedback
-      activeClassName={`${buttonPrefixCls}-active ${activeClassName}`}
-    >
+    <div className={`${buttonPrefixCls}-active ${activeClassName}`}>
       <button
         className={classes}
         type={type}
@@ -125,7 +122,7 @@ const Button: React.FC<ButtonProps> = (props): React.ReactElement | null => {
       >
         {children}
       </button>
-    </TouchFeedback>
+    </div>
     // <button className={classes} disabled={disabled} {...restProps}>
     //   {children}
     // </button>

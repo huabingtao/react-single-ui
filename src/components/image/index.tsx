@@ -1,8 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faImage, faSadTear } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
-import LazyLoad from 'react-lazyload';
+import React, { useEffect, useRef, useState } from 'react';
 import { prefixCls } from '../../utils';
 import Icon from '../icon';
 
@@ -64,6 +63,8 @@ export interface ImageProps {
 const Image: React.FC<ImageProps> = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState(false); // 图片是否加载完成
+  const imgRef = useRef<HTMLImageElement>(null); // 图片 DOM 引用
 
   const {
     alt,
@@ -77,13 +78,40 @@ const Image: React.FC<ImageProps> = (props) => {
     onError,
     showLoading = false,
     showError,
-    lazyLoad,
+    lazyLoad = false,
   } = props;
   useEffect(() => {
     if (!src) {
       setError(true);
     }
-  }, []);
+
+    if (lazyLoad && 'IntersectionObserver' in window) {
+      const imgElement = imgRef.current;
+
+      if (!imgElement) return;
+
+      // 使用 IntersectionObserver 进行懒加载
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setLoaded(true); // 当图片进入视口时开始加载
+              observer.unobserve(imgElement); // 取消观察
+            }
+          });
+        },
+        {
+          rootMargin: '100px', // 提前 100px 加载图片
+        },
+      );
+
+      observer.observe(imgElement);
+
+      return () => observer.disconnect();
+    } else {
+      setLoaded(true); // 如果不支持 IntersectionObserver，直接加载图片
+    }
+  }, [src, lazyLoad]);
   const classes = classNames(`${prefixCls}-image-wrap`, {
     [`${prefixCls}-image-wrap-round`]: round,
   });
@@ -110,49 +138,31 @@ const Image: React.FC<ImageProps> = (props) => {
       );
     }
   };
-  const renderImage = () => {
-    if (!src || error) return;
-    const handleOnload = (event?: React.FormEvent) => {
-      setLoading(false);
-      onLoad && onLoad(event);
-    };
-    const handleOnError = (event?: React.FormEvent) => {
-      setError(true);
-      if (onError) {
-        onError(event);
-      }
-    };
-    const attrs = {
-      alt,
-      src,
-      style: { objectFit: fit },
-    };
-    if (lazyLoad) {
-      return (
-        <LazyLoad scroll={true} offset={-20}>
-          <img
-            className={`${prefixCls}-image-img`}
-            onError={handleOnError}
-            onLoad={handleOnload}
-            {...attrs}
-          />
-        </LazyLoad>
-      );
+  const handleOnload = (event?: React.FormEvent) => {
+    setLoading(false);
+    onLoad && onLoad(event);
+  };
+  const handleOnError = (event?: React.FormEvent) => {
+    setError(true);
+    if (onError) {
+      onError(event);
     }
-    return (
-      <img
-        className={`${prefixCls}-image-img`}
-        onError={handleOnError}
-        onLoad={handleOnload}
-        {...attrs}
-      />
-    );
   };
 
   return (
     <div style={imgWrapStyle} className={classes}>
       {renderPlaceholder()}
-      {renderImage()}
+      {!error && (
+        <img
+          ref={imgRef}
+          alt={alt}
+          src={loaded ? src : undefined}
+          style={{ objectFit: fit, width, height }}
+          className={`${prefixCls}-image-img`}
+          onError={handleOnError}
+          onLoad={handleOnload}
+        />
+      )}
     </div>
   );
 };

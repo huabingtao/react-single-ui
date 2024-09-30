@@ -30,6 +30,7 @@ $buttonPrefixCls: 'sn-btn';
     }
   }
   &-active {
+    display: inline-block;
     background-color: $btn-fill-tap
   }
   &-block{
