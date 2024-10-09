@@ -1,9 +1,0 @@
-"use strict";(self.webpackChunkreact_single_ui=self.webpackChunkreact_single_ui||[]).push([[904],{85863:function(t,a,n){n.r(a),n.d(a,{demos:function(){return d}});var u=n(75271),e=n(62356),d={}},36943:function(t,a,n){n.r(a),n.d(a,{demos:function(){return d}});var u=n(75271),e=n(44952),d={}},1946:function(t,a,n){n.r(a),n.d(a,{texts:function(){return e}});var u=n(62356);const e=[{value:"react-single-ui \u662F\u4E00\u4E2A\u8F7B\u91CF\u3001\u53EF\u5B9A\u5236\u7684\u79FB\u52A8\u7AEF\u7EC4\u4EF6\u5E93",paraId:0},{value:"\u76EE\u524D\u7531\u6211\u4E2A\u4EBA\u7EF4\u62A4\uFF0C\u6B22\u8FCE\u5927\u5BB6\u52A0\u5165\u8FDB\u6765\u4E00\u8D77\u5F00\u6E90\u3002",paraId:1},{value:" css\u6587\u4EF6\u62C6\u5206",paraId:2,tocIndex:0},{value:" \u56FD\u9645\u5316",paraId:2,tocIndex:0},{value:" css \u53D8\u91CF\u66FF\u6362",paraId:2,tocIndex:0},{value:" \u81EA\u5B9A\u4E49\u4E3B\u9898",paraId:2,tocIndex:0},{value:" \u9884\u6784\u5EFA",paraId:2,tocIndex:0}]},25305:function(t,a,n){n.r(a),n.d(a,{texts:function(){return e}});var u=n(44952);const e=[{value:"\u901A\u8FC7 npm \u5B89\u88C5",paraId:0,tocIndex:0},{value:"\u5728\u73B0\u6709\u9879\u76EE\u4E2D\u4F7F\u7528 react-single-ui \u65F6\uFF0C\u53EF\u4EE5\u901A\u8FC7 npm \u8FDB\u884C\u5B89\u88C5\uFF1A",paraId:1,tocIndex:0},{value:`npm i install react-single-ui
-`,paraId:2,tocIndex:0},{value:"\u5F53\u7136\uFF0C\u4F60\u4E5F\u53EF\u4EE5\u901A\u8FC7 yarn\u3001pnpm \u6216 bun \u8FDB\u884C\u5B89\u88C5\uFF1A",paraId:3,tocIndex:0},{value:`# \u901A\u8FC7 yarn \u5B89\u88C5
-yarn add react-single-ui
-
-# \u901A\u8FC7 pnpm \u5B89\u88C5
-pnpm add react-single-ui
-
-`,paraId:4,tocIndex:0},{value:"\u76F4\u63A5\u5F15\u5165\u7EC4\u4EF6\u5373\u53EF\uFF0Creact-single-ui \u4F1A\u81EA\u52A8\u4E3A\u4F60\u52A0\u8F7D css \u6837\u5F0F\u6587\u4EF6\uFF1A",paraId:5,tocIndex:1},{value:`import { Button } from 'react-single-ui';
-`,paraId:6,tocIndex:1}]}}]);
