@@ -16,7 +16,7 @@ const CountDownText = () => {
       window.clearInterval(interval);
     };
   }, []);
-  return <span>还剩 {count} 秒</span>;
+  return <span className="inline-block w-[100px]">还剩 {count} 秒</span>;
 };
 export default () => {
   const show = () => {
@@ -59,7 +59,7 @@ export default () => {
     Toast.info({
       content: '总是显示在页面上',
       duration: 0,
-      maskClickable: false,
+      maskClickable: true,
     });
   };
   const hidden = () => {

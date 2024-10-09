@@ -1,3 +1,4 @@
+'use client';
 import React, { createContext, useState } from 'react';
 import { prefixCls } from '../../utils';
 import { TreeSelectProps, TreeSidebarProps } from './index.d';

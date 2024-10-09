@@ -1,3 +1,4 @@
+'use client';
 import classNames from 'classnames';
 import React, { createContext } from 'react';
 
@@ -6,7 +7,7 @@ import { BreadcrumbItemProps } from './breadcrumb-item';
 
 export interface BreadcrumbProps {
   /**
-   * @description 分隔符
+   * @description 分隔符 "v0.0.7"
    * @default "/"
    */
   separator?: string;

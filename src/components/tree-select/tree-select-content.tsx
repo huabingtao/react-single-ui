@@ -100,6 +100,5 @@ const TreeSelectContent: React.FC<Partial<TreeSidebarProps>> = () => {
 
   return <ul className={TreeSelectContentCls}>{renderChildren()}</ul>;
 };
-TreeSelectContent.displayName = 'TreeSelectItem';
 
 export default TreeSelectContent;

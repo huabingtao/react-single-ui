@@ -13,13 +13,10 @@ export default () => {
         打开蒙层
       </Button>
       <h1 className="sn-title">显示自定义颜色的蒙层</h1>
-      <Button
-        btnType="primary"
-        onClick={() => setVisibleLight(true)}
-        className="block mb-1"
-      >
+      <Button btnType="primary" onClick={() => setVisibleLight(true)}>
         打开更浅的蒙层
       </Button>
+      <span className="mr-2"></span>
       <Button btnType="primary" onClick={() => setVisibleDark(true)}>
         打开更深的蒙层
       </Button>
