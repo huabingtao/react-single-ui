@@ -4,6 +4,7 @@ import { Button, Modal } from 'react-single-ui';
 export default () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
+  let closeFn: (() => void) | null = null;
   const show1 = () => {
     setVisible1(true);
   };
@@ -11,11 +12,12 @@ export default () => {
     setVisible2(true);
   };
   const show3 = () => {
-    Modal.alert({
+    const { close } = Modal.alert({
       title: '标题',
       message: '这是通过 Modal.alert 的方式调用',
       footer: footer3,
     });
+    closeFn = close;
   };
 
   const footer1 = [
@@ -53,12 +55,14 @@ export default () => {
       text: '取消',
       onPress: () => {
         console.log('点击取消');
+        closeFn && closeFn();
       },
     },
     {
       text: '确认',
       onPress: () => {
         console.log('点击确认');
+        closeFn && closeFn();
       },
       style: { color: '#108ee9' },
     },

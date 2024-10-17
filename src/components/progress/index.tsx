@@ -3,6 +3,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 
 import { useState } from 'react';
 import { prefixCls } from '../../utils';
+import './_index.scss';
 
 export interface ProgressProps {
   /**

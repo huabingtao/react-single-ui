@@ -30,7 +30,7 @@ $treeSelectPrefixCls: "sn-tree-select";
           left: 0;
           width: 4px;
           height: 16px;
-          background-color: $primary;
+          background-color: var(--primary);
           -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
           content: "";
@@ -56,7 +56,7 @@ $treeSelectPrefixCls: "sn-tree-select";
       justify-content: space-between;
       align-items: center;
       &-active {
-        color: $primary;
+        color: var(--primary);
       }
       &-disabled {
         color: #c8c9cc;

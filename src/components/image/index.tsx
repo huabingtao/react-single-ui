@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import { prefixCls } from '../../utils';
 import Icon from '../icon';
+import './_index.scss';
 
 library.add(faImage, faSadTear);
 

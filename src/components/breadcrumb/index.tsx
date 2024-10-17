@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import React, { createContext } from 'react';
 
 import { prefixCls } from '../../utils';
+import './_index.scss';
 import { BreadcrumbItemProps } from './breadcrumb-item';
 
 export interface BreadcrumbProps {

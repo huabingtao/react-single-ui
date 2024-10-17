@@ -1,4 +1,4 @@
-$maskPrefixCls: 'sn-mask';
+$maskPrefixCls: "sn-mask";
 .#{$maskPrefixCls} {
   position: fixed;
   top: 0;
@@ -6,5 +6,5 @@ $maskPrefixCls: 'sn-mask';
   left: 0;
   bottom: 0;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: var(--black-transparent-45);
 }

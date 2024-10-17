@@ -30,7 +30,7 @@ body {
   line-height: $line-height-base;
   color: $body-color;
   text-align: $body-text-align;
-  background-color: $body-bg; // 2
+  background-color: #fff; // 2
   -webkit-text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
@@ -401,7 +401,7 @@ button,
 [type="button"], // 1
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button; // 2
+  appearance: button; // 2
 
   @if $enable-pointer-cursor-for-buttons {
     &:not(:disabled) {
@@ -495,13 +495,13 @@ progress {
 
 [type="search"] {
   outline-offset: -2px; // 1
-  -webkit-appearance: textfield; // 2
+  appearance: textfield; // 2
 }
 
 // Remove the inner padding in Chrome and Safari on macOS.
 
 ::-webkit-search-decoration {
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 // Remove padding around color pickers in webkit browsers

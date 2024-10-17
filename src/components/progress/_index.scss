@@ -11,14 +11,14 @@ $progressPrefixCls: "sn-progress";
       width: 100%;
       top: 0;
       left: 0;
-      z-index: $progress-zindex;
+      z-index: var(--progress-zindex);
     }
   }
   &-bar {
     position: absolute;
     left: 0;
     height: 100%;
-    background: $primary;
+    background: var(--primary);
     border-radius: inherit;
     transition: all 0.5s linear;
     &-pivot {

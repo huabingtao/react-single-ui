@@ -1,4 +1,4 @@
-$switchPrefixCls: 'sn-switch';
+$switchPrefixCls: "sn-switch";
 
 .#{$switchPrefixCls} {
   position: relative;
@@ -13,18 +13,18 @@ $switchPrefixCls: 'sn-switch';
   cursor: pointer;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
-  &-active{
-    background-color: $primary;    
-    .#{$switchPrefixCls}-round{      
+  &-active {
+    background-color: var(--primary);
+    .#{$switchPrefixCls}-round {
       transform: translateX(100%);
     }
   }
-  &-active.#{$switchPrefixCls}-sm{
-    .#{$switchPrefixCls}-round{
+  &-active.#{$switchPrefixCls}-sm {
+    .#{$switchPrefixCls}-round {
       transform: translateX(1.2em);
     }
   }
-  &-round{
+  &-round {
     position: absolute;
     top: 0;
     left: 0;
@@ -32,18 +32,23 @@ $switchPrefixCls: 'sn-switch';
     height: 1em;
     background-color: #fff;
     border-radius: 100%;
-    box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s cubic-bezier(0.3, 1.05, 0.4, 1.05), 0.3s cubic-bezier(0.3, 1.05, 0.4, 1.05);
+    box-shadow:
+      0 3px 1px 0 rgba(0, 0, 0, 0.05),
+      0 2px 2px 0 rgba(0, 0, 0, 0.1),
+      0 3px 3px 0 rgba(0, 0, 0, 0.05);
+    transition:
+      transform 0.3s cubic-bezier(0.3, 1.05, 0.4, 1.05),
+      0.3s cubic-bezier(0.3, 1.05, 0.4, 1.05);
   }
-  &-sm{
+  &-sm {
     width: 2em;
     height: 0.8em;
-    .#{$switchPrefixCls}-round{
+    .#{$switchPrefixCls}-round {
       height: 0.8em;
       width: 0.8em;
     }
   }
-  &-disabled{
+  &-disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }

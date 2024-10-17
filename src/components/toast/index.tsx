@@ -6,6 +6,7 @@ import { createRoot } from 'react-dom/client';
 import { prefixCls } from '../../utils';
 import Icon from '../icon';
 import Loading from '../loading';
+import './_index.scss';
 
 library.add(faCheck, faXmark);
 const toastCloseRefs: (() => void)[] = [];

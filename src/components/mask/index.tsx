@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { prefixCls } from '../../utils';
+import './_index.scss';
 
 export interface MaskProps {
   /**

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
 import classNames from 'classnames';
+import React, { useState } from 'react';
 
 import { prefixCls } from '../../utils';
+import './_index.scss';
 
 export interface SwitchProps {
   /**

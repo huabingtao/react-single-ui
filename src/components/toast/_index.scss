@@ -1,4 +1,4 @@
-$toastPrefixCls: 'sn-toast';
+$toastPrefixCls: "sn-toast";
 
 .#{$toastPrefixCls} {
   width: calc(100vw);
@@ -14,15 +14,15 @@ $toastPrefixCls: 'sn-toast';
   > span {
     max-width: 50vw;
   }
-  &-icon-wrap{
+  &-icon-wrap {
     padding: 10px 0;
   }
-  &-content{
+  &-content {
     text-align: center;
     min-width: 70px;
     border-radius: 4px;
     color: #fff;
-    background-color: $toast-fill;
+    background-color: var(--background-toast);
     padding: 6px 10px;
   }
 }

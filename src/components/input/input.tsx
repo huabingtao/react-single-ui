@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import './_index.scss';
 import { InputEventHandler } from './input.d';
 
 export interface InputProps

@@ -15,17 +15,7 @@
   color: $color;
   background: $background;
   border-color: $border;
-  // &:hover {
-  //   color: $hover-color;
-  //   background: $hover-background;
-  //   border-color: $hover-border;
-  // }
-  // &:focus,
-  // &.focus {
-  //   color: $hover-color;
-  //   background: $hover-background;
-  //   border-color: $hover-border;
-  // }
+
   &:active {
     background: lighten($background, 7.5%);
   }

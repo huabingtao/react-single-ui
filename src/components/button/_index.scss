@@ -1,8 +1,10 @@
-$buttonPrefixCls: 'sn-btn';
+@import "../../style/variables";
+@import "../../style/mixin";
+$buttonPrefixCls: "sn-btn";
 .#{$buttonPrefixCls} {
   position: relative;
   text-align: center;
-  font-weight: $btn-font-weight;
+  font-weight: 400;
   line-height: $btn-line-height;
   color: $body-color;
   white-space: nowrap;
@@ -10,12 +12,7 @@ $buttonPrefixCls: 'sn-btn';
   background-image: none;
   outline: 0 none;
   border: $btn-border-width solid transparent;
-  @include button-size(
-    $btn-padding-y,
-    $btn-padding-x,
-    $btn-font-size,
-    $border-radius
-  );
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $border-radius);
   box-shadow: $btn-box-shadow;
   cursor: pointer;
   transition: $btn-transition;
@@ -23,35 +20,24 @@ $buttonPrefixCls: 'sn-btn';
   &.disabled,
   &[disabled] {
     cursor: not-allowed;
-    opacity: $btn-disabled-opacity;
+    opacity: 0.65;
     box-shadow: none;
     > * {
       pointer-events: none;
     }
   }
   &-active {
-    display: inline-block;
-    background-color: $btn-fill-tap
+    background-color: $btn-fill-tap;
   }
-  &-block{
-      display: block;
-      width: 100%;
+  &-block {
+    display: block;
+    width: 100%;
   }
-  &-lg{
-    @include button-size(
-      $btn-padding-y-lg,
-      $btn-padding-x-lg,
-      $btn-font-size-lg,
-      $btn-border-radius-lg
-    );
+  &-lg {
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
   }
-  &-sm{
-    @include button-size(
-      $btn-padding-y-sm,
-      $btn-padding-x-sm,
-      $btn-font-size-sm,
-      $btn-border-radius-sm
-    );
+  &-sm {
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
   }
   &-primary {
     @include button-style($primary, $primary, $white);
@@ -60,16 +46,9 @@ $buttonPrefixCls: 'sn-btn';
     @include button-style($danger, $danger, $white);
   }
   &-default {
-    @include button-style(
-      $white,
-      $gray-400,
-      $body-color,
-      $white,
-      $primary,
-      $primary
-    );
+    @include button-style($white, $gray-400, $body-color, $white, $primary, $primary);
     &.#{$buttonPrefixCls}-active {
-      background: $btn-fill-tap ;
+      background: $btn-fill-tap;
     }
   }
   &-link {

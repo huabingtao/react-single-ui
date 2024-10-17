@@ -10,7 +10,7 @@ $inputPrefixCls: "sn-input";
   &-required {
     .#{$inputPrefixCls} {
       &-label::before {
-        color: #ee0a24;
+        color: var(--danger);
         font-size: 14px;
         content: "*";
         display: inline-block;
@@ -19,17 +19,17 @@ $inputPrefixCls: "sn-input";
   }
   &-disabled {
     > div:first-child {
-      color: #c8c9cc;
+      color: var(--color-text-disabled);
     }
     input {
-      color: #c8c9cc;
+      color: var(--color-text-disabled);
     }
   }
   &-readonly {
     .#{$inputPrefixCls} {
       &-self {
         &::placeholder {
-          color: #323233;
+          color: var(--color-text-readonly);
         }
       }
     }
@@ -72,7 +72,7 @@ $inputPrefixCls: "sn-input";
     border: 0;
     resize: none;
     &::placeholder {
-      color: $color-text-placeholder;
+      color: var(--color-text-placeholder);
       line-height: 1.2;
     }
   }

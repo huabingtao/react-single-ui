@@ -3,59 +3,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.dumi-default-content-footer svg{
+.dumi-default-content-footer svg {
   display: inline;
 }
 .sn-title {
-    margin: 0;
-    padding: 16px 0 16px;
-    color: rgba(69, 90, 100, 0.6);
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
+  margin: 0;
+  padding: 16px 0 16px;
+  color: rgba(69, 90, 100, 0.6);
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
 }
 
-// minxin
-@import "mixin";
+// 色彩变量
+:root {
+  --primary: #0d6efd; // 主色
+  --secondary: #ffed4a; // 辅助色
+  --success: #38c172; // 成功色
+  --danger: #e3342f; // 危险色
+  --warning: #ffcc00; // 警告色
+  --info: #6cb2eb; // 信息色
+  --light: #f8f9fa; // 浅色
+  --dark: #343a40; // 深色
+  --white: #fff; // 白色
+  --black-transparent-45: rgba(0, 0, 0, 0.45); // 半透明
+  --black: #000;
+  // 文字颜色
+  --text-color: #333; // 主要文字颜色
+  --text-light: #6c757d; // 浅文字颜色
+  --gray-100: #f8f9fa; // 浅灰色
+  --color-text-placeholder: #bbb; // 占位符颜色
+  --color-text-disabled: #c8c9cc; // 禁用文字颜色
+  --color-text-readonly: #323233; // 只读文字颜色
 
-// button
-@import "../components/button/index";
+  // 背景颜色
+  --background-color: #ffffff; // 背景颜色
+  --background-dark: #212529; // 深色背景
+  --background-toast: rgba(58, 58, 58, 0.9); // toast 背景色
 
-// loading
-@import "../components/loading/index";
-
-// mask
-@import "../components/mask/index";
-
-// image
-@import "../components/image/index";
-
-// modal
-@import "../components/modal/index";
-
-// toast
-@import "../components/toast/index";
-
-// switch
-@import "../components/switch/index";
-
-// input
-@import "../components/input/index";
-
-// uploader
-@import "../components/uploader/index";
-
-// tab-bar
-// @import "../components/navigation/tab-bar/index";
-
-// breadcrmb
-@import "../components/breadcrumb/index";
-
-// tree-select
-@import "../components/tree-select/index";
-
-// badge
-@import "../components/badge/index";
-
-// progress
-@import "../components/progress/index";
+  // 其他变量
+  --border-radius: 0.25rem; // 边框圆角
+  --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); // 阴影
+  --progress-zindex: 2000;
+}

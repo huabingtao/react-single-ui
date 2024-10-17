@@ -1,10 +1,10 @@
 'use client';
 import React, { createContext, useState } from 'react';
 import { prefixCls } from '../../utils';
+import './_index.scss';
 import { TreeSelectProps, TreeSidebarProps } from './index.d';
 import TreeSelectContent from './tree-select-content';
 import TreeSelectSidebar from './tree-select-sidebar';
-
 export const TreeSelectContext = createContext<
   TreeSelectProps<TreeSidebarProps>
 >({ multiple: false, index: 0 });

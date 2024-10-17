@@ -28,13 +28,13 @@ const caculType = (type: string) => {
   return resType;
 };
 
-export interface InputItemProps extends BaseInputProps {
+export type InputItemProps = {
   /**
    *
    * @description 自定义输入框的类名
    */
   className?: string;
-}
+} & BaseInputProps;
 
 const InputPrefixCls = prefixCls + '-input';
 

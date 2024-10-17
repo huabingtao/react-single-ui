@@ -7,6 +7,7 @@ import React, { ChangeEvent, useRef, useState } from 'react';
 import { Icon } from '../..';
 import { filterFiles, isOversize, prefixCls, toArray } from '../../utils';
 import { ImageFit } from '../image';
+import './_index.scss';
 import { Interceptor, UploaderFileListItem } from './type';
 import UploaderPreviewItem from './uploaderPreviewItem';
 library.add(faCamera);

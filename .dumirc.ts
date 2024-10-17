@@ -14,7 +14,6 @@ export default defineConfig({
     },
     deviceWidth: 375,
     nav: [{ title: '指南', link: '/guide/introduce' }],
-
     socialLinks: {
       github: 'https://github.com/huabingtao/react-single-ui',
     },

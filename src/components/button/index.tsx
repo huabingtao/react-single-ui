@@ -9,6 +9,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import { prefixCls } from '../../utils';
+import './_index.scss';
 
 export enum ButtonSize {
   Large = 'lg',
@@ -92,7 +93,6 @@ const Button: React.FC<ButtonProps> = (props): React.ReactElement | null => {
     children,
     className,
     href,
-    activeClassName,
     type = 'button',
     ...restProps
   } = props;
@@ -113,16 +113,10 @@ const Button: React.FC<ButtonProps> = (props): React.ReactElement | null => {
   }
 
   return (
-    <div className={`${buttonPrefixCls}-active ${activeClassName}`}>
-      <button
-        className={classes}
-        type={type}
-        {...restProps}
-        disabled={disabled}
-      >
-        {children}
-      </button>
-    </div>
+    <button className={classes} type={type} {...restProps} disabled={disabled}>
+      {children}
+    </button>
+
     // <button className={classes} disabled={disabled} {...restProps}>
     //   {children}
     // </button>
